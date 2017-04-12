@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package model;
 
 /**
  *
  * @author Usuario
  */
-public class DTOStadistics {
-    
+public class Plan {
+    private int code; 
+    private int year; 
+    private boolean active; 
 }
