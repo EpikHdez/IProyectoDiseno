@@ -18,7 +18,7 @@ public class School  {
     private DocumentGenerator docGenerator; 
     private EmployeesManager employeeManager; 
     private RequestsManager requestManager; 
-    private ResolutionsManager resolutionsManager; 
+   
     
     public void createRequest(DTORequest req){
     

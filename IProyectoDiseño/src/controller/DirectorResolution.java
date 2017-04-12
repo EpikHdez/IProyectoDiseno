@@ -13,7 +13,7 @@ import model.Resolution;
  *
  * @author Usuario
  */
-public class Director {
+public class DirectorResolution {
     private ResolutionBuilder resolutionBuilder; 
     
     public void setResolutionBuilder(ResolutionBuilder rs){

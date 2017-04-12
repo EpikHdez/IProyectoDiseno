@@ -20,5 +20,5 @@ public class Group {
     private Employee employee; 
     private ArrayList<Schedule> schedules; 
     private Course course; 
-    private EPeriodType periodType; 
+  
 }

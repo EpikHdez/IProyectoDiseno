@@ -13,8 +13,7 @@ import model.Employee;
  * @author Usuario
  */
 public class EmployeesManager extends Manager{
-    private DAOEmployee daoEmployee; 
-    
+
     public ArrayList<Employee> createTop3Professors(){
         ArrayList<Employee> employees = new ArrayList<Employee>(); 
         return employees;

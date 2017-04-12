@@ -11,6 +11,6 @@ package controller;
  */
 public class UIStadistics {
     private FacadeCoordinator facade; 
-    private DTOStadistics dtoStadistics; 
+
     
 }
