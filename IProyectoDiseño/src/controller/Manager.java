@@ -11,31 +11,10 @@ import java.util.ArrayList;
  *
  * @author Usuario
  */
-public class Manager {
-    public boolean Edit(Object parameter){
-        //still have to implement this 
-        return false; 
-    }
-    
-    public ArrayList<Object> SelectAll(){
-        ArrayList<Object> objects = new ArrayList<Object>(); 
-        return objects;
-    }
-    
-    public boolean Insert(Object paramenter){
-        //still have to implement this 
-        return false; 
-    }
-    
-    public boolean Delete (String id){
-        //still have to implement this 
-        return false; 
-    }
-    
-    public Object Select(String id){
-        Object object = new Object(); 
-        return object;
-    }
-    
-    
+public abstract class Manager {
+    public abstract void insert(Object parameter) throws Exception;
+    public abstract void edit(Object parameter) throws Exception;
+    public abstract void delete (String id) throws Exception;
+    public abstract Object select(String id) throws Exception;
+    public abstract ArrayList<Object> selectAll();
 }

@@ -8061,7 +8061,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "EmployeesManager",
+											"text": "PersonsManager",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -13274,7 +13274,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+Edit(parameter: Object): boolean",
+											"text": "+Edit(parameter: Object): void",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -13332,7 +13332,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+Insert(parameter: Object): boolean",
+											"text": "+Insert(parameter: Object): void",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -13361,7 +13361,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+Delete(id: String): boolean",
+											"text": "+Delete(id: String): void",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -29678,7 +29678,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 616,
-									"top": 265,
+									"top": 110,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -29712,7 +29712,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 616,
-									"top": 250,
+									"top": 95,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -29746,7 +29746,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 616,
-									"top": 295,
+									"top": 140,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -29772,13 +29772,13 @@
 							"containerChangeable": false,
 							"containerExtending": false,
 							"head": {
-								"$ref": "AAAAAAFbLDrCdqx4pqE="
+								"$ref": "AAAAAAFbFn4pqLF38Pc="
 							},
 							"tail": {
 								"$ref": "AAAAAAFbWecw6ZSweXs="
 							},
 							"lineStyle": 0,
-							"points": "616:1168;616:286;776:286",
+							"points": "616:1168;616:131;672:131",
 							"stereotypeDisplay": "label",
 							"showVisibility": true,
 							"showProperty": true,
@@ -36664,7 +36664,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFbWcugYAmAME8="
 							},
-							"name": "EmployeesManager",
+							"name": "PersonsManager",
 							"ownedElements": [
 								{
 									"_type": "UMLGeneralization",
@@ -36735,7 +36735,7 @@
 										"$ref": "AAAAAAFbWecw6JSuMfc="
 									},
 									"target": {
-										"$ref": "AAAAAAFbLDrCdax2TL4="
+										"$ref": "AAAAAAFbFn4pqLF1DJ0="
 									},
 									"visibility": "public"
 								}
@@ -38048,7 +38048,7 @@
 											"visibility": "public",
 											"isStatic": false,
 											"isLeaf": false,
-											"type": "boolean",
+											"type": "void",
 											"isReadOnly": false,
 											"isOrdered": false,
 											"isUnique": false,
@@ -38126,7 +38126,7 @@
 											"visibility": "public",
 											"isStatic": false,
 											"isLeaf": false,
-											"type": "boolean",
+											"type": "void",
 											"isReadOnly": false,
 											"isOrdered": false,
 											"isUnique": false,
@@ -38173,7 +38173,7 @@
 											"visibility": "public",
 											"isStatic": false,
 											"isLeaf": false,
-											"type": "boolean",
+											"type": "void",
 											"isReadOnly": false,
 											"isOrdered": false,
 											"isUnique": false,

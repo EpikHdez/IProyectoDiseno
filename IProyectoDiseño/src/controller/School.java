@@ -16,8 +16,17 @@ import model.Resolution;
  */
 public class School  {
     private DocumentGenerator docGenerator; 
-    private EmployeesManager employeeManager; 
-    private RequestsManager requestManager; 
+    private PersonsManager personsManager; 
+    private RequestsManager requestsManager; 
+    private PlansManager plansManager;
+    private GroupsManager groupsManager;
+    
+    public School() {
+        personsManager = new PersonsManager();
+        requestsManager = new RequestsManager();
+        plansManager = new PlansManager();
+        groupsManager = new GroupsManager();
+    }
    
     
     public void createRequest(DTORequest req){

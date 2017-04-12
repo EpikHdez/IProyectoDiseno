@@ -26,9 +26,8 @@ public class Parameter {
     public static synchronized Parameter getInstance(){
         if (INSTANCE == null){
             INSTANCE = new Parameter();
-            System.out.println("it had to instance");
         }
-        System.out.println("it access to");
+        
         return INSTANCE;
     }
 
@@ -45,10 +44,7 @@ public class Parameter {
     }
     
 
-    public String getParameters(String tag){
+    public String getParameter(String tag){
         return parameters.getProperty(tag);
     }
-    
-    
-
 }
