@@ -40,12 +40,22 @@ public class School  {
         return INSTANCE;
     }
    
-    
-    public void createRequest(DTORequest req) throws Exception {
+    public void createRequest(DTORequest req) {
         String groupToFind = req.getCodCourse() + "-" + req.getNumGroup();
         Group group;
         Person requester;
-        Student affected;
+    }
+    
+    public ArrayList<Object> selectAllGroups() {
+        return groupsManager.selectAll();
+    }
+    
+    public Group selectGroup(int groupNumber, String courseCode) {
+        //Se juntan para enviarlo buscar, ya que para buscar se recibe un
+        //solo parametro
+        String toSearch = groupNumber + "-" + courseCode;
+        
+        return (Group) groupsManager.select(toSearch);
     }
     
     public void createResolution(DTOResolution res){

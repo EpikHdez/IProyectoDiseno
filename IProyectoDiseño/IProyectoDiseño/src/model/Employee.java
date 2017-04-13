@@ -10,5 +10,10 @@ package model;
  * @author Usuario
  */
 public class Employee extends Person{
-    private EEmployeeRol rol; 
+    private EEmployeeRol rol;
+
+    public Employee(EEmployeeRol rol, String id, String name, String email, String phone) {
+        super(id, name, email, phone);
+        this.rol = rol;
+    }
 }

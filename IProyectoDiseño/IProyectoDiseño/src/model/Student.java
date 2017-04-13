@@ -10,5 +10,7 @@ package model;
  * @author Usuario
  */
 public class Student extends Person {
-    
+    public Student(String id, String name, String email, String phone) {
+        super(id, name, email, phone);
+    }
 }

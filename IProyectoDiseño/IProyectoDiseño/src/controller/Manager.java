@@ -12,9 +12,9 @@ import java.util.ArrayList;
  * @author Usuario
  */
 public abstract class Manager {
-    public abstract void insert(Object parameter) throws Exception;
-    public abstract void edit(Object parameter) throws Exception;
-    public abstract void delete (String id) throws Exception;
-    public abstract Object select(String id) throws Exception;
+    public abstract void insert(Object parameter);
+    public abstract void edit(Object parameter);
+    public abstract void delete (String id);
+    public abstract Object select(String id);
     public abstract ArrayList<Object> selectAll();
 }

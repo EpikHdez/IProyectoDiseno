@@ -6,7 +6,10 @@
 package controller;
 
 import java.util.ArrayList;
+import model.Group;
+import model.Person;
 import model.Request;
+import model.Student;
 
 /**
  *
@@ -25,7 +28,16 @@ public class RequestsManager extends Manager{
 
     @Override
     public void insert(Object parameter) {
-        currentRequest = (Request) parameter;
+        DTORequest dto = (DTORequest) parameter;
+        Group group = School.getInstance().selectGroup(dto.getNumGroup(), dto.getCodCourse());
+        Student student = new Student(dto.getIdStudent(), dto.getNameStudent(),
+                                      dto.getEmail(), dto.getPhone());
+        Person requester = new Person(dto.getId(), dto.getName(), "", "");
+        
+        currentRequest = new Request(dto.getDate(), dto.getDescription(), 
+                                     dto.getInconsistence(), student, requester,
+                                     group);
+        
         requests.add(currentRequest);
     }
 

@@ -6,31 +6,48 @@
 package controller;
 
 import java.util.ArrayList;
+import model.Group;
 
 /**
  *
  * @author ErickHdez
  */
 class GroupsManager extends Manager {
+    private ArrayList<Group> groups;
+    
+    public GroupsManager() {
+        groups = new ArrayList();
+    }
 
     @Override
-    public void insert(Object parameter) throws Exception {
+    public void insert(Object parameter) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void edit(Object parameter) throws Exception {
+    public void edit(Object parameter) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void delete(String id) throws Exception {
+    public void delete(String id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Object select(String id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Object select(String id) {
+        String[] parameters = id.split("-");
+        int groupNumber = Integer.parseInt(parameters[0]);
+        String codeCourse = parameters[1];
+        
+        for(Group g : groups) {
+            if(g.getNumber() == groupNumber) {
+                if (g.getCourse().getCode() == codeCourse)
+                    return g;
+            }
+        }
+        
+        return null;
     }
 
     @Override

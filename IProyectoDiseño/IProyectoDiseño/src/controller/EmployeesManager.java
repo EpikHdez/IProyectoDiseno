@@ -20,22 +20,22 @@ public class EmployeesManager extends Manager{
     }
 
     @Override
-    public void insert(Object parameter) throws Exception {
+    public void insert(Object parameter) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void edit(Object parameter) throws Exception {
+    public void edit(Object parameter) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void delete(String id) throws Exception {
+    public void delete(String id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Object select(String id) throws Exception {
+    public Object select(String id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

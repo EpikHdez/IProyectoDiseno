@@ -6,6 +6,7 @@
 package model;
 import java.io.File;
 import java.util.Date;
+import static model.ERequestState.PENDING;
 
 /**
  *
@@ -14,12 +15,26 @@ import java.util.Date;
 public class Request {
     private int id; 
     private Date date; 
-    private String Description; 
+    private String description; 
     private File evidence; 
     private EInconsistencie inconsistencie; 
     private ERequestState requestState; 
     private Note note; 
     private Resolution resolution;
+    private Student affected;
+    private Person requester;
+    private Group group;
+
+    public Request(Date date, String description, EInconsistencie inconsistencie, 
+                   Student affected, Person requester, Group group) {
+        this.date = date;
+        this.description = description;
+        this.inconsistencie = inconsistencie;
+        this.requestState = PENDING;
+        this.affected = affected;
+        this.requester = requester;
+        this.group = group;
+    }
 
     public int getId() {
         return id;
@@ -38,11 +53,11 @@ public class Request {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String Description) {
-        this.Description = Description;
+        this.description = Description;
     }
 
     public File getEvidence() {
@@ -83,5 +98,29 @@ public class Request {
 
     public void setResolution(Resolution resolution) {
         this.resolution = resolution;
+    }
+
+    public Student getAffected() {
+        return affected;
+    }
+
+    public void setAffected(Student affected) {
+        this.affected = affected;
+    }
+
+    public Person getRequester() {
+        return requester;
+    }
+
+    public void setRequester(Person requester) {
+        this.requester = requester;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 }
