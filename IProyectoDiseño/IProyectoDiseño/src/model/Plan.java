@@ -10,7 +10,18 @@ package model;
  * @author Usuario
  */
 public class Plan {
-    private int code; 
-    private int year; 
-    private boolean active; 
+      private String code;
+   private String name;
+   private double credits;
+
+    public Plan(String code, String name, double credits) {
+        this.code = code;
+        this.name = name;
+        this.credits = credits;
+    }
+
+    @Override
+    public String toString() {
+        return "Plan{" + "code=" + code + ", name=" + name + ", credits=" + credits + '}';
+    }
 }

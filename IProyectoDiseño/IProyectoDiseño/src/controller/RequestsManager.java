@@ -17,12 +17,12 @@ import model.Student;
  * @author Usuario
  */
 public class RequestsManager extends Manager{
-    private final DAORequest daoRequest;
+   // private final DAOData daoRequest;
     private Request currentRequest;
     
     public RequestsManager() {
         elements = new ArrayList();
-        daoRequest = new DAORequest();
+       // daoRequest = new DAOData();
         currentRequest = null;
     }
 
