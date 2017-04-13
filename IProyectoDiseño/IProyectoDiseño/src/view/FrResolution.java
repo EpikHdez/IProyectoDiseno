@@ -33,31 +33,31 @@ public class FrResolution extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        txtintro = new javax.swing.JTextArea();
+        btnokintro = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
+        txtresult = new javax.swing.JTextArea();
+        btnokresult = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
-        jButton3 = new javax.swing.JButton();
+        txtconsider = new javax.swing.JTextArea();
+        btnokconsider = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
-        jButton4 = new javax.swing.JButton();
+        txtresolve = new javax.swing.JTextArea();
+        btnokresolve = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
-        jButton5 = new javax.swing.JButton();
+        txtnotify = new javax.swing.JTextArea();
+        btnoknotify = new javax.swing.JButton();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        btnNewRequest = new javax.swing.JMenuItem();
+        btnSaveAs = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        btnViewRequest = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -72,11 +72,11 @@ public class FrResolution extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtintro.setColumns(20);
+        txtintro.setRows(5);
+        jScrollPane1.setViewportView(txtintro);
 
-        jButton1.setText("Aceptar");
+        btnokintro.setText("Aceptar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -85,7 +85,7 @@ public class FrResolution extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                    .addComponent(btnokintro)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
@@ -95,17 +95,22 @@ public class FrResolution extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btnokintro)
                 .addContainerGap(69, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Introducción", jPanel1);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        txtresult.setColumns(20);
+        txtresult.setRows(5);
+        jScrollPane2.setViewportView(txtresult);
 
-        jButton2.setText("Aceptar");
+        btnokresult.setText("Aceptar");
+        btnokresult.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnokresultActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -114,7 +119,7 @@ public class FrResolution extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2)
+                    .addComponent(btnokresult)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
@@ -124,17 +129,17 @@ public class FrResolution extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(btnokresult)
                 .addContainerGap(69, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Resultado Único ", jPanel2);
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
+        txtconsider.setColumns(20);
+        txtconsider.setRows(5);
+        jScrollPane3.setViewportView(txtconsider);
 
-        jButton3.setText("Aceptar");
+        btnokconsider.setText("Aceptar");
 
         jButton6.setText("Agregar Considerando");
 
@@ -148,7 +153,7 @@ public class FrResolution extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jButton6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3))
+                        .addComponent(btnokconsider))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
@@ -159,18 +164,18 @@ public class FrResolution extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
+                    .addComponent(btnokconsider)
                     .addComponent(jButton6))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Considerandos", jPanel3);
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane4.setViewportView(jTextArea4);
+        txtresolve.setColumns(20);
+        txtresolve.setRows(5);
+        jScrollPane4.setViewportView(txtresolve);
 
-        jButton4.setText("Aceptar");
+        btnokresolve.setText("Aceptar");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -179,7 +184,7 @@ public class FrResolution extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton4)
+                    .addComponent(btnokresolve)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
@@ -189,17 +194,17 @@ public class FrResolution extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(btnokresolve)
                 .addContainerGap(69, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Resuelvo", jPanel4);
 
-        jTextArea5.setColumns(20);
-        jTextArea5.setRows(5);
-        jScrollPane5.setViewportView(jTextArea5);
+        txtnotify.setColumns(20);
+        txtnotify.setRows(5);
+        jScrollPane5.setViewportView(txtnotify);
 
-        jButton5.setText("Aceptar");
+        btnoknotify.setText("Aceptar");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -208,7 +213,7 @@ public class FrResolution extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton5)
+                    .addComponent(btnoknotify)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
@@ -218,7 +223,7 @@ public class FrResolution extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
+                .addComponent(btnoknotify)
                 .addContainerGap(69, Short.MAX_VALUE))
         );
 
@@ -226,28 +231,33 @@ public class FrResolution extends javax.swing.JFrame {
 
         jMenu3.setText("Archivo");
 
-        jMenuItem4.setText("Nueva Solicitud...");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        btnNewRequest.setText("Nueva Solicitud...");
+        btnNewRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                btnNewRequestActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem4);
+        jMenu3.add(btnNewRequest);
 
-        jMenuItem1.setText("Guardar Como...");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        btnSaveAs.setText("Guardar Como...");
+        btnSaveAs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                btnSaveAsActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem1);
+        jMenu3.add(btnSaveAs);
 
         jMenuBar2.add(jMenu3);
 
         jMenu4.setText("Ver ");
 
-        jMenuItem6.setText("Ver Solicitudes");
-        jMenu4.add(jMenuItem6);
+        btnViewRequest.setText("Ver Solicitudes");
+        btnViewRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewRequestActionPerformed(evt);
+            }
+        });
+        jMenu4.add(btnViewRequest);
 
         jMenuBar2.add(jMenu4);
 
@@ -258,7 +268,7 @@ public class FrResolution extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 797, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -271,13 +281,28 @@ public class FrResolution extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void btnNewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewRequestActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+        FrRequest fr=new FrRequest();
+        fr.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnNewRequestActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void btnSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_btnSaveAsActionPerformed
+
+    private void btnokresultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnokresultActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnokresultActionPerformed
+
+    private void btnViewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRequestActionPerformed
+        // TODO add your handling code here:
+        FrViewRequest fvr=new FrViewRequest();
+        fvr.setVisible(true);
+        this.setVisible(false);
+
+    }//GEN-LAST:event_btnViewRequestActionPerformed
 
     /**
      * @param args the command line arguments
@@ -315,19 +340,19 @@ public class FrResolution extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JMenuItem btnNewRequest;
+    private javax.swing.JMenuItem btnSaveAs;
+    private javax.swing.JMenuItem btnViewRequest;
+    private javax.swing.JButton btnokconsider;
+    private javax.swing.JButton btnokintro;
+    private javax.swing.JButton btnoknotify;
+    private javax.swing.JButton btnokresolve;
+    private javax.swing.JButton btnokresult;
     private javax.swing.JButton jButton6;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -339,10 +364,10 @@ public class FrResolution extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextArea jTextArea5;
+    private javax.swing.JTextArea txtconsider;
+    private javax.swing.JTextArea txtintro;
+    private javax.swing.JTextArea txtnotify;
+    private javax.swing.JTextArea txtresolve;
+    private javax.swing.JTextArea txtresult;
     // End of variables declaration//GEN-END:variables
 }
