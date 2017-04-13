@@ -25,7 +25,7 @@ public class IProyectoDiseño {
         // TODO code application logic here
         FrMain fm= new FrMain();
         fm.setVisible(true);
-        FileInputStream fis = new FileInputStream(new File("C:\\Users\\Usuario\\Documents\\Proyecto1\\DatosProyecto1.xlsx"));
+        FileInputStream fis = new FileInputStream(new File("src\\files\\DatosProyecto1.xlsx"));
         DAOData data = new DAOData(fis); 
         data.readPlan();
         data.readProfessors();
