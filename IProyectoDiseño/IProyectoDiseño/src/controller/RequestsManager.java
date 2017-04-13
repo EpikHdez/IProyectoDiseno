@@ -19,9 +19,11 @@ import model.Student;
 public class RequestsManager extends Manager{
    // private final DAOData daoRequest;
     private Request currentRequest;
+    private DirectorResolution director;
     
     public RequestsManager() {
         elements = new ArrayList();
+        director = new DirectorResolution();
        // daoRequest = new DAOData();
         currentRequest = null;
     }
@@ -80,8 +82,10 @@ public class RequestsManager extends Manager{
         temp.setId(Integer.parseInt(id));
         
         for(Object r : elements) {
-            if(temp.equals(r))
+            if(temp.equals(r)) {
+                currentRequest = (Request) r;
                 return r;
+            }
         }
         
         return null;
@@ -123,6 +127,20 @@ public class RequestsManager extends Manager{
     @Override
     public ArrayList<Object> selectAll() {
         return elements;
+    }
+    
+    public void insertResolution(DTOResolution res) {
+        Package pack = ResolutionBuilder.class.getPackage();
+        String builder = String.format("%s.%sResolutionBuilder", pack.getName(), 
+                                       currentRequest.getInconsistencie().name());
+        
+        try {
+            ResolutionBuilder rb = (ResolutionBuilder) Class.forName(builder).newInstance();
+            director.setResolutionBuilder(rb);
+            director.constructResolution(res.getConsiderations(), res.getIntro(), 
+                    res.getNotify(), res.getResolve(), res.getResult());
+            currentRequest.setResolution(director.getResolution());
+        } catch(Exception ex) {}
     }
     
     public ArrayList<Request> createRequestStadistics(){

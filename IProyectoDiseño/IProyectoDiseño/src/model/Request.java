@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package model;
+import controller.DTOResolution;
 import java.io.File;
 import java.util.Date;
 import static model.ERequestState.PENDING;
@@ -29,6 +30,9 @@ public class Request {
 
     public Request(Date date, String description, EInconsistencie inconsistencie, 
                    Student affected, Person requester, Group group) {
+        
+        this.id = Integer.parseInt(Parameter.getInstance()
+                                   .getParameter("request_serial"));
         this.date = date;
         this.description = description;
         this.inconsistencie = inconsistencie;
@@ -36,12 +40,15 @@ public class Request {
         this.affected = affected;
         this.requester = requester;
         this.group = group;
+        
+        Parameter.getInstance().setParameter("request_serial", 
+                                             String.valueOf(id + 1));
     }
 
     public int getId() {
         return id;
     }
-
+    
     public void setId(int id) {
         this.id = id;
     }
