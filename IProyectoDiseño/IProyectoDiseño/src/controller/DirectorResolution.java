@@ -32,5 +32,9 @@ public class DirectorResolution {
         resolutionBuilder.buildResult(parResult);
     }
     
+    public DTOTemplate getTemplate(){
+        return resolutionBuilder.generateTemplate();
+    
+    }
     
 }

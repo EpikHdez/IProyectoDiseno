@@ -130,21 +130,30 @@ public class RequestsManager extends Manager{
     }
     
     public void insertResolution(DTOResolution res) {
-        Package pack = ResolutionBuilder.class.getPackage();
-        String builder = String.format("%s.%sResolutionBuilder", pack.getName(), 
-                                       currentRequest.getInconsistencie().name());
         
-        try {
-            ResolutionBuilder rb = (ResolutionBuilder) Class.forName(builder).newInstance();
-            director.setResolutionBuilder(rb);
+        
+    
             director.constructResolution(res.getConsiderations(), res.getIntro(), 
                     res.getNotify(), res.getResolve(), res.getResult());
             currentRequest.setResolution(director.getResolution());
-        } catch(Exception ex) {}
+   
     }
     
     public ArrayList<Request> createRequestStadistics(){
         ArrayList<Request> requests = new ArrayList<Request>(); 
         return requests; 
+    }
+    public DTOTemplate getTemplate(){
+        Package pack = ResolutionBuilder.class.getPackage();
+        String builder = String.format("%s.%sResolutionBuilder", pack.getName(), 
+                                       currentRequest.getInconsistencie().name());
+          try {
+            ResolutionBuilder rb = (ResolutionBuilder) Class.forName(builder).newInstance();
+            director.setResolutionBuilder(rb);
+            return director.getTemplate();
+          }
+          catch(Exception ex) {}
+          return null;
+          
     }
 }
