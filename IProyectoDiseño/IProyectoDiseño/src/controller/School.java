@@ -40,15 +40,32 @@ public class School  {
         return INSTANCE;
     }
    
-    public void createRequest(DTORequest req) {
-        String groupToFind = req.getCodCourse() + "-" + req.getNumGroup();
-        Group group;
-        Person requester;
+    public void insertRequest(DTORequest req) {
+        requestsManager.insert(req);
     }
     
-    public ArrayList<Object> selectAllGroups() {
-        return groupsManager.selectAll();
+    public void editRequest(DTORequest req) {
+        requestsManager.edit(req);
     }
+    
+    public void deleteRequest(String id) {
+        requestsManager.delete(id);
+    }
+    
+    public Request selectRequest(String id) {
+        return (Request) requestsManager.select(id);
+    }
+    
+    public ArrayList<Object> selectAllRequests() {
+        return requestsManager.selectAll();
+    }
+    
+    public ArrayList<Request> viewRequestStadistics(){
+        ArrayList<Request> requests = new ArrayList<Request>(); 
+        return requests; 
+    }
+    
+    
     
     public Group selectGroup(int groupNumber, String courseCode) {
         //Se juntan para enviarlo buscar, ya que para buscar se recibe un
@@ -58,14 +75,17 @@ public class School  {
         return (Group) groupsManager.select(toSearch);
     }
     
-    public void createResolution(DTOResolution res){
-    
+    public ArrayList<Object> selectAllGroups() {
+        return groupsManager.selectAll();
     }
     
-    public ArrayList<Request> viewRequestStadistics(){
-        ArrayList<Request> requests = new ArrayList<Request>(); 
-        return requests; 
+    
+    
+    
+    public void insertResolution(DTOResolution res){
+        
     }
+   
     
     public ArrayList<Resolution> createTop5Resolutions(){
         ArrayList<Resolution> resolutions = new ArrayList<Resolution>(); 

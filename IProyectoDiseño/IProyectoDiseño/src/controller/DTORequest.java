@@ -7,15 +7,17 @@ package controller;
 
 import java.util.Date;
 import model.EInconsistencie;
+import model.ERequestState;
 
 /**
  *
  * @author Usuario
  */
 public class DTORequest {
+    private int requestId;
     private Date date;
-    private String id;
-    private String name;
+    private String requesterId;
+    private String requesterName;
     private String period;
     private String codCourse;
     private int numGroup;
@@ -23,8 +25,18 @@ public class DTORequest {
     private String nameStudent;
     private String phone;
     private String email;
+    private ERequestState state;
     private EInconsistencie inconsistence;
     private String description;
+    private String note;
+
+    public int getRequestId() {
+        return requestId;
+    }
+
+    public void setRequestId(int requestId) {
+        this.requestId = requestId;
+    }
 
     public Date getDate() {
         return date;
@@ -34,20 +46,20 @@ public class DTORequest {
         this.date = date;
     }
 
-    public String getId() {
-        return id;
+    public String getRequesterId() {
+        return requesterId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setREquesterId(String requesterId) {
+        this.requesterId = requesterId;
     }
 
-    public String getName() {
-        return name;
+    public String getRequesterName() {
+        return requesterName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRequesterName(String requesterName) {
+        this.requesterName = requesterName;
     }
 
     public String getPeriod() {
@@ -106,6 +118,14 @@ public class DTORequest {
         this.email = email;
     }
 
+    public ERequestState getState() {
+        return state;
+    }
+
+    public void setState(ERequestState state) {
+        this.state = state;
+    }
+
     public EInconsistencie getInconsistence() {
         return inconsistence;
     }
@@ -120,5 +140,13 @@ public class DTORequest {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 }

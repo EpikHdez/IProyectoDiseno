@@ -12,6 +12,8 @@ import java.util.ArrayList;
  * @author Usuario
  */
 public abstract class Manager {
+    protected ArrayList<Object> elements;
+    
     public abstract void insert(Object parameter);
     public abstract void edit(Object parameter);
     public abstract void delete (String id);

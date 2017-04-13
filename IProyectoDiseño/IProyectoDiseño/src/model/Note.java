@@ -11,4 +11,12 @@ package model;
  */
 public class Note {
     private String description; 
+
+    Note(String message) {
+        this.description = message;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

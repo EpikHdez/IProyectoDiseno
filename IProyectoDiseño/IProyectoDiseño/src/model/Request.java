@@ -88,8 +88,8 @@ public class Request {
         return note;
     }
 
-    public void setNote(Note note) {
-        this.note = note;
+    public void setNote(String message) {
+        this.note = new Note(message);
     }
 
     public Resolution getResolution() {
@@ -123,4 +123,11 @@ public class Request {
     public void setGroup(Group group) {
         this.group = group;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return id == ((Request) obj).getId();
+    }
+    
+    
 }
