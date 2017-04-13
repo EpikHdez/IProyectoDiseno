@@ -8,6 +8,7 @@ package controller;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import model.Course;
 import model.EEmployeeRol;
 import model.Employee;
 import model.Group;
@@ -34,8 +35,8 @@ public class DAOData {
     }
    
     
-    public ArrayList<Plan> readPlan(){
-        ArrayList<Plan> plans = new ArrayList<>(); 
+    public Plan readPlan(){
+        ArrayList<Course> courses = new ArrayList<>(); 
        //takes the sheet you ask for 
         XSSFSheet sheet = workbook.getSheet("PLAN"); 
                
@@ -57,16 +58,26 @@ public class DAOData {
                 }
                 
             }
-            plans.add(new Plan(code, name, credits)); 
-            System.out.println("creating a plan");
+            if(!code.isEmpty()){
+                Course course = new Course(code, name, credits);
+                System.out.println(course.toString());
+                courses.add(course); 
+                System.out.println("creating a course");
+                code = null; name = null; credits = 0; 
+            }
+           
         }
-        
-        printArrayPlan(plans);
-        return plans; 
+        Plan plan = new Plan(410, 2010, courses, null); 
+        System.out.println(plan.toString());
+        return plan; 
     }
     
     
-    
+     public void printArrayCourse(ArrayList<Course> objects){
+        for (Course object : objects) {
+            System.out.println(object.toString());
+        }
+    }
     
     public void printArrayPlan(ArrayList<Plan> objects){
         for (Plan object : objects) {
