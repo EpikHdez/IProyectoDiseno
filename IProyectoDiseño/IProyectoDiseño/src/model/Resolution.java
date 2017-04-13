@@ -22,4 +22,5 @@ public class Resolution {
     private String notify; 
     private Employee employee; 
     private Parameter parameter;
+    private Consideration consideration;
 }

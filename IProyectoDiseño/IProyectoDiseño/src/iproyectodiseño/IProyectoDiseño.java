@@ -5,6 +5,8 @@
  */
 package iproyectodiseño;
 
+import view.FrMain;
+
 /**
  *
  * @author Ximena
@@ -16,6 +18,8 @@ public class IProyectoDiseño {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        FrMain fm= new FrMain();
+        fm.setVisible(true);
     }
     
 }
