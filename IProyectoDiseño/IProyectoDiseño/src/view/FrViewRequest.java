@@ -353,7 +353,7 @@ public class FrViewRequest extends javax.swing.JFrame {
         jLabel45.setText("Carné");
         getContentPane().add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 135, -1, -1));
 
-        lbCategory.setText("#########################");
+        lbCategory.setText("ERROR_NOTA");
         getContentPane().add(lbCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, -1, -1));
 
         jLabel47.setText("#########################");

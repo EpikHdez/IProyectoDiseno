@@ -43,4 +43,7 @@ public class ResolutionBuilder {
     public void buildNotify(String par){
     
     }
+    public DTOTemplate generateTemplate(){
+        return null;
+    }
 }

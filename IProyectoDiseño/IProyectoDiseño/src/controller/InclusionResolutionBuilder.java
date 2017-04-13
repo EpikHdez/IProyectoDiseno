@@ -10,5 +10,10 @@ package controller;
  * @author Usuario
  */
 public class InclusionResolutionBuilder extends ResolutionBuilder{
+
+    @Override
+    public DTOTemplate generateTemplate() {
+        return super.generateTemplate(); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

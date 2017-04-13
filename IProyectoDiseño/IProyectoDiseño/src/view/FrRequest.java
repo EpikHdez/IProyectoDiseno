@@ -6,6 +6,9 @@
 package view;
 
 import controller.UIRequest;
+import javax.swing.JComboBox;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -13,9 +16,81 @@ import controller.UIRequest;
  */
 public class FrRequest extends javax.swing.JFrame {
 
+    public JComboBox<String> getCbcategory() {
+        return cbcategory;
+    }
+
+    public void setCbcategory(JComboBox<String> cbcategory) {
+        this.cbcategory = cbcategory;
+    }
+
+    public JComboBox<String> getCbcourse() {
+        return cbcourse;
+    }
+
+    public void setCbcourse(JComboBox<String> cbcourse) {
+        this.cbcourse = cbcourse;
+    }
+
+    public JComboBox<String> getCbgroup() {
+        return cbgroup;
+    }
+
+    public void setCbgroup(JComboBox<String> cbgroup) {
+        this.cbgroup = cbgroup;
+    }
+
+    public JTextField getTxtcarne() {
+        return txtcarne;
+    }
+
+    public void setTxtcarne(JTextField txtcarne) {
+        this.txtcarne = txtcarne;
+    }
+
+    public JTextArea getTxtdescription() {
+        return txtdescription;
+    }
+
+    public void setTxtdescription(JTextArea txtdescription) {
+        this.txtdescription = txtdescription;
+    }
+
+    public JTextField getTxtemail() {
+        return txtemail;
+    }
+
+    public void setTxtemail(JTextField txtemail) {
+        this.txtemail = txtemail;
+    }
+
+    public JTextField getTxtname() {
+        return txtname;
+    }
+
+    public void setTxtname(JTextField txtname) {
+        this.txtname = txtname;
+    }
+
+    public JTextField getTxtperiod() {
+        return txtperiod;
+    }
+
+    public void setTxtperiod(JTextField txtperiod) {
+        this.txtperiod = txtperiod;
+    }
+
+    public JTextField getTxtphone() {
+        return txtphone;
+    }
+
     /**
      * Creates new form FrRequest
      */
+    public void setTxtphone(JTextField txtphone) {
+        this.txtphone = txtphone;
+    }
+
     
     private UIRequest uiRequest; 
     public FrRequest() {
@@ -340,6 +415,11 @@ public class FrRequest extends javax.swing.JFrame {
         jLabel10.setText("Información del Problema");
 
         btnOK.setText("Aceptar");
+        btnOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOKActionPerformed(evt);
+            }
+        });
 
         btnAddFile.setText("Agregar Archivo ");
         btnAddFile.addActionListener(new java.awt.event.ActionListener() {
@@ -534,6 +614,17 @@ public class FrRequest extends javax.swing.JFrame {
     private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnameActionPerformed
+
+    private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
+        // TODO add your handling code here:
+        
+    
+        uiRequest=new UIRequest();
+        uiRequest.createRequest(this);
+        
+        
+        
+    }//GEN-LAST:event_btnOKActionPerformed
 
     /**
      * @param args the command line arguments
