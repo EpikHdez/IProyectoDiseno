@@ -12,15 +12,15 @@ import java.util.ArrayList;
  * @author Usuario
  */
 public class Group {
-    private int number;
+    private int numberGroup;
     private String period; 
-    private boolean open; 
+    private boolean open; // no es mejor quitarlo? 
     private Employee employee; 
     private ArrayList<Schedule> schedules; 
-    private Course course; 
+    private Course course; // still quito el curso y lo hago un plan? 
 
     public Group(int number, String period, boolean open, Employee employee, ArrayList<Schedule> schedules, Course course) {
-        this.number = number;
+        this.numberGroup = number;
         this.period = period;
         this.open = open;
         this.employee = employee;
@@ -30,11 +30,11 @@ public class Group {
     
 
     public int getNumber() {
-        return number;
+        return numberGroup;
     }
 
     public void setNumber(int number) {
-        this.number = number;
+        this.numberGroup = number;
     }
 
     public String getPeriod() {

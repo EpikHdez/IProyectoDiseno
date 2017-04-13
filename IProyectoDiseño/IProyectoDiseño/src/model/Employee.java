@@ -16,4 +16,9 @@ public class Employee extends Person{
         super(id, name, email, phone);
         this.rol = rol;
     }
+    
+     @Override
+    public String toString() {
+        return "Employee{"  + "id=" + id + ", name=" + name + ", email=" + email + ", phone=" + phone + ", rol=" + rol + '}';
+    }
 }
