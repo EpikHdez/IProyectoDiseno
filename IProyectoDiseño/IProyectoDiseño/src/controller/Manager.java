@@ -19,4 +19,5 @@ public abstract class Manager {
     public abstract void delete (String id);
     public abstract Object select(String id);
     public abstract ArrayList<Object> selectAll();
+    public abstract void read(); 
 }

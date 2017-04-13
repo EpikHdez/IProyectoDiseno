@@ -6,16 +6,25 @@
 package controller;
 
 import java.util.ArrayList;
+import model.Plan;
 
 /**
  *
  * @author ErickHdez
  */
-class PlansManager extends Manager {
-
+public class PlansManager extends Manager {
+    private DAOData data; 
+    private ArrayList<Plan> plans; 
+    
+    public PlansManager(DAOData data) {
+        this.data = data;
+        this.plans = new ArrayList<>();
+    }
+    
+    
     @Override
     public void insert(Object parameter) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -36,6 +45,12 @@ class PlansManager extends Manager {
     @Override
     public ArrayList<Object> selectAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void read() {
+        plans.add(data.readPlan()); 
+        System.out.println(plans.toString());
     }
     
 }

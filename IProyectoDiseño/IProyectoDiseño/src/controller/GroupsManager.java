@@ -14,11 +14,14 @@ import model.Group;
  */
 class GroupsManager extends Manager {
     private ArrayList<Group> groups;
-    
-    public GroupsManager() {
-        groups = new ArrayList();
-    }
+    private DAOData data; 
 
+    public GroupsManager(DAOData data) {
+        this.data = data;
+        this.groups = new  ArrayList<>();
+    }
+    
+    
     @Override
     public void insert(Object parameter) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -52,6 +55,11 @@ class GroupsManager extends Manager {
 
     @Override
     public ArrayList<Object> selectAll() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void read() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

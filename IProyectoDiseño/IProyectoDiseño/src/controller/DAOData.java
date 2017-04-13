@@ -58,17 +58,16 @@ public class DAOData {
                 }
                 
             }
-            if(!code.isEmpty()){
+            if(code != null){
                 Course course = new Course(code, name, credits);
                 System.out.println(course.toString());
                 courses.add(course); 
                 System.out.println("creating a course");
-                code = null; name = null; credits = 0; 
+                code = null ; name = null; credits = 0; 
             }
            
         }
-        Plan plan = new Plan(410, 2010, courses, null); 
-        System.out.println(plan.toString());
+        Plan plan = new Plan(410, 2010, courses, new ArrayList<>()); 
         return plan; 
     }
     
@@ -113,11 +112,15 @@ public class DAOData {
                 }
                 
             }
-            employees.add(new Employee(EEmployeeRol.PROFESSOR, id, name, email, phone)); 
-            System.out.println("creating professor");
+            if(id != null){
+                employees.add(new Employee(EEmployeeRol.PROFESSOR, id, name, email, phone)); 
+                System.out.println("creating professor");
+                id = null; name = null; email = null; phone = null; 
+            }
+            
             
         }
-        printArrayEmployee(employees);
+        
         return employees;
     }
 

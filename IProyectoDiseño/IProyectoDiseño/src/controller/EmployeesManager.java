@@ -8,12 +8,20 @@ package controller;
 import java.util.ArrayList;
 import model.Employee;
 
+
 /**
  *
  * @author Usuario
  */
 public class EmployeesManager extends Manager{
+    private DAOData data; 
+    private ArrayList<Employee> employees; 
 
+    public EmployeesManager(DAOData data) {
+        this.data = data;
+        this.employees = new ArrayList<>();
+    }
+    
     public ArrayList<Employee> createTop3Professors(){
         ArrayList<Employee> employees = new ArrayList<Employee>(); 
         return employees;
@@ -42,5 +50,11 @@ public class EmployeesManager extends Manager{
     @Override
     public ArrayList<Object> selectAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void read() {
+        employees = data.readProfessors(); 
+        data.printArrayEmployee(employees);
     }
 }

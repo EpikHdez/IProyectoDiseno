@@ -6,6 +6,10 @@
 package iproyectodiseño;
 
 import controller.DAOData;
+import controller.DTORequest;
+import controller.PlansManager;
+import controller.School;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -25,10 +29,17 @@ public class IProyectoDiseño {
         // TODO code application logic here
         FrMain fm= new FrMain();
         fm.setVisible(true);
-        FileInputStream fis = new FileInputStream(new File("src\\files\\DatosProyecto1.xlsx"));
-        DAOData data = new DAOData(fis); 
-        data.readPlan();
-        data.readProfessors();
+
+        //FileInputStream fis = new FileInputStream(new File("src\\files\\DatosProyecto1.xlsx"));
+        //DAOData data = new DAOData(fis); 
+        //data.readPlan();
+        //data.readProfessors();
+        School school = School.getInstance();
+        PlansManager manager = school.getPlansManager();
+        manager.read();
+        school.getPersonsManager().read();
+   
+
     }
     
 }

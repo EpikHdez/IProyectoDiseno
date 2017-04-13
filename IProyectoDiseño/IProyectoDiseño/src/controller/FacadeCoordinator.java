@@ -5,13 +5,15 @@
  */
 package controller;
 
+import java.io.IOException;
+
 /**
  *
  * @author Usuario
  */
 public class FacadeCoordinator {
     private School school; 
-    public void createRequest(DTORequest dtoRequest){
+    public void createRequest(DTORequest dtoRequest) throws IOException{
         school= School.getInstance();
         school.insertRequest(dtoRequest);
     }

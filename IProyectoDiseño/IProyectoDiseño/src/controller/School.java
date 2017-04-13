@@ -5,6 +5,10 @@
  */
 package controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import model.Employee;
 import model.Group;
@@ -19,21 +23,22 @@ import model.Student;
  */
 public class School  {
     private static School INSTANCE = null;
-    
     private DocumentGenerator docGenerator; 
     private EmployeesManager personsManager; 
     private RequestsManager requestsManager; 
     private PlansManager plansManager;
     private GroupsManager groupsManager;
     
-    private School() {
-        personsManager = new EmployeesManager();
+    private School() throws FileNotFoundException, IOException {
+        FileInputStream fis = new FileInputStream(new File("src\\files\\DatosProyecto1.xlsx"));
+        DAOData data = new DAOData(fis); 
+        personsManager = new EmployeesManager(data);
         requestsManager = new RequestsManager();
-        plansManager = new PlansManager();
-        groupsManager = new GroupsManager();
+        plansManager = new PlansManager(data);
+        groupsManager = new GroupsManager(data);
     }
     
-    public static synchronized School getInstance() {
+    public static synchronized School getInstance() throws IOException {
         if(INSTANCE == null)
             INSTANCE = new School();
         
@@ -113,4 +118,55 @@ public class School  {
         //we have to implement this
         return false; 
     }
+
+    public static School getINSTANCE() {
+        return INSTANCE;
+    }
+
+    public static void setINSTANCE(School INSTANCE) {
+        School.INSTANCE = INSTANCE;
+    }
+
+
+    public DocumentGenerator getDocGenerator() {
+        return docGenerator;
+    }
+
+    public void setDocGenerator(DocumentGenerator docGenerator) {
+        this.docGenerator = docGenerator;
+    }
+
+    public EmployeesManager getPersonsManager() {
+        return personsManager;
+    }
+
+    public void setPersonsManager(EmployeesManager personsManager) {
+        this.personsManager = personsManager;
+    }
+
+    public RequestsManager getRequestsManager() {
+        return requestsManager;
+    }
+
+    public void setRequestsManager(RequestsManager requestsManager) {
+        this.requestsManager = requestsManager;
+    }
+
+    public PlansManager getPlansManager() {
+        return plansManager;
+    }
+
+    public void setPlansManager(PlansManager plansManager) {
+        this.plansManager = plansManager;
+    }
+
+    public GroupsManager getGroupsManager() {
+        return groupsManager;
+    }
+
+    public void setGroupsManager(GroupsManager groupsManager) {
+        this.groupsManager = groupsManager;
+    }
+    
+    
 }

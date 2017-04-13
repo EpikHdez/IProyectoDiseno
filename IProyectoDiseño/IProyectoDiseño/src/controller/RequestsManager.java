@@ -5,7 +5,10 @@
  */
 package controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static model.ERequestState.*;
 import model.Group;
 import model.Person;
@@ -31,7 +34,12 @@ public class RequestsManager extends Manager{
     @Override
     public void insert(Object parameter) {
         DTORequest dto = (DTORequest) parameter;
-        Group group = School.getInstance().selectGroup(dto.getNumGroup(), dto.getCodCourse());
+        Group group = null;
+        try {
+            group = School.getInstance().selectGroup(dto.getNumGroup(), dto.getCodCourse());
+        } catch (IOException ex) {
+            Logger.getLogger(RequestsManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Student student = new Student(dto.getIdStudent(), dto.getNameStudent(),
                                       dto.getEmail(), dto.getPhone());
         Person requester = new Person(dto.getRequesterId(), dto.getRequesterName(), "", "");
@@ -143,6 +151,7 @@ public class RequestsManager extends Manager{
         ArrayList<Request> requests = new ArrayList<Request>(); 
         return requests; 
     }
+
     public DTOTemplate getTemplate(){
         Package pack = ResolutionBuilder.class.getPackage();
         String builder = String.format("%s.%sResolutionBuilder", pack.getName(), 
@@ -155,5 +164,13 @@ public class RequestsManager extends Manager{
           catch(Exception ex) {}
           return null;
           
+          
+    }
+          
+
+    @Override
+    public void read() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 }
