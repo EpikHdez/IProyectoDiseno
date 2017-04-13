@@ -7,30 +7,45 @@ package controller;
 
 import java.util.ArrayList;
 import model.Employee;
+import model.Group;
+import model.Person;
 import model.Request;
 import model.Resolution;
+import model.Student;
 
 /**
  *
  * @author Usuario
  */
 public class School  {
+    private static School INSTANCE = null;
+    
     private DocumentGenerator docGenerator; 
-    private PersonsManager personsManager; 
+    private EmployeesManager personsManager; 
     private RequestsManager requestsManager; 
     private PlansManager plansManager;
     private GroupsManager groupsManager;
     
-    public School() {
-        personsManager = new PersonsManager();
+    private School() {
+        personsManager = new EmployeesManager();
         requestsManager = new RequestsManager();
         plansManager = new PlansManager();
         groupsManager = new GroupsManager();
     }
+    
+    public static synchronized School getInstance() {
+        if(INSTANCE == null)
+            INSTANCE = new School();
+        
+        return INSTANCE;
+    }
    
     
-    public void createRequest(DTORequest req){
-    
+    public void createRequest(DTORequest req) throws Exception {
+        String groupToFind = req.getCodCourse() + "-" + req.getNumGroup();
+        Group group;
+        Person requester;
+        Student affected;
     }
     
     public void createResolution(DTOResolution res){

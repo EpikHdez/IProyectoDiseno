@@ -12,7 +12,7 @@ import model.Employee;
  *
  * @author Usuario
  */
-public class PersonsManager extends Manager{
+public class EmployeesManager extends Manager{
 
     public ArrayList<Employee> createTop3Professors(){
         ArrayList<Employee> employees = new ArrayList<Employee>(); 

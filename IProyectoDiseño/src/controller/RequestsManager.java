@@ -15,22 +15,18 @@ import model.Request;
 public class RequestsManager extends Manager{
     private ArrayList<Request> requests;
     private final DAORequest daoRequest;
+    private Request currentRequest;
     
     public RequestsManager() {
         requests = new ArrayList();
         daoRequest = new DAORequest();
+        currentRequest = null;
     }
 
     @Override
-    public void insert(Object parameter) throws Exception{
-        if(!(parameter instanceof DTORequest))
-            throw new IllegalArgumentException("El parametro no es una instancia de solicitud.");
-        
-        DTORequest dto = (DTORequest) parameter;
-        
-        
-        
-        requests.add((Request) parameter);
+    public void insert(Object parameter) {
+        currentRequest = (Request) parameter;
+        requests.add(currentRequest);
     }
 
     @Override
@@ -40,17 +36,17 @@ public class RequestsManager extends Manager{
 
     @Override
     public void delete(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public Object select(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public ArrayList<Object> selectAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
     

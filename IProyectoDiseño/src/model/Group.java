@@ -12,13 +12,12 @@ import java.util.ArrayList;
  * @author Usuario
  */
 public class Group {
-    
-    private int number; 
-    private int year; 
-    private int period; 
+    private int number;
+    private String period; 
     private boolean open; 
     private Employee employee; 
     private ArrayList<Schedule> schedules; 
     private Course course; 
-  
+    
+    
 }
