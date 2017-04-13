@@ -105,10 +105,8 @@ public class Request {
         return resolution;
     }
 
-    public void setResolution(DTOResolution res) {
-        this.resolution = new Resolution(res.getDate(), res.getIntro(),
-                                         res.getResult(), res.getResolve(), 
-                                         res.getNotify(), res.getConsiderations());
+    public void setResolution(Resolution resolution) {
+        this.resolution = resolution;
     }
 
     public Student getAffected() {
