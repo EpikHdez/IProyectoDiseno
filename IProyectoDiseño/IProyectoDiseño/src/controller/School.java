@@ -56,6 +56,18 @@ public class School  {
         return (Request) requestsManager.select(id);
     }
     
+    public ArrayList<Object> selectPendingRequests() {
+        return requestsManager.selectPendings();
+    }
+    
+    public ArrayList<Object> selectCanceledRequests() {
+        return requestsManager.selectCanceled();
+    }
+    
+    public ArrayList<Object> selectProcessedRequests() {
+        return requestsManager.selectProcessed();
+    }
+    
     public ArrayList<Object> selectAllRequests() {
         return requestsManager.selectAll();
     }

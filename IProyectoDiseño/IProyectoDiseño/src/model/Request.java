@@ -24,6 +24,8 @@ public class Request {
     private Student affected;
     private Person requester;
     private Group group;
+    
+    public Request() {}
 
     public Request(Date date, String description, EInconsistencie inconsistencie, 
                    Student affected, Person requester, Group group) {
@@ -128,6 +130,4 @@ public class Request {
     public boolean equals(Object obj) {
         return id == ((Request) obj).getId();
     }
-    
-    
 }
