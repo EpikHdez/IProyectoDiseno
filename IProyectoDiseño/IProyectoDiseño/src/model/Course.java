@@ -9,12 +9,16 @@ package model;
  *
  * @author Usuario
  */
+
+
+   
+
 public class Course {
     private String name;
     private String code; 
-    private int credits;
+    private double credits;
 
-    public Course(String name, String code, int credits) {
+    public Course(String name, String code, double credits) {
         this.name = name;
         this.code = code;
         this.credits = credits;
@@ -36,11 +40,20 @@ public class Course {
         this.code = code;
     }
 
-    public int getCredits() {
+    public double getCredits() {
         return credits;
     }
 
-    public void setCredits(int credits) {
+    public void setCredits(double credits) {
         this.credits = credits;
     }
+
+    @Override
+    public String toString() {
+        return "Course{" + "name=" + name + ", code=" + code + ", credits=" + credits + '}';
+    }
+    
+    
+    
+    
 }
