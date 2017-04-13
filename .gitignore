@@ -15,3 +15,10 @@ hs_err_pid*
 /IProyectoDiseño/build/
 /IProyectoDiseño/IProyectoDiseño/build/
 /IProyectoDiseño/IProyectoDiseño/nbproject/private/
+*.xml
+
+*.mf
+
+IProyectoDiseño/IProyectoDiseño/nbproject/genfiles\.properties
+
+IProyectoDiseño/IProyectoDiseño/nbproject/project\.properties
