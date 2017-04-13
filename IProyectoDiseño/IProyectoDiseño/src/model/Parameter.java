@@ -43,6 +43,9 @@ public class Parameter {
         }        
     }
     
+    public void setParameter(String tag, String value) {
+        parameters.setProperty(tag, value);
+    }
 
     public String getParameter(String tag){
         return parameters.getProperty(tag);

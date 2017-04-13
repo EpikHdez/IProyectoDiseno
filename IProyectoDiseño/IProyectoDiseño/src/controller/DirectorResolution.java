@@ -6,7 +6,6 @@
 package controller;
 
 import java.util.ArrayList;
-import model.Consideration;
 import model.Resolution;
 
 /**
@@ -24,9 +23,9 @@ public class DirectorResolution {
         return resolutionBuilder.getResolution(); 
     }
    
-    public void constructResolution(ArrayList<Consideration> consideration, String parIntro, String parNotify, String parResolve, String parResult){
+    public void constructResolution(ArrayList<String> considerations, String parIntro, String parNotify, String parResolve, String parResult) {
         resolutionBuilder.createNewResolution();
-        resolutionBuilder.buildConsider(consideration);
+        resolutionBuilder.buildConsider(considerations);
         resolutionBuilder.buildIntro(parIntro);
         resolutionBuilder.buildNotify(parNotify);
         resolutionBuilder.buildResolve(parResolve);

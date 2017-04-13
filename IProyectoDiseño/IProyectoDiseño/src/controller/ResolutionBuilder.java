@@ -6,7 +6,6 @@
 package controller;
 
 import java.util.ArrayList;
-import model.Consideration;
 import model.Resolution;
 
 /**
@@ -32,7 +31,7 @@ public class ResolutionBuilder {
     
     }
     
-    public void buildConsider(ArrayList<Consideration> considerations){
+    public void buildConsider(ArrayList<String> considerations){
     
     }
 
