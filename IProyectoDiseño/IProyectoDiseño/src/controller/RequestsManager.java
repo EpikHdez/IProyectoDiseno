@@ -80,8 +80,10 @@ public class RequestsManager extends Manager{
         temp.setId(Integer.parseInt(id));
         
         for(Object r : elements) {
-            if(temp.equals(r))
+            if(temp.equals(r)) {
+                currentRequest = (Request) r;
                 return r;
+            }
         }
         
         return null;
@@ -123,6 +125,10 @@ public class RequestsManager extends Manager{
     @Override
     public ArrayList<Object> selectAll() {
         return elements;
+    }
+    
+    public void insertResolution(DTOResolution res) {
+        currentRequest.setResolution(res);
     }
     
     public ArrayList<Request> createRequestStadistics(){
