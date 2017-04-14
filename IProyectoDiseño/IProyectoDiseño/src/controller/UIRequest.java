@@ -69,7 +69,8 @@ public class UIRequest {
     
     public void setallGroups(FrRequest frrequest){
         int i=0;
-        frrequest.getCbgroup().removeAllItems();
+        if(frrequest.getCbgroup().getItemCount()!=0)
+            frrequest.getCbgroup().removeAllItems();
         for(Object o:facade.selectallGroups()){
             String coursegroup=((Group)o).getCourse().getCode();
             String course=frrequest.getCbcourse().getSelectedItem().toString();
@@ -154,11 +155,11 @@ public class UIRequest {
             
     }
      public void setRequest(FrViewRequest frviewrequest){
+ 
        if (frviewrequest.getCdRequest().getItemCount()!=0){
             Request r=facade.selectRequest(frviewrequest.getCdRequest().getSelectedItem().toString());
             switch(frviewrequest.getCbtyperequest().getSelectedIndex()){
                 case 0:
-
                      frviewrequest.getLbCategory().setText(r.getInconsistencie().toString());
                      frviewrequest.getLbcarne().setText(r.getAffected().getId());
                      frviewrequest.getLbcourse().setText(r.getGroup().getCourse().getCode()+" "+r.getGroup().getCourse().getName());

@@ -76,7 +76,9 @@ public class DAORequest {
                             numberGroup = (int) cell.getNumericCellValue(); 
                             break; 
                         case 8: 
+                           
                             inconsistencie = cell.getStringCellValue();
+                            
                             break; 
                         case 9: 
                             description = cell.getStringCellValue(); 
@@ -90,7 +92,7 @@ public class DAORequest {
             }
             if(carnet != 0){
                 affected = new Student(Integer.toString(carnet), name, email, Integer.toString(celStu)); 
-                group = School.getInstance().findGroup(period, course, numberGroup); 
+                group = School.getInstance().selectGroup(numberGroup,course); 
                 einconsistencie = identifyEInconsistencie(inconsistencie); 
                 requests.add(new Request(new Date(2017, 5, 12), description, einconsistencie, affected, affected, group));
             }
@@ -100,13 +102,13 @@ public class DAORequest {
     }
 
     private EInconsistencie identifyEInconsistencie(String inconsistencie) {
-        if(inconsistencie == "ERROR_NOTA"){
+        if(inconsistencie.equals("ERROR_NOTA")){
             return EInconsistencie.GradeError; 
         }
-        else if(inconsistencie == "EXCLUSION_ACTA"){
+        else if(inconsistencie.equals("EXCLUSION_ACTA")){
             return EInconsistencie.RecordExclusion; 
         }
-        else if(inconsistencie == "INCLUSION_ACTA"){
+        else if(inconsistencie.equals("INCLUSION_ACTA")){
             return EInconsistencie.RecordInclusion; 
         }
         return null; 

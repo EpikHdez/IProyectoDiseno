@@ -177,9 +177,7 @@ public class School  {
         groupsManager.readData();
     }
 
-    public Group findGroup(String period, String courseCode, int numberGroup){
-        return groupsManager.findGroup(period, courseCode, numberGroup); 
-    }
+ 
     public void cancelRequest(String message){
         requestsManager.CancelRequest(message);
     }

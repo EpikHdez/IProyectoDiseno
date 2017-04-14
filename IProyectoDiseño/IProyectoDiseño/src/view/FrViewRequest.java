@@ -6,6 +6,10 @@
 package view;
 
 import controller.UIRequest;
+import java.awt.Color;
+import static java.awt.Color.blue;
+import static java.awt.Color.green;
+import static java.awt.Color.red;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -33,8 +37,10 @@ public class FrViewRequest extends javax.swing.JFrame {
     public FrViewRequest() {
         uiRequest=new UIRequest();
         initComponents();
+        lbdescription.setEditable(false);
+
         uiRequest.setallRequest(this);
-        
+     
     }
 
     public JComboBox<String> getCdRequest() {
@@ -117,13 +123,15 @@ public class FrViewRequest extends javax.swing.JFrame {
         this.lbnamer = lbnamer;
     }
 
-    public JLabel getLbdescription() {
+    public JTextArea getLbdescription() {
         return lbdescription;
     }
 
-    public void setLbdescription(JLabel lbdescription) {
+    public void setLbdescription(JTextArea lbdescription) {
         this.lbdescription = lbdescription;
     }
+
+ 
 
     public JLabel getLbemail() {
         return lbemail;
@@ -217,7 +225,6 @@ public class FrViewRequest extends javax.swing.JFrame {
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
-        lbdescription = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
         spmotivo = new javax.swing.JScrollPane();
         txtMotivo = new javax.swing.JTextArea();
@@ -241,6 +248,8 @@ public class FrViewRequest extends javax.swing.JFrame {
         lbmotivo = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         cbtyperequest = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lbdescription = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar3 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
@@ -481,7 +490,7 @@ public class FrViewRequest extends javax.swing.JFrame {
         getContentPane().add(lbname, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, -1, -1));
 
         jLabel12.setText("Solicitud #");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, -1, 20));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, 20));
 
         jLabel37.setText("Teléfono");
         getContentPane().add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, -1));
@@ -495,9 +504,6 @@ public class FrViewRequest extends javax.swing.JFrame {
         jLabel40.setText("Curso");
         getContentPane().add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 200, -1, -1));
 
-        lbdescription.setText("#########################");
-        getContentPane().add(lbdescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 230, -1, -1));
-
         jLabel42.setText("Periodo");
         getContentPane().add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, -1, -1));
 
@@ -505,7 +511,7 @@ public class FrViewRequest extends javax.swing.JFrame {
         txtMotivo.setRows(5);
         spmotivo.setViewportView(txtMotivo);
 
-        getContentPane().add(spmotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, 280, -1));
+        getContentPane().add(spmotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, 850, 100));
 
         jLabel43.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         jLabel43.setText("Información del Problema");
@@ -544,14 +550,14 @@ public class FrViewRequest extends javax.swing.JFrame {
                 btncancelActionPerformed(evt);
             }
         });
-        getContentPane().add(btncancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 410, -1, -1));
+        getContentPane().add(btncancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 530, -1, -1));
 
         cdRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cdRequestActionPerformed(evt);
             }
         });
-        getContentPane().add(cdRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 70, -1));
+        getContentPane().add(cdRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 70, 20));
 
         jLabel52.setText("Nombre");
         getContentPane().add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, -1, -1));
@@ -570,7 +576,7 @@ public class FrViewRequest extends javax.swing.JFrame {
         getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, 30));
 
         lbmotivo.setText("Motivo:");
-        getContentPane().add(lbmotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 280, -1, -1));
+        getContentPane().add(lbmotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, -1, -1));
 
         jLabel4.setText("Filtrar por:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, 20));
@@ -583,9 +589,15 @@ public class FrViewRequest extends javax.swing.JFrame {
         });
         getContentPane().add(cbtyperequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
 
+        lbdescription.setColumns(20);
+        lbdescription.setRows(5);
+        jScrollPane1.setViewportView(lbdescription);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, 290, 110));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/images/5193848-white-wallpaper.jpg"))); // NOI18N
         jLabel3.setText("jLabel2");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 490));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 630));
 
         jMenu5.setText("Archivo");
 
@@ -771,13 +783,14 @@ public class FrViewRequest extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel lbCategory;
     private javax.swing.JLabel lbcarne;
     private javax.swing.JLabel lbcarner;
     private javax.swing.JLabel lbcourse;
-    private javax.swing.JLabel lbdescription;
+    private javax.swing.JTextArea lbdescription;
     private javax.swing.JLabel lbemail;
     private javax.swing.JLabel lbgroup;
     private javax.swing.JLabel lbmotivo;
