@@ -19,7 +19,7 @@ import model.Resolution;
  * @author Usuario
  */
 public class School  {
-    private static School INSTANCE = null;
+    private static School INSTANCE;
     private IDocumentGenerator docGenerator; 
     private EmployeesManager employeesManager; 
     private RequestsManager requestsManager; 
@@ -28,11 +28,9 @@ public class School  {
     
     private School() {
         DAOData data = getDataFile();
-        
         employeesManager = new EmployeesManager(data);
         plansManager = new PlansManager(data);
         groupsManager = new GroupsManager(data);
-        
         requestsManager = new RequestsManager();
     }
     
@@ -48,9 +46,9 @@ public class School  {
     }
     
     public static synchronized School getInstance() {
-        if(INSTANCE == null)
+        if(INSTANCE == null){
             INSTANCE = new School();
-        
+        }
         return INSTANCE;
     }
    
@@ -161,5 +159,9 @@ public class School  {
 
     public Course findCourse(String code){
         return plansManager.findCourse(code);
+    }
+    
+    public void loadDataGroups(){
+        groupsManager.readData();
     }
 }
