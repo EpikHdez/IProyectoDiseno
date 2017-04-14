@@ -20,6 +20,7 @@ public final class GroupsManager extends Manager {
 
     private ArrayList<Group> groups;
     private DAOData data; 
+  
 
     public GroupsManager(DAOData data) {
         this.data = data;
@@ -65,28 +66,10 @@ public final class GroupsManager extends Manager {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-/*
-    public void read() {
-        ArrayList<Group> groups = new ArrayList<>(); 
-        try {
-            groups = data.readGroups();
-            elements = new ArrayList<>(); 
-            int len = groups.size();
-            for (int i = 0; i < len; i++) {
-                elements.add(groups.get(i)); 
-            }
-            //System.out.println(groups.toString());
-          
-        } catch (IOException ex) {
-            Logger.getLogger(GroupsManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-
-    }*/
 
     @Override
     public void readData() {
-                ArrayList<Group> groups = new ArrayList<>(); 
+        ArrayList<Group> groups = new ArrayList<>(); 
         try {
             groups = data.readGroups();
             elements = new ArrayList<>(); 

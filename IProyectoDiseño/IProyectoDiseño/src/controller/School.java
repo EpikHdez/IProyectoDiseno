@@ -19,7 +19,7 @@ import model.Resolution;
  * @author Usuario
  */
 public class School  {
-    private static School INSTANCE = null;
+    private static School INSTANCE;
     private IDocumentGenerator docGenerator; 
     private EmployeesManager employeesManager; 
     private RequestsManager requestsManager; 
@@ -161,5 +161,9 @@ public class School  {
 
     public Course findCourse(String code){
         return plansManager.findCourse(code);
+    }
+    
+    public void loadDataGroups(){
+        groupsManager.readData();
     }
 }

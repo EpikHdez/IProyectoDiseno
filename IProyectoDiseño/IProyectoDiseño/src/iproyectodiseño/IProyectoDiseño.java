@@ -28,10 +28,10 @@ public class IProyectoDiseño {
     public static void main(String[] args) {
         // TODO code application logic here
         School.getInstance();
-        
+        School.getInstance().loadDataGroups();
         FrMain fm= new FrMain();
         fm.setVisible(true);
-        School school = School.getInstance();
+       
        
  
 
