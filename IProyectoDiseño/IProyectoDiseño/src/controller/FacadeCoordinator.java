@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Course;
 
 /**
  *
@@ -44,5 +45,8 @@ public class FacadeCoordinator {
     public ArrayList<Object> selectallGroups(){
        
         return school.selectAllGroups();
+    }
+    public ArrayList<Course> selectallCourses(){
+        return school.selectAllCourses();
     }
 }

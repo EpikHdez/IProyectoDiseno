@@ -11,6 +11,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Course;
 import model.EInconsistencie;
 import model.ERequestState;
 import view.FrRequest;
@@ -76,6 +77,14 @@ public class UIRequest {
         for(Object o:facade.selectallGroups()){
             ((Group)o).getNumber();
             frrequest.getCbgroup().insertItemAt(Integer.toString(((Group)o).getNumber()), i);
+            i++;
+        };
+    }
+    public void setallCourses(FrRequest frrequest){
+        int i=0;
+        for(Course c:facade.selectallCourses()){
+            c.getCode();
+            frrequest.getCbcourse().insertItemAt(c.getCode()+" "+c.getName(), i);
             i++;
         };
     }

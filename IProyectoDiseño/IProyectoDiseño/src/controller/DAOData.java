@@ -49,9 +49,9 @@ public class DAOData {
                 if(row.getRowNum() != 0){
                     switch(cell.getColumnIndex()){
                         case 0: 
-                            code = cell.getStringCellValue(); break; 
-                        case 1: 
                             name = cell.getStringCellValue(); break; 
+                        case 1: 
+                            code = cell.getStringCellValue(); break; 
                         case 2: 
                             credits = cell.getNumericCellValue(); break; 
                     }

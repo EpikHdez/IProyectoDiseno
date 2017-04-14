@@ -97,6 +97,7 @@ public class FrRequest extends javax.swing.JFrame {
         uiRequest=new UIRequest();
         
         initComponents();
+        uiRequest.setallCourses(this);
         //uiRequest.setallGroups(this);
     }
 
@@ -461,10 +462,13 @@ public class FrRequest extends javax.swing.JFrame {
         });
         getContentPane().add(btnAddFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, -1, -1));
 
-        cbgroup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(cbgroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 90, 280, -1));
 
-        cbcourse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbcourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbcourseActionPerformed(evt);
+            }
+        });
         getContentPane().add(cbcourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, 280, -1));
 
         jLabel12.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
@@ -560,6 +564,10 @@ public class FrRequest extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnOKActionPerformed
+
+    private void cbcourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbcourseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbcourseActionPerformed
 
     /**
      * @param args the command line arguments
