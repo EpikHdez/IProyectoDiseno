@@ -5,13 +5,16 @@
  */
 package controller;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.EInconsistencie;
 import model.ERequestState;
 import view.FrRequest;
-
+import model.Group;
 
 
 /**
@@ -21,6 +24,10 @@ import view.FrRequest;
 public class UIRequest {
     private FacadeCoordinator facade; 
     private DTORequest dtoRequest; 
+
+    public UIRequest() {
+         facade= new FacadeCoordinator();
+    }
 
     public FacadeCoordinator getFacade() {
         return facade;
@@ -41,14 +48,14 @@ public class UIRequest {
     public void createRequest(FrRequest frrequest){
         Date date = new Date();
         dtoRequest=new DTORequest();
-        facade= new FacadeCoordinator();
+       
         dtoRequest.setCodCourse(frrequest.getCbcourse().getSelectedItem().toString());
         dtoRequest.setDate(date);
         dtoRequest.setDescription(frrequest.getTxtdescription().getText());
         dtoRequest.setEmail(frrequest.getTxtemail().getText());
         dtoRequest.setIdStudent(frrequest.getTxtcarne().getText());
         dtoRequest.setInconsistence(EInconsistencie.values()[frrequest.getCbcategory().getSelectedIndex()]);
-        System.out.println(dtoRequest.getInconsistence());
+
         dtoRequest.setNameStudent(frrequest.getTxtname().getText());
         dtoRequest.setNumGroup(Integer.parseInt(frrequest.getCbgroup().getSelectedItem().toString()));
         dtoRequest.setPeriod(frrequest.getTxtperiod().getText());
@@ -56,8 +63,21 @@ public class UIRequest {
         dtoRequest.setState(ERequestState.PENDING);
       
         
-        facade.createRequest(dtoRequest);
+        try {
+            facade.createRequest(dtoRequest);
+        } catch (IOException ex) {
+            Logger.getLogger(UIRequest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
+    }
+    
+    public void setallGroups(FrRequest frrequest){
+        int i=0;
+        for(Object o:facade.selectallGroups()){
+            ((Group)o).getNumber();
+            frrequest.getCbgroup().insertItemAt(Integer.toString(((Group)o).getNumber()), i);
+            i++;
+        };
     }
     
 }

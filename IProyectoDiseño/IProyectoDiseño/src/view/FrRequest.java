@@ -94,7 +94,10 @@ public class FrRequest extends javax.swing.JFrame {
     
     private UIRequest uiRequest; 
     public FrRequest() {
+        uiRequest=new UIRequest();
+        
         initComponents();
+        //uiRequest.setallGroups(this);
     }
 
     /**
@@ -619,7 +622,7 @@ public class FrRequest extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     
-        uiRequest=new UIRequest();
+       
         uiRequest.createRequest(this);
         
         

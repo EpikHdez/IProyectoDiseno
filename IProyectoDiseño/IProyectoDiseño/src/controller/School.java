@@ -100,6 +100,7 @@ public class School  {
     
     
     public void insertResolution(DTOResolution res){
+        requestsManager.insertResolution(res);
         
     }
    
@@ -168,5 +169,7 @@ public class School  {
         this.groupsManager = groupsManager;
     }
     
-    
+    public DTOTemplate getTemplate(){
+        return requestsManager.getTemplate();
+    };
 }
