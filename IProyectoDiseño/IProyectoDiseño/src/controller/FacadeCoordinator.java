@@ -51,4 +51,18 @@ public class FacadeCoordinator {
     public Request selectRequest(String id){
         return school.selectRequest(id);
     }
+    
+    public ArrayList<Object> selectTypeRequest(int type){
+        switch (type){
+            case 0:
+               return school.selectPendingRequests();
+            case 1:
+               return school.selectProcessedRequests();
+            case 2:
+               return school.selectCanceledRequests();
+        
+        }
+                
+        return null;
+    }
 }

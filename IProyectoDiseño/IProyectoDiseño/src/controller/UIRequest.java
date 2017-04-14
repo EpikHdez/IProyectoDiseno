@@ -62,6 +62,8 @@ public class UIRequest {
         dtoRequest.setPeriod(frrequest.getCbperiod().getSelectedItem().toString());
         dtoRequest.setPhone(frrequest.getTxtphone().getText());
         dtoRequest.setState(ERequestState.PENDING);
+        dtoRequest.setRequesterId(frrequest.getTxtidr().getText());
+        dtoRequest.setRequesterName(frrequest.getTxtnamer().getText());
         facade.createRequest(dtoRequest);
     }
     
@@ -99,16 +101,32 @@ public class UIRequest {
     }
     }
     public void setallRequest(FrViewRequest frviewrequest){
+        
         int i=0;
-        for (Object o:facade.selectallRequest()){
+        if(frviewrequest.getCdRequest().getItemCount()!=0){
+            frviewrequest.getCdRequest().removeAllItems();
+        }
+        for (Object o:facade.selectTypeRequest(frviewrequest.getCbtyperequest().getSelectedIndex())){
             frviewrequest.getCdRequest().insertItemAt(Integer.toString(((Request)o).getId()), i);
             i++;
+        }
+        if (frviewrequest.getCbtyperequest().getSelectedIndex()!=0){
+            frviewrequest.getLbmotivo().setVisible(false);
+            frviewrequest.getBtncancel().setVisible(false);
+            frviewrequest.getTxtMotivo().setVisible(false);
+            frviewrequest.getSpmotivo().setVisible(false);
+        }
+        else {
+            frviewrequest.getLbmotivo().setVisible(true);
+            frviewrequest.getBtncancel().setVisible(true);
+            frviewrequest.getTxtMotivo().setVisible(true);
+             frviewrequest.getSpmotivo().setVisible(true);
         }
             
             
     }
      public void setRequest(FrViewRequest frviewrequest){
-       
+       if(frviewrequest.getCdRequest().getItemCount()!=0){
             Request r=facade.selectRequest(frviewrequest.getCdRequest().getSelectedItem().toString());
             frviewrequest.getLbCategory().setText(r.getInconsistencie().toString());
             frviewrequest.getLbcarne().setText(r.getAffected().getId());
@@ -119,6 +137,9 @@ public class UIRequest {
             frviewrequest.getLbname().setText(r.getAffected().getName());
             frviewrequest.getLbperiod().setText(r.getGroup().getPeriod());
             frviewrequest.getLbphone().setText(r.getAffected().getPhone());
+            frviewrequest.getLbnamer().setText(r.getRequester().getName());
+            frviewrequest.getLbcarner().setText(r.getRequester().getId());
+       }
             
     }
     
