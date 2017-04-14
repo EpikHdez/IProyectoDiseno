@@ -6,6 +6,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -54,31 +55,46 @@ public class UIRequest {
         dtoRequest.setEmail(frrequest.getTxtemail().getText());
         dtoRequest.setIdStudent(frrequest.getTxtcarne().getText());
         dtoRequest.setInconsistence(EInconsistencie.values()[frrequest.getCbcategory().getSelectedIndex()]);
-
         dtoRequest.setNameStudent(frrequest.getTxtname().getText());
         dtoRequest.setNumGroup(Integer.parseInt(frrequest.getCbgroup().getSelectedItem().toString()));
-        dtoRequest.setPeriod(frrequest.getTxtperiod().getText());
+        dtoRequest.setPeriod(frrequest.getCbperiod().getSelectedItem().toString());
         dtoRequest.setPhone(frrequest.getTxtphone().getText());
         dtoRequest.setState(ERequestState.PENDING);
-      
         facade.createRequest(dtoRequest);
     }
     
     public void setallGroups(FrRequest frrequest){
         int i=0;
+        frrequest.getCbgroup().removeAllItems();
         for(Object o:facade.selectallGroups()){
-            ((Group)o).getNumber();
-            frrequest.getCbgroup().insertItemAt(Integer.toString(((Group)o).getNumber()), i);
-            i++;
+            String coursegroup=((Group)o).getCourse().getCode();
+            String course=frrequest.getCbcourse().getSelectedItem().toString();
+            if (course.equals(coursegroup)){
+               
+                frrequest.getLbNameCourse().setText(((Group)o).getCourse().getName());
+                frrequest.getCbgroup().insertItemAt(Integer.toString(((Group)o).getNumber()), i);
+                i++;}
         };
     }
     public void setallCourses(FrRequest frrequest){
         int i=0;
         for(Course c:facade.selectallCourses()){
             c.getCode();
-            frrequest.getCbcourse().insertItemAt(c.getCode()+" "+c.getName(), i);
+            frrequest.getCbcourse().insertItemAt(c.getCode(), i);
             i++;
         };
+    }
+    public void setallPeriods(FrRequest frrequest){
+        int i=0;
+        ArrayList<String>periods=new ArrayList<String>();
+        for(Object o:facade.selectallGroups()){
+            if(!periods.contains(((Group)o).getPeriod())){
+            frrequest.getCbperiod().insertItemAt(((Group)o).getPeriod(), i);  
+            periods.add(((Group)o).getPeriod());
+            i++;
+            }
+        
+    }
     }
     
 }

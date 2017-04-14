@@ -63,7 +63,7 @@ public final class GroupsManager extends Manager {
 
     @Override
     public ArrayList<Object> selectAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return elements;
     }
 
 

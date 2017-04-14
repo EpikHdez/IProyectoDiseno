@@ -7,6 +7,7 @@ package view;
 
 import controller.UIRequest;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -38,6 +39,14 @@ public class FrRequest extends javax.swing.JFrame {
 
     public void setCbgroup(JComboBox<String> cbgroup) {
         this.cbgroup = cbgroup;
+    }
+
+    public JLabel getLbNameCourse() {
+        return lbNameCourse;
+    }
+
+    public void setLbNameCourse(JLabel lbNameCourse) {
+        this.lbNameCourse = lbNameCourse;
     }
 
     public JTextField getTxtcarne() {
@@ -72,12 +81,12 @@ public class FrRequest extends javax.swing.JFrame {
         this.txtname = txtname;
     }
 
-    public JTextField getTxtperiod() {
-        return txtperiod;
+    public JComboBox<String> getCbperiod() {
+        return cbperiod;
     }
 
-    public void setTxtperiod(JTextField txtperiod) {
-        this.txtperiod = txtperiod;
+    public void setCbperiod(JComboBox<String> cbperiod) {
+        this.cbperiod = cbperiod;
     }
 
     public JTextField getTxtphone() {
@@ -95,10 +104,14 @@ public class FrRequest extends javax.swing.JFrame {
     private UIRequest uiRequest; 
     public FrRequest() {
         uiRequest=new UIRequest();
-        
         initComponents();
+        uiRequest.setallPeriods(this);
+        cbperiod.setSelectedIndex(0);
         uiRequest.setallCourses(this);
-        //uiRequest.setallGroups(this);
+        cbcourse.setSelectedIndex(0);
+        uiRequest.setallGroups(this);
+        cbgroup.setSelectedIndex(0);
+        
     }
 
     /**
@@ -152,7 +165,6 @@ public class FrRequest extends javax.swing.JFrame {
         txtphone = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtperiod = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         cbcategory = new javax.swing.JComboBox<>();
@@ -165,6 +177,8 @@ public class FrRequest extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtdescription = new javax.swing.JTextArea();
+        lbNameCourse = new javax.swing.JLabel();
+        cbperiod = new javax.swing.JComboBox<>();
         jLabel33 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -407,25 +421,24 @@ public class FrRequest extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel3.setText("Correo");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
-        getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 233, 30));
+        getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 233, 20));
 
         jLabel4.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel4.setText("Teléfono");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
-        getContentPane().add(txtphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 233, 30));
+        getContentPane().add(txtphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 233, 20));
 
         jLabel5.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel5.setText("Periodo");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, -1, 20));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, -1, 20));
 
         jLabel6.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel6.setText("Curso");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, -1, -1));
-        getContentPane().add(txtperiod, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 180, 280, -1));
 
         jLabel7.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel7.setText("Grupo");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, -1, 20));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, -1, 20));
 
         jLabel8.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel8.setText("Categoría");
@@ -461,16 +474,21 @@ public class FrRequest extends javax.swing.JFrame {
                 btnAddFileActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAddFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, -1, -1));
+        getContentPane().add(btnAddFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 440, -1, -1));
 
-        getContentPane().add(cbgroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 90, 280, -1));
+        cbgroup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbgroupActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cbgroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 180, 280, -1));
 
         cbcourse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbcourseActionPerformed(evt);
             }
         });
-        getContentPane().add(cbcourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, 280, -1));
+        getContentPane().add(cbcourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, 80, -1));
 
         jLabel12.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel12.setText("Descripción");
@@ -481,6 +499,14 @@ public class FrRequest extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtdescription);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 900, -1));
+        getContentPane().add(lbNameCourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 140, 190, 20));
+
+        cbperiod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbperiodActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cbperiod, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 100, 280, -1));
 
         jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/images/5193848-white-wallpaper.jpg"))); // NOI18N
         jLabel33.setText("jLabel2");
@@ -529,7 +555,6 @@ public class FrRequest extends javax.swing.JFrame {
         txtdescription.setText("");
         txtemail.setText("");
         txtname.setText("");
-        txtperiod.setText("");
         txtphone.setText("");
                     
                 
@@ -576,6 +601,8 @@ public class FrRequest extends javax.swing.JFrame {
 
     private void cbcourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbcourseActionPerformed
         // TODO add your handling code here:
+         uiRequest.setallGroups(this);
+         cbgroup.setSelectedIndex(0);
     }//GEN-LAST:event_cbcourseActionPerformed
 
     private void btnviewStadisticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewStadisticsActionPerformed
@@ -585,6 +612,14 @@ public class FrRequest extends javax.swing.JFrame {
         this.setVisible(false);
         
     }//GEN-LAST:event_btnviewStadisticsActionPerformed
+
+    private void cbperiodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbperiodActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbperiodActionPerformed
+
+    private void cbgroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbgroupActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbgroupActionPerformed
 
     /**
      * @param args the command line arguments
@@ -631,6 +666,7 @@ public class FrRequest extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbcategory;
     private javax.swing.JComboBox<String> cbcourse;
     private javax.swing.JComboBox<String> cbgroup;
+    private javax.swing.JComboBox<String> cbperiod;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
@@ -678,11 +714,11 @@ public class FrRequest extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JLabel lbNameCourse;
     private javax.swing.JTextField txtcarne;
     private javax.swing.JTextArea txtdescription;
     private javax.swing.JTextField txtemail;
     private javax.swing.JTextField txtname;
-    private javax.swing.JTextField txtperiod;
     private javax.swing.JTextField txtphone;
     // End of variables declaration//GEN-END:variables
 }
