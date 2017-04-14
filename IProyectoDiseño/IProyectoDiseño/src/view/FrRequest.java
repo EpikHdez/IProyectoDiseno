@@ -171,6 +171,7 @@ public class FrRequest extends javax.swing.JFrame {
         btnNewRequest = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btnViewRequest = new javax.swing.JMenuItem();
+        btnviewStadistics = new javax.swing.JMenuItem();
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -507,6 +508,14 @@ public class FrRequest extends javax.swing.JFrame {
         });
         jMenu2.add(btnViewRequest);
 
+        btnviewStadistics.setText("Ver Estadísticas");
+        btnviewStadistics.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnviewStadisticsActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnviewStadistics);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -569,6 +578,14 @@ public class FrRequest extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbcourseActionPerformed
 
+    private void btnviewStadisticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewStadisticsActionPerformed
+        // TODO add your handling code here:
+        FrStadistics frstadistics= new FrStadistics();
+        frstadistics.setVisible(true);
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_btnviewStadisticsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -610,6 +627,7 @@ public class FrRequest extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnNewRequest;
     private javax.swing.JButton btnOK;
     private javax.swing.JMenuItem btnViewRequest;
+    private javax.swing.JMenuItem btnviewStadistics;
     private javax.swing.JComboBox<String> cbcategory;
     private javax.swing.JComboBox<String> cbcourse;
     private javax.swing.JComboBox<String> cbgroup;

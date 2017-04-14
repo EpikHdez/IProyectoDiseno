@@ -93,6 +93,7 @@ public class FrViewRequest extends javax.swing.JFrame {
         btnNewResolution1 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         btnViewRequest1 = new javax.swing.JMenuItem();
+        btnviewStadistics = new javax.swing.JMenuItem();
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -415,6 +416,14 @@ public class FrViewRequest extends javax.swing.JFrame {
         btnViewRequest1.setText("Ver Solicitudes");
         jMenu6.add(btnViewRequest1);
 
+        btnviewStadistics.setText("Ver Estadísticas");
+        btnviewStadistics.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnviewStadisticsActionPerformed(evt);
+            }
+        });
+        jMenu6.add(btnviewStadistics);
+
         jMenuBar3.add(jMenu6);
 
         setJMenuBar(jMenuBar3);
@@ -447,6 +456,14 @@ public class FrViewRequest extends javax.swing.JFrame {
         this.setVisible(false);
 
     }//GEN-LAST:event_btnNewResolution1ActionPerformed
+
+    private void btnviewStadisticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewStadisticsActionPerformed
+        // TODO add your handling code here:
+        FrStadistics frstadistics= new FrStadistics();
+        frstadistics.setVisible(true);
+        this.setVisible(false);
+
+    }//GEN-LAST:event_btnviewStadisticsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -493,6 +510,7 @@ public class FrViewRequest extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnNewResolution1;
     private javax.swing.JMenuItem btnViewRequest;
     private javax.swing.JMenuItem btnViewRequest1;
+    private javax.swing.JMenuItem btnviewStadistics;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JLabel jLabel11;

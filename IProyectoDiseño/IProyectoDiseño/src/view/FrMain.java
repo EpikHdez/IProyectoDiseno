@@ -33,6 +33,7 @@ public class FrMain extends javax.swing.JFrame {
         btnNewRequest = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btnViewRequest = new javax.swing.JMenuItem();
+        btnviewStadistics = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -65,6 +66,14 @@ public class FrMain extends javax.swing.JFrame {
         });
         jMenu2.add(btnViewRequest);
 
+        btnviewStadistics.setText("Ver Estadísticas");
+        btnviewStadistics.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnviewStadisticsActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnviewStadistics);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -86,6 +95,14 @@ public class FrMain extends javax.swing.JFrame {
         this.setVisible(false);
         fvr.setVisible(true);
     }//GEN-LAST:event_btnViewRequestActionPerformed
+
+    private void btnviewStadisticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewStadisticsActionPerformed
+        // TODO add your handling code here:
+        FrStadistics frstadistics= new FrStadistics();
+        frstadistics.setVisible(true);
+        this.setVisible(false);
+
+    }//GEN-LAST:event_btnviewStadisticsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,6 +142,7 @@ public class FrMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnNewRequest;
     private javax.swing.JMenuItem btnViewRequest;
+    private javax.swing.JMenuItem btnviewStadistics;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
