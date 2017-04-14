@@ -108,6 +108,7 @@ public class FrResolution extends javax.swing.JFrame {
         btnSaveAs = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         btnViewRequest = new javax.swing.JMenuItem();
+        btnviewStadistics = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -261,6 +262,14 @@ public class FrResolution extends javax.swing.JFrame {
         });
         jMenu4.add(btnViewRequest);
 
+        btnviewStadistics.setText("Ver Estadísticas");
+        btnviewStadistics.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnviewStadisticsActionPerformed(evt);
+            }
+        });
+        jMenu4.add(btnviewStadistics);
+
         jMenuBar2.add(jMenu4);
 
         setJMenuBar(jMenuBar2);
@@ -296,6 +305,14 @@ public class FrResolution extends javax.swing.JFrame {
         // TODO add your handling code here:
         uiResolution.createResolution(this);
     }//GEN-LAST:event_btnokActionPerformed
+
+    private void btnviewStadisticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewStadisticsActionPerformed
+        // TODO add your handling code here:
+        FrStadistics frstadistics= new FrStadistics();
+        frstadistics.setVisible(true);
+        this.setVisible(false);
+
+    }//GEN-LAST:event_btnviewStadisticsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -338,6 +355,7 @@ public class FrResolution extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnViewRequest;
     private javax.swing.JButton btnaddConsideration;
     private javax.swing.JButton btnok;
+    private javax.swing.JMenuItem btnviewStadistics;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
