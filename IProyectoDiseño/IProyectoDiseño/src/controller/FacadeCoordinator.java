@@ -35,10 +35,6 @@ public class FacadeCoordinator {
     public void createDocument(){
     }
     
-    public DTOTemplate getTemplate(){
-        return school.getTemplate();
-    }
-    
     public ArrayList<Object> selectallGroups(){
         return school.selectAllGroups();
     }

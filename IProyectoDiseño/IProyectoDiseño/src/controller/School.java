@@ -169,11 +169,6 @@ public class School  {
         this.docGenerator = docGenerator;
     }
 
-
-    public DTOTemplate getTemplate(){
-        return requestsManager.getTemplate();
-    };
-
     public Course findCourse(String code){
         return plansManager.findCourse(code);
     }

@@ -5,7 +5,6 @@
  */
 package controller;
 
-import java.util.ArrayList;
 import model.Resolution;
 
 /**
@@ -23,17 +22,12 @@ public class DirectorResolution {
         return resolutionBuilder.getResolution(); 
     }
    
-    public void buildResolution(ArrayList<String> considerations, String parIntro, String parNotify, String parResolve, String parResult) {
+    public void buildResolution() {
         resolutionBuilder.createNewResolution();
-        resolutionBuilder.buildConsider(considerations);
-        resolutionBuilder.buildIntro(parIntro);
-        resolutionBuilder.buildNotify(parNotify);
-        resolutionBuilder.buildResolve(parResolve);
-        resolutionBuilder.buildResult(parResult);
-    }
-    
-    public DTOTemplate getTemplate(){
-        return resolutionBuilder.generateTemplate();
-    }
-    
+        resolutionBuilder.buildConsider();
+        resolutionBuilder.buildIntro();
+        resolutionBuilder.buildNotify();
+        resolutionBuilder.buildResolve();
+        resolutionBuilder.buildResult();
+    }   
 }

@@ -5,24 +5,38 @@
  */
 package controller;
 
-import model.Parameter;
+
 
 /**
  *
  * @author Usuario
  */
 public class GradeErrorResolutionBuilder extends ResolutionBuilder{
+    
+    @Override
+    public void buildIntro() {
+        resolution.setIntro(config.getProperty("intro").toString());
+        System.out.println(resolution.getIntro());
+    }
 
     @Override
-    public DTOTemplate generateTemplate() {
-        Parameter parameter=Parameter.getInstance();
-        DTOTemplate dtotemp=new DTOTemplate();
-        dtotemp.setIntro(parameter.getParameter("intro"));
-        dtotemp.setConsider(parameter.getParameter("consider"));
-        dtotemp.setNotify(parameter.getParameter("notify"));
-        dtotemp.setResolve(parameter.getParameter("resolve"));
-        dtotemp.setResult(parameter.getParameter("result"));
-        return dtotemp; //To change body of generated methods, choose Tools | Templates.
+    public void buildResult() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void buildConsider() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void buildResolve() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void buildNotify() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

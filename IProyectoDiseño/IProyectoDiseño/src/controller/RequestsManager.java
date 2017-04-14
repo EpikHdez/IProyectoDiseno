@@ -5,7 +5,6 @@
  */
 package controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,15 +18,13 @@ import model.Student;
  *
  * @author Usuario
  */
-public class RequestsManager extends Manager {
+public final class RequestsManager extends Manager {
    // private final DAOData daoRequest;
     private Request currentRequest;
-    private DirectorResolution director;
     private DAORequest data; 
     
     public RequestsManager(DAORequest dao) {
         elements = new ArrayList();
-        director = new DirectorResolution();
         data = dao; 
         currentRequest = null;
         readData();
@@ -51,6 +48,7 @@ public class RequestsManager extends Manager {
                                      group);
         
         elements.add(currentRequest);
+        currentRequest.setResolution(null);
     }
 
     @Override
@@ -140,29 +138,13 @@ public class RequestsManager extends Manager {
     }
     
     public void insertResolution(DTOResolution res) {
-        director.buildResolution(res.getConsiderations(), res.getIntro(), 
-                res.getNotify(), res.getResolve(), res.getResult());
-        currentRequest.setResolution(director.getResolution());
+        currentRequest.setResolution(res);
     }
     
     public ArrayList<Request> createRequestStadistics(){
         ArrayList<Request> requests = new ArrayList<Request>(); 
         return requests; 
-    }
-
-    public DTOTemplate getTemplate(){
-        Package pack = ResolutionBuilder.class.getPackage();
-        String builder = String.format("%s.%sResolutionBuilder", pack.getName(), 
-                                       currentRequest.getInconsistencie().name());
-          try {
-            ResolutionBuilder rb = (ResolutionBuilder) Class.forName(builder).newInstance();
-            director.setResolutionBuilder(rb);
-            return director.getTemplate();
-          }
-          catch(Exception ex) {}
-          return null;
-    }
-          
+    } 
 
     @Override
     public void readData() {

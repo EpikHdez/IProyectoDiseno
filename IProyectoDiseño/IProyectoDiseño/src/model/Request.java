@@ -5,6 +5,8 @@
  */
 package model;
 import controller.DTOResolution;
+import controller.DirectorResolution;
+import controller.ResolutionBuilder;
 import java.io.File;
 import java.util.Date;
 import static model.ERequestState.PENDING;
@@ -45,6 +47,7 @@ public class Request {
         
         Parameter.getInstance().setParameter("request_serial", 
                                              String.valueOf(id + 1));
+        Parameter.getInstance().saveParameters();
     }
 
     public int getId() {
@@ -107,8 +110,34 @@ public class Request {
         return resolution;
     }
 
-    public void setResolution(Resolution resolution) {
-        this.resolution = resolution;
+    public void setResolution(DTOResolution res) {
+        setResolutionParameters(res);
+        
+        Package pack = ResolutionBuilder.class.getPackage();
+        String builder = String.format("%s.%sResolutionBuilder", pack.getName(), 
+                                       this.inconsistencie.name());
+        DirectorResolution dir = new DirectorResolution();
+        
+        try {
+            ResolutionBuilder rb = (ResolutionBuilder) Class.forName(builder).newInstance();
+            dir.setResolutionBuilder(rb);
+            dir.buildResolution();
+            this.resolution = dir.getResolution();
+        } catch(Exception ex) {}
+    }
+    
+    private void setResolutionParameters(DTOResolution res) {
+        Parameter prop = Parameter.getInstance();
+        
+        prop.setParameter("date", this.date.toString());
+        prop.setParameter("studentName", this.affected.getName());
+        prop.setParameter("studentCarne", this.affected.getId());
+        prop.setParameter("courseCode", this.group.getCourse().getCode());
+        prop.setParameter("courseName", this.group.getCourse().getName());
+        prop.setParameter("groupNumber", String.valueOf(this.group.getNumber()));
+        prop.setParameter("professor", this.group.getProfessor().getName());
+        
+        prop.saveParameters();
     }
 
     public Student getAffected() {

@@ -46,9 +46,15 @@ public class Parameter {
         }        
     }
     
-    public boolean setParameter(String tag, String value) {
+    public void setParameter(String tag, String value) {
         parameters.setProperty(tag, value);
-        
+    }
+
+    public String getParameter(String tag){
+        return parameters.getProperty(tag);
+    }
+    
+    public boolean saveParameters() {
         try {
             parameters.store(new FileOutputStream("src//files//Parameters.properties"), "");
             return true;
@@ -57,9 +63,5 @@ public class Parameter {
         }
         
         return false;
-    }
-
-    public String getParameter(String tag){
-        return parameters.getProperty(tag);
     }
 }

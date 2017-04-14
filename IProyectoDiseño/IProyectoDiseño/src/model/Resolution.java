@@ -18,9 +18,10 @@ public class Resolution {
     private String intro; 
     private String result;
     private String resolve; 
-    private String notify; 
-    private Employee employee;
+    private String notify;
     private ArrayList<String> considerations;
+    
+    public Resolution(){}
 
     public Resolution(Date date, String intro, String result, String resolve, 
                       String notify, ArrayList<String> considerations) {
@@ -29,7 +30,6 @@ public class Resolution {
         this.result = result;
         this.resolve = resolve;
         this.notify = notify;
-        this.employee = employee;
         this.considerations = considerations;
     }
 
@@ -79,14 +79,6 @@ public class Resolution {
 
     public void setNotify(String notify) {
         this.notify = notify;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
     }
 
     public ArrayList<String> getConsiderations() {

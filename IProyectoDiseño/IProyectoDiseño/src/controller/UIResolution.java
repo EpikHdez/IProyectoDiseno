@@ -33,23 +33,8 @@ public class UIResolution {
         dtoResolution.setConsiderations(considerations);
         dtoResolution.setDate(date);
         
-        
-        
-        
-        
     }
-    public void getTemplate(FrResolution frResolution){
-       dtoResolution=new DTOResolution();
-       facade.getTemplate();
-       frResolution.getTxtintro().setText(facade.getTemplate().getIntro());
-       frResolution.getTxtconsider().setText(facade.getTemplate().getConsider());
-       frResolution.getTxtnotify().setText(facade.getTemplate().getNotify());
-       frResolution.getTxtresolve().setText(facade.getTemplate().getResolve());
-       frResolution.getTxtresult().setText(facade.getTemplate().getResult());
-       
-       
     
-    }
     public void addConsideration(FrResolution frResolution){
         considerations.add(frResolution.getTxtconsider().getText());                
     }
