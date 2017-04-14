@@ -18,11 +18,7 @@ public class FacadeCoordinator {
     private School school; 
 
     public FacadeCoordinator() {
-        try {
-            school= School.getInstance();
-        } catch (IOException ex) {
-            Logger.getLogger(FacadeCoordinator.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        school= School.getInstance();
     }
     
     public void createRequest(DTORequest dtoRequest) throws IOException{
