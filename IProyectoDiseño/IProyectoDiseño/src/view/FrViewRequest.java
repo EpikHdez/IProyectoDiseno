@@ -5,17 +5,104 @@
  */
 package view;
 
+import controller.UIRequest;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+
 /**
  *
  * @author Ximena
  */
 public class FrViewRequest extends javax.swing.JFrame {
-
+    private UIRequest uiRequest;
     /**
      * Creates new form FrViewRequest
      */
     public FrViewRequest() {
+        uiRequest=new UIRequest();
         initComponents();
+        uiRequest.setallRequest(this);
+        
+    }
+
+    public JComboBox<String> getCdRequest() {
+        return cdRequest;
+    }
+
+    public void setCdRequest(JComboBox<String> cdRequest) {
+        this.cdRequest = cdRequest;
+    }
+
+    public JLabel getLbCategory() {
+        return lbCategory;
+    }
+
+    public void setLbCategory(JLabel lbCategory) {
+        this.lbCategory = lbCategory;
+    }
+
+    public JLabel getLbcarne() {
+        return lbcarne;
+    }
+
+    public void setLbcarne(JLabel lbcarne) {
+        this.lbcarne = lbcarne;
+    }
+
+    public JLabel getLbcourse() {
+        return lbcourse;
+    }
+
+    public void setLbcourse(JLabel lbcourse) {
+        this.lbcourse = lbcourse;
+    }
+
+    public JLabel getLbdescription() {
+        return lbdescription;
+    }
+
+    public void setLbdescription(JLabel lbdescription) {
+        this.lbdescription = lbdescription;
+    }
+
+    public JLabel getLbemail() {
+        return lbemail;
+    }
+
+    public void setLbemail(JLabel lbemail) {
+        this.lbemail = lbemail;
+    }
+
+    public JLabel getLbgroup() {
+        return lbgroup;
+    }
+
+    public void setLbgroup(JLabel lbgroup) {
+        this.lbgroup = lbgroup;
+    }
+
+    public JLabel getLbname() {
+        return lbname;
+    }
+
+    public void setLbname(JLabel lbname) {
+        this.lbname = lbname;
+    }
+
+    public JLabel getLbperiod() {
+        return lbperiod;
+    }
+
+    public void setLbperiod(JLabel lbperiod) {
+        this.lbperiod = lbperiod;
+    }
+
+    public JLabel getLbphone() {
+        return lbphone;
+    }
+
+    public void setLbphone(JLabel lbphone) {
+        this.lbphone = lbphone;
     }
 
     /**
@@ -61,16 +148,16 @@ public class FrViewRequest extends javax.swing.JFrame {
         btnViewRequest = new javax.swing.JMenuItem();
         jLabel2 = new javax.swing.JLabel();
         jScrollBar1 = new javax.swing.JScrollBar();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
+        lbcarne = new javax.swing.JLabel();
+        lbperiod = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
+        lbname = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
-        jLabel41 = new javax.swing.JLabel();
+        lbdescription = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
@@ -78,14 +165,14 @@ public class FrViewRequest extends javax.swing.JFrame {
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         lbCategory = new javax.swing.JLabel();
-        jLabel47 = new javax.swing.JLabel();
+        lbphone = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
-        jLabel49 = new javax.swing.JLabel();
-        jLabel50 = new javax.swing.JLabel();
+        lbgroup = new javax.swing.JLabel();
+        lbcourse = new javax.swing.JLabel();
         jLabel51 = new javax.swing.JLabel();
-        jLabel52 = new javax.swing.JLabel();
+        lbemail = new javax.swing.JLabel();
         btnCancelRequest1 = new javax.swing.JButton();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        cdRequest = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar3 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
@@ -312,17 +399,17 @@ public class FrViewRequest extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel33.setText("#########################");
-        getContentPane().add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, -1, -1));
+        lbcarne.setText("#########################");
+        getContentPane().add(lbcarne, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, -1, -1));
 
-        jLabel34.setText("#########################");
-        getContentPane().add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 140, -1, -1));
+        lbperiod.setText("#########################");
+        getContentPane().add(lbperiod, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 140, -1, -1));
 
         jLabel35.setText("Información Básica del Estudiante Afectado");
         getContentPane().add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, -1, 30));
 
-        jLabel36.setText("#########################");
-        getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, -1, -1));
+        lbname.setText("#########################");
+        getContentPane().add(lbname, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, -1, -1));
 
         jLabel12.setText("Solicitud");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, -1, -1));
@@ -339,8 +426,8 @@ public class FrViewRequest extends javax.swing.JFrame {
         jLabel40.setText("Curso");
         getContentPane().add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 200, -1, -1));
 
-        jLabel41.setText("#########################");
-        getContentPane().add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 230, -1, -1));
+        lbdescription.setText("#########################");
+        getContentPane().add(lbdescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 230, -1, -1));
 
         jLabel42.setText("Periodo");
         getContentPane().add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, -1, -1));
@@ -363,29 +450,33 @@ public class FrViewRequest extends javax.swing.JFrame {
         lbCategory.setText("ERROR_NOTA");
         getContentPane().add(lbCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 110, -1, -1));
 
-        jLabel47.setText("#########################");
-        getContentPane().add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
+        lbphone.setText("#########################");
+        getContentPane().add(lbphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
 
         jLabel48.setText("Categoría");
         getContentPane().add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 110, -1, -1));
 
-        jLabel49.setText("#########################");
-        getContentPane().add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, -1, -1));
+        lbgroup.setText("#########################");
+        getContentPane().add(lbgroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, -1, -1));
 
-        jLabel50.setText("#########################");
-        getContentPane().add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 200, -1, -1));
+        lbcourse.setText("#########################");
+        getContentPane().add(lbcourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 200, -1, -1));
 
         jLabel51.setText("Nombre");
         getContentPane().add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, -1, -1));
 
-        jLabel52.setText("#########################");
-        getContentPane().add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
+        lbemail.setText("#########################");
+        getContentPane().add(lbemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
 
         btnCancelRequest1.setText("Cancelar Solicitud ");
         getContentPane().add(btnCancelRequest1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 430, -1, -1));
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 430, 200, -1));
+        cdRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cdRequestActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cdRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 430, 200, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/images/5193848-white-wallpaper.jpg"))); // NOI18N
         jLabel3.setText("jLabel2");
@@ -465,6 +556,11 @@ public class FrViewRequest extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnviewStadisticsActionPerformed
 
+    private void cdRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdRequestActionPerformed
+        // TODO add your handling code here:
+        uiRequest.setRequest(this);
+    }//GEN-LAST:event_cdRequestActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -511,8 +607,8 @@ public class FrViewRequest extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnViewRequest;
     private javax.swing.JMenuItem btnViewRequest1;
     private javax.swing.JMenuItem btnviewStadistics;
+    private javax.swing.JComboBox<String> cdRequest;
     private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -537,25 +633,17 @@ public class FrViewRequest extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
-    private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
@@ -568,5 +656,13 @@ public class FrViewRequest extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JLabel lbCategory;
+    private javax.swing.JLabel lbcarne;
+    private javax.swing.JLabel lbcourse;
+    private javax.swing.JLabel lbdescription;
+    private javax.swing.JLabel lbemail;
+    private javax.swing.JLabel lbgroup;
+    private javax.swing.JLabel lbname;
+    private javax.swing.JLabel lbperiod;
+    private javax.swing.JLabel lbphone;
     // End of variables declaration//GEN-END:variables
 }

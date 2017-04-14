@@ -7,6 +7,7 @@ package controller;
 
 import java.util.ArrayList;
 import model.Course;
+import model.Request;
 
 /**
  *
@@ -43,5 +44,11 @@ public class FacadeCoordinator {
     }
     public ArrayList<Course> selectallCourses(){
         return school.selectAllCourses();
+    }
+    public ArrayList<Object> selectallRequest(){
+        return school.selectAllRequests();
+    }
+    public Request selectRequest(String id){
+        return school.selectRequest(id);
     }
 }
