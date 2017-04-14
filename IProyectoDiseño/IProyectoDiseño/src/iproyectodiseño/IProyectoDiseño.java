@@ -31,5 +31,10 @@ public class IProyectoDiseño {
         
         FrMain fm= new FrMain();
         fm.setVisible(true);
+        School school = School.getInstance();
+       
+ 
+
+
     }
 }

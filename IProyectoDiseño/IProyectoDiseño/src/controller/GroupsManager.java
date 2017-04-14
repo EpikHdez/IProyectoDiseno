@@ -5,14 +5,19 @@
  */
 package controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Group;
 
 /**
  *
  * @author ErickHdez
  */
+
 public final class GroupsManager extends Manager {
+
     private ArrayList<Group> groups;
     private DAOData data; 
 
@@ -21,6 +26,7 @@ public final class GroupsManager extends Manager {
         this.groups = new  ArrayList<>();
         readData();
     }
+    
     
     
     @Override
@@ -59,9 +65,41 @@ public final class GroupsManager extends Manager {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+/*
+    public void read() {
+        ArrayList<Group> groups = new ArrayList<>(); 
+        try {
+            groups = data.readGroups();
+            elements = new ArrayList<>(); 
+            int len = groups.size();
+            for (int i = 0; i < len; i++) {
+                elements.add(groups.get(i)); 
+            }
+            //System.out.println(groups.toString());
+          
+        } catch (IOException ex) {
+            Logger.getLogger(GroupsManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+
+    }*/
+
     @Override
     public void readData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                ArrayList<Group> groups = new ArrayList<>(); 
+        try {
+            groups = data.readGroups();
+            elements = new ArrayList<>(); 
+            int len = groups.size();
+            for (int i = 0; i < len; i++) {
+                elements.add(groups.get(i)); 
+            }
+            //System.out.println(groups.toString());
+          
+        } catch (IOException ex) {
+            Logger.getLogger(GroupsManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+
     
 }

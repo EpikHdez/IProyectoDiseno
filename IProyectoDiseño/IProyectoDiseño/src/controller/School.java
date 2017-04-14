@@ -31,14 +31,14 @@ public class School  {
         
         employeesManager = new EmployeesManager(data);
         plansManager = new PlansManager(data);
-        //groupsManager = new GroupsManager(data);
+        groupsManager = new GroupsManager(data);
         
         requestsManager = new RequestsManager();
     }
     
     private DAOData getDataFile() {
         try {
-            FileInputStream fis = new FileInputStream(new File("src/files/DatosProyecto1.xlsx"));
+            FileInputStream fis = new FileInputStream(new File("src//files//DatosProyecto1.xlsx"));
             return new DAOData(fis);
         } catch(Exception ex) {
             System.out.println(ex.getMessage());
@@ -91,8 +91,13 @@ public class School  {
         return requests; 
     }
     
+    public ArrayList<Object> viewEmployees(){
+        return employeesManager.elements; 
+    }
     
-    
+    public Employee findEmployee(String id){
+        return employeesManager.findEmployee(id);
+    }
     
     public Course selectCourse(String id) {
         return plansManager.selectCourse("410", id); //Como por ahora es el unico que existe
@@ -139,8 +144,22 @@ public class School  {
         //we have to implement this
         return false; 
     }
-    
+
+
+    public IDocumentGenerator getDocGenerator() {
+        return docGenerator;
+    }
+
+    public void setDocGenerator(IDocumentGenerator docGenerator) {
+        this.docGenerator = docGenerator;
+    }
+
+
     public DTOTemplate getTemplate(){
         return requestsManager.getTemplate();
     };
+
+    public Course findCourse(String code){
+        return plansManager.findCourse(code);
+    }
 }

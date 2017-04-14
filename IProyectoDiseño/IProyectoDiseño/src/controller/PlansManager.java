@@ -13,14 +13,15 @@ import model.Plan;
  *
  * @author ErickHdez
  */
-public final class PlansManager extends Manager {
+public class PlansManager extends Manager {
     private DAOData data; 
-    private ArrayList<Plan> plans; 
+ 
     
     public PlansManager(DAOData data) {
         this.data = data;
-        this.plans = new ArrayList<>();
+        this.elements = new ArrayList<>();
         readData();
+       
     }
     
     
@@ -43,7 +44,8 @@ public final class PlansManager extends Manager {
     public Object select(String id) {
         int planCode = Integer.parseInt(id);
         
-        for(Plan p : plans) {
+        for(Object e : elements) {
+            Plan p = (Plan) e;
             if(p.getCode() == planCode)
                 return p;
         }
@@ -58,8 +60,25 @@ public final class PlansManager extends Manager {
 
     @Override
     public void readData() {
-        plans.add(data.readPlan()); 
-        System.out.println(plans.toString());
+        elements.add(data.readPlan()); 
+        System.out.println(elements.toString());
+        
+    }
+/*
+    public void read() {
+        elements.add(data.readPlan()); 
+        System.out.println(elements.toString());
+    }
+*/
+    
+    public Course findCourse(String code){
+        Plan plan = (Plan) elements.get(0);
+        for (Course course : plan.getCourses()) {
+            if(course.getCode().equals(code)){
+                return course; 
+            }
+        }
+        return null; 
     }
     
     public Course selectCourse(String planCode, String id) {
@@ -84,4 +103,6 @@ public final class PlansManager extends Manager {
         
         return plan.getCourses();
     }
+
+
 }

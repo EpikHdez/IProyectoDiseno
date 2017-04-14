@@ -75,4 +75,13 @@ public class Group {
     public void setCourse(Course course) {
         this.course = course;
     }
+
+    @Override
+    public String toString() {
+        return "Group{" + "numberGroup=" + groupNumber+ ", period=" + period + ", open=" + open + ", employee=" + professor + ", schedules=" + schedules + ", course=" + course + '}';
+    }
+    
+    
+    
+    
 }

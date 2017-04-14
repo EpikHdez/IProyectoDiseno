@@ -15,12 +15,13 @@ import model.Employee;
  */
 public final class EmployeesManager extends Manager {
     private DAOData data; 
-    private ArrayList<Employee> employees; 
+ 
 
     public EmployeesManager(DAOData data) {
         this.data = data;
-        this.employees = new ArrayList<>();
+        this.elements = new ArrayList<>();
         readData();
+        
     }
     
     public ArrayList<Employee> createTop3Professors(){
@@ -55,7 +56,22 @@ public final class EmployeesManager extends Manager {
 
     @Override
     public void readData() {
-        employees = data.readProfessors(); 
-        data.printArrayEmployee(employees);
+        ArrayList<Employee> employees = data.readProfessors(); 
+        for (Employee employee : employees) {
+            elements.add(employee);
+        }
+        System.out.println(elements.toString());
     }
+    
+    public Employee findEmployee(String id){
+        int len = elements.size();
+        for (int i = 0; i < len; i++) {
+            Employee employee = (Employee) elements.get(i); 
+            if (employee.getId().equals(id)){
+                return employee; 
+            }
+        }
+        return null; 
+    }
+  
 }

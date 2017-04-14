@@ -7,8 +7,10 @@ package controller;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.sql.Time;
 import java.util.ArrayList;
 import model.Course;
+import model.EDay;
 import model.EEmployeeRol;
 import model.Employee;
 import model.Group;
@@ -84,6 +86,12 @@ public class DAOData {
         }
     }
     
+    public void printArraySchedule(ArrayList<Schedule> objects){
+        for (Schedule object : objects) {
+            System.out.println(object.toString());
+        }
+    }
+    
     
     public ArrayList<Employee> readProfessors(){
         ArrayList<Employee> employees = new ArrayList<>(); 
@@ -135,33 +143,121 @@ public class DAOData {
         IS2017	IC1802	1	5-5555-5555	K-J 7:30-9:20	B3-08
     */
     
-    public ArrayList<Group> readGroups(){
+    public EDay returnDay(char c){
+        if (c == 'L'){
+            return EDay.Monday; 
+        }
+        else if (c == 'K'){
+            return EDay.Tuesday;
+        }
+        else if (c == 'M'){
+            return EDay.Wednesday; 
+        }
+        else if (c == 'J'){
+            return EDay.Thursday;
+        }
+        else if (c == 'V'){
+            return EDay.Friday; 
+        }
+        else if (c == 'S'){
+            return EDay.Saturday;
+        }
+        return null; 
+    }
+    
+    public ArrayList<Schedule> identifySchedules(String schedule, String classroom){
+        ArrayList<Schedule> schedules = new ArrayList<>(); 
+        String[] items = schedule.split(" "); 
+        String [] hours = items[1].split("-"); 
+            
+        String [] h1 = hours[0].split(":");
+        String [] h2 = hours[1].split(":");
+        if(schedule.charAt(1) == '-'){
+            Schedule s1 = new Schedule(); 
+            Schedule s2 = new Schedule(); 
+            s1.setDay(returnDay(schedule.charAt(0)));
+            s2.setDay(returnDay(schedule.charAt(2)));
+                        
+            s1.setStartHour(new Time(Integer.parseInt(h1[0]), Integer.parseInt(h1[1]), 0)); 
+            s2.setStartHour(new Time(Integer.parseInt(h1[0]), Integer.parseInt(h1[1]), 0)); 
+            
+            s1.setEndHour(new Time(Integer.parseInt(h2[0]), Integer.parseInt(h2[1]), 0));
+            s2.setEndHour(new Time(Integer.parseInt(h2[0]), Integer.parseInt(h2[1]), 0));
+            
+            s1.setClassRoom(classroom);
+            s2.setClassRoom(classroom);
+            
+            schedules.add(s1); 
+            schedules.add(s2); 
+        }
+        else{
+            Schedule s1 = new Schedule(); 
+            s1.setDay(returnDay(schedule.charAt(0)));
+            
+            s1.setStartHour(new Time(Integer.parseInt(h1[0]), Integer.parseInt(h1[1]), 0)); 
+            s1.setEndHour(new Time(Integer.parseInt(h2[0]), Integer.parseInt(h2[1]), 0));
+            
+            s1.setClassRoom(classroom);
+            schedules.add(s1); 
+            
+        }
+        
+        return schedules; 
+    }
+    
+    public ArrayList<Group> readGroups() throws IOException{
         ArrayList<Group> groups = new ArrayList<>(); 
         XSSFSheet sheet = workbook.getSheet("OFERTA");
         
         //for to go over the sheet info - like the rows 
         for(Row row : sheet){
             String period = null;
-            Plan plan = null;
+            Course course = null;
             int numberGroup = 0;
             Employee employee = null;
             ArrayList<Schedule> schedules = new ArrayList<>(); 
+            String scheduleS = null; 
+            String classroom = null; 
          
             for(Cell cell : row){
                 if(row.getRowNum() != 0){
+                    Schedule schedule = new Schedule(); 
                     switch(cell.getColumnIndex()){
                         case 0: 
                             period = cell.getStringCellValue(); break; 
+                        case 1: 
+                            course = School.getInstance().findCourse(cell.getStringCellValue()); break;
+                        case 2: 
+                            numberGroup = (int) cell.getNumericCellValue();break; 
+                        case 3: 
+                            employee = School.getInstance().findEmployee(cell.getStringCellValue()); break; 
+                        case 4: 
+                            scheduleS = cell.getStringCellValue(); break; 
+                        case 5: 
+                            classroom = cell.getStringCellValue(); break; 
                        
                     }
                 }
                 
             }
+            if(period != null){
+                schedules = identifySchedules(scheduleS, classroom); 
+                groups.add(new Group(numberGroup, period, true, employee, schedules, course)); 
+                System.out.println("creating groups");
+                numberGroup = 0; 
+                course = null; 
+                period = null; 
+                employee = null;  
+                schedules = null; 
+            }
       
             
         }
-     
-        return null;
+        System.out.println(groups.toString());
+        return groups;
         
     }
 }
+
+   
+    
