@@ -23,7 +23,7 @@ public class DirectorResolution {
         return resolutionBuilder.getResolution(); 
     }
    
-    public void constructResolution(ArrayList<String> considerations, String parIntro, String parNotify, String parResolve, String parResult) {
+    public void buildResolution(ArrayList<String> considerations, String parIntro, String parNotify, String parResolve, String parResult) {
         resolutionBuilder.createNewResolution();
         resolutionBuilder.buildConsider(considerations);
         resolutionBuilder.buildIntro(parIntro);
@@ -34,7 +34,6 @@ public class DirectorResolution {
     
     public DTOTemplate getTemplate(){
         return resolutionBuilder.generateTemplate();
-    
     }
     
 }

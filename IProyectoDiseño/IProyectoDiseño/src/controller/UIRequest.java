@@ -6,8 +6,6 @@
 package controller;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -63,13 +61,7 @@ public class UIRequest {
         dtoRequest.setPhone(frrequest.getTxtphone().getText());
         dtoRequest.setState(ERequestState.PENDING);
       
-        
-        try {
-            facade.createRequest(dtoRequest);
-        } catch (IOException ex) {
-            Logger.getLogger(UIRequest.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        facade.createRequest(dtoRequest);
     }
     
     public void setallGroups(FrRequest frrequest){

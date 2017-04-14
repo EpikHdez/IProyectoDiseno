@@ -7,8 +7,6 @@ package controller;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import model.Course;
 import model.Employee;
@@ -140,38 +138,6 @@ public class School  {
     public boolean createDocument(EDocType docType){
         //we have to implement this
         return false; 
-    }
-
-    public IDocumentGenerator getDocGenerator() {
-        return docGenerator;
-    }
-
-    public void setDocGenerator(IDocumentGenerator docGenerator) {
-        this.docGenerator = docGenerator;
-    }
-
-    public RequestsManager getRequestsManager() {
-        return requestsManager;
-    }
-
-    public void setRequestsManager(RequestsManager requestsManager) {
-        this.requestsManager = requestsManager;
-    }
-
-    public PlansManager getPlansManager() {
-        return plansManager;
-    }
-
-    public void setPlansManager(PlansManager plansManager) {
-        this.plansManager = plansManager;
-    }
-
-    public GroupsManager getGroupsManager() {
-        return groupsManager;
-    }
-
-    public void setGroupsManager(GroupsManager groupsManager) {
-        this.groupsManager = groupsManager;
     }
     
     public DTOTemplate getTemplate(){
