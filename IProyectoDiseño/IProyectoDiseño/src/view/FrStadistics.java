@@ -208,6 +208,8 @@ public class FrStadistics extends javax.swing.JFrame {
         dataset.setValue(100, "", "Holita");
         dataset.setValue(150, "", "Holita1");
         dataset.setValue(200, "", "Holita2");
+        dataset.setValue(150, "", "Holita3");
+        dataset.setValue(200, "", "Holita4");
         JFreeChart chart= ChartFactory.createBarChart("hola", "", "", dataset, PlotOrientation.HORIZONTAL, false, true, false);
         CategoryPlot catPlot=chart.getCategoryPlot();
         catPlot.setRangeGridlinePaint(Color.BLACK);
