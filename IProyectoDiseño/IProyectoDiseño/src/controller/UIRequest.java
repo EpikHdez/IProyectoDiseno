@@ -101,7 +101,18 @@ public class UIRequest {
     }
     }
     public void setallRequest(FrViewRequest frviewrequest){
-        
+        frviewrequest.getLbCategory().setText("");
+        frviewrequest.getLbcarne().setText("");
+        frviewrequest.getLbcourse().setText("");
+        frviewrequest.getLbdescription().setText("");
+        frviewrequest.getLbemail().setText("");
+        frviewrequest.getLbgroup().setText("");
+        frviewrequest.getLbname().setText("");
+        frviewrequest.getLbperiod().setText("");
+        frviewrequest.getLbphone().setText("");
+        frviewrequest.getLbnamer().setText("");
+        frviewrequest.getLbcarner().setText("");
+        frviewrequest.getTxtMotivo().setText("");
         int i=0;
         if(frviewrequest.getCdRequest().getItemCount()!=0){
             frviewrequest.getCdRequest().removeAllItems();
@@ -110,38 +121,95 @@ public class UIRequest {
             frviewrequest.getCdRequest().insertItemAt(Integer.toString(((Request)o).getId()), i);
             i++;
         }
-        if (frviewrequest.getCbtyperequest().getSelectedIndex()!=0){
-            frviewrequest.getLbmotivo().setVisible(false);
-            frviewrequest.getBtncancel().setVisible(false);
-            frviewrequest.getTxtMotivo().setVisible(false);
-            frviewrequest.getSpmotivo().setVisible(false);
+  
+        switch(frviewrequest.getCbtyperequest().getSelectedIndex()){
+            case 0:
+                frviewrequest.getLbmotivo().setVisible(true);
+                frviewrequest.getBtncancel().setVisible(true);
+                frviewrequest.getTxtMotivo().setVisible(true);
+                frviewrequest.getSpmotivo().setVisible(true);
+                frviewrequest.getTxtMotivo().setEditable(true);
+             
+                break;
+            case 1:
+                frviewrequest.getLbmotivo().setVisible(false);
+                frviewrequest.getBtncancel().setVisible(false);
+                frviewrequest.getTxtMotivo().setVisible(false);
+                frviewrequest.getSpmotivo().setVisible(false);
+                
+                break;
+            case 2:
+                frviewrequest.getLbmotivo().setVisible(true);
+                frviewrequest.getBtncancel().setVisible(false);
+                frviewrequest.getTxtMotivo().setVisible(true);
+                frviewrequest.getSpmotivo().setVisible(true);
+                frviewrequest.getTxtMotivo().setEditable(false);
+                break;
+                
+                
+            
         }
-        else {
-            frviewrequest.getLbmotivo().setVisible(true);
-            frviewrequest.getBtncancel().setVisible(true);
-            frviewrequest.getTxtMotivo().setVisible(true);
-             frviewrequest.getSpmotivo().setVisible(true);
-        }
+
             
             
     }
      public void setRequest(FrViewRequest frviewrequest){
-       if(frviewrequest.getCdRequest().getItemCount()!=0){
+       if (frviewrequest.getCdRequest().getItemCount()!=0){
             Request r=facade.selectRequest(frviewrequest.getCdRequest().getSelectedItem().toString());
-            frviewrequest.getLbCategory().setText(r.getInconsistencie().toString());
-            frviewrequest.getLbcarne().setText(r.getAffected().getId());
-            frviewrequest.getLbcourse().setText(r.getGroup().getCourse().getCode()+" "+r.getGroup().getCourse().getName());
-            frviewrequest.getLbdescription().setText(r.getDescription());
-            frviewrequest.getLbemail().setText(r.getAffected().getEmail());
-            frviewrequest.getLbgroup().setText(Integer.toString(r.getGroup().getNumber()));
-            frviewrequest.getLbname().setText(r.getAffected().getName());
-            frviewrequest.getLbperiod().setText(r.getGroup().getPeriod());
-            frviewrequest.getLbphone().setText(r.getAffected().getPhone());
-            frviewrequest.getLbnamer().setText(r.getRequester().getName());
-            frviewrequest.getLbcarner().setText(r.getRequester().getId());
-       }
-            
+            switch(frviewrequest.getCbtyperequest().getSelectedIndex()){
+                case 0:
+
+                     frviewrequest.getLbCategory().setText(r.getInconsistencie().toString());
+                     frviewrequest.getLbcarne().setText(r.getAffected().getId());
+                     frviewrequest.getLbcourse().setText(r.getGroup().getCourse().getCode()+" "+r.getGroup().getCourse().getName());
+                     frviewrequest.getLbdescription().setText(r.getDescription());
+                     frviewrequest.getLbemail().setText(r.getAffected().getEmail());
+                     frviewrequest.getLbgroup().setText(Integer.toString(r.getGroup().getNumber()));
+                     frviewrequest.getLbname().setText(r.getAffected().getName());
+                     frviewrequest.getLbperiod().setText(r.getGroup().getPeriod());
+                     frviewrequest.getLbphone().setText(r.getAffected().getPhone());
+                     frviewrequest.getLbnamer().setText(r.getRequester().getName());
+                     frviewrequest.getLbcarner().setText(r.getRequester().getId());
+                     break;
+                case 1:
+
+                     frviewrequest.getLbCategory().setText(r.getInconsistencie().toString());
+                     frviewrequest.getLbcarne().setText(r.getAffected().getId());
+                     frviewrequest.getLbcourse().setText(r.getGroup().getCourse().getCode()+" "+r.getGroup().getCourse().getName());
+                     frviewrequest.getLbdescription().setText(r.getDescription());
+                     frviewrequest.getLbemail().setText(r.getAffected().getEmail());
+                     frviewrequest.getLbgroup().setText(Integer.toString(r.getGroup().getNumber()));
+                     frviewrequest.getLbname().setText(r.getAffected().getName());
+                     frviewrequest.getLbperiod().setText(r.getGroup().getPeriod());
+                     frviewrequest.getLbphone().setText(r.getAffected().getPhone());
+                     frviewrequest.getLbnamer().setText(r.getRequester().getName());
+                     frviewrequest.getTxtMotivo().setEditable(true);
+                     frviewrequest.getLbcarner().setText(r.getRequester().getId());
+                     break;
+                case 2:
+
+                     frviewrequest.getLbCategory().setText(r.getInconsistencie().toString());
+                     frviewrequest.getLbcarne().setText(r.getAffected().getId());
+                     frviewrequest.getLbcourse().setText(r.getGroup().getCourse().getCode()+" "+r.getGroup().getCourse().getName());
+                     frviewrequest.getLbdescription().setText(r.getDescription());
+                     frviewrequest.getLbemail().setText(r.getAffected().getEmail());
+                     frviewrequest.getLbgroup().setText(Integer.toString(r.getGroup().getNumber()));
+                     frviewrequest.getLbname().setText(r.getAffected().getName());
+                     frviewrequest.getLbperiod().setText(r.getGroup().getPeriod());
+                     frviewrequest.getLbphone().setText(r.getAffected().getPhone());
+                     frviewrequest.getLbnamer().setText(r.getRequester().getName());
+                     frviewrequest.getLbcarner().setText(r.getRequester().getId());
+                     frviewrequest.getTxtMotivo().setEditable(false);
+                     frviewrequest.getTxtMotivo().setText(r.getNote().getDescription());
+                   
+                     break;
+
+            }
+      }
     }
-    
+    public void CancelRequest(FrViewRequest frviewrequest){
+        facade.CancelRequest(frviewrequest.getTxtMotivo().getText());
+        setallRequest(frviewrequest);
+    }
     
 }

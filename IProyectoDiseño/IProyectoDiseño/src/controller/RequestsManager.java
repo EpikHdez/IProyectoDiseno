@@ -173,4 +173,9 @@ public class RequestsManager extends Manager {
         System.out.println(elements.toString());
 
     }
+    public void CancelRequest(String message){
+      currentRequest.setRequestState(CANCELED);
+
+      currentRequest.setNote(message);
+    }
 }
