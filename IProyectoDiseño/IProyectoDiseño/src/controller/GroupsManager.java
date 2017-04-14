@@ -17,14 +17,12 @@ import model.Group;
  */
 
 public final class GroupsManager extends Manager {
-
-    private ArrayList<Group> groups;
     private DAOData data; 
   
 
     public GroupsManager(DAOData data) {
         this.data = data;
-        this.groups = new  ArrayList<>();
+        this.elements = new  ArrayList<>();
     }
     
     
@@ -49,8 +47,11 @@ public final class GroupsManager extends Manager {
         String[] parameters = id.split("-");
         int groupNumber = Integer.parseInt(parameters[0]);
         String codeCourse = parameters[1];
+        Group g;
         
-        for(Group g : groups) {
+        for(Object o : elements) {
+            g = (Group) o;
+            
             if(g.getNumber() == groupNumber) {
                 if (g.getCourse().getCode().equals(codeCourse))
                     return g;
@@ -62,26 +63,12 @@ public final class GroupsManager extends Manager {
 
     @Override
     public ArrayList<Object> selectAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return elements;
     }
 
 
     @Override
     public void readData() {
-        ArrayList<Group> groups = new ArrayList<>(); 
-        try {
-            groups = data.readGroups();
-            elements = new ArrayList<>(); 
-            int len = groups.size();
-            for (int i = 0; i < len; i++) {
-                elements.add(groups.get(i)); 
-            }
-            //System.out.println(groups.toString());
-          
-        } catch (IOException ex) {
-            Logger.getLogger(GroupsManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        elements = data.readGroups();
     }
-
-    
 }

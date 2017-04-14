@@ -26,14 +26,6 @@ public class School  {
     private PlansManager plansManager;
     private GroupsManager groupsManager;
     
-    private School() {
-        DAOData data = getDataFile();
-        employeesManager = new EmployeesManager(data);
-        plansManager = new PlansManager(data);
-        groupsManager = new GroupsManager(data);
-        requestsManager = new RequestsManager();
-    }
-    
     private DAOData getDataFile() {
         try {
             FileInputStream fis = new FileInputStream(new File("src//files//DatosProyecto1.xlsx"));
@@ -46,10 +38,20 @@ public class School  {
     }
     
     public static synchronized School getInstance() {
-        if(INSTANCE == null){
+        if(INSTANCE == null) {
             INSTANCE = new School();
+            INSTANCE.loadData();
         }
+        
         return INSTANCE;
+    }
+    
+    private void loadData() {
+        DAOData data = getDataFile();
+        employeesManager = new EmployeesManager(data);
+        plansManager = new PlansManager(data);
+        groupsManager = new GroupsManager(data);
+        requestsManager = new RequestsManager();
     }
    
     public void insertRequest(DTORequest req) {

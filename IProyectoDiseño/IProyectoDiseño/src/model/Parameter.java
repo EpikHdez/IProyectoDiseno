@@ -7,8 +7,11 @@ package model;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,7 +37,7 @@ public class Parameter {
     private boolean loadProperties() {
         try {
             parameters = new Properties();
-            parameters.load(new FileInputStream("src\\files\\Parameters.properties"));
+            parameters.load(new FileInputStream("src//files//Parameters.properties"));
             return true;
         } catch (FileNotFoundException ex) {
             return false;
@@ -43,8 +46,17 @@ public class Parameter {
         }        
     }
     
-    public void setParameter(String tag, String value) {
+    public boolean setParameter(String tag, String value) {
         parameters.setProperty(tag, value);
+        
+        try {
+            parameters.store(new FileOutputStream("src//files//Parameters.properties"), "");
+            return true;
+        } catch(Exception ex) {
+            Logger.getLogger(Parameter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
     }
 
     public String getParameter(String tag){

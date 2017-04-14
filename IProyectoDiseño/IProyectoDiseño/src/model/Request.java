@@ -41,6 +41,8 @@ public class Request {
         this.requester = requester;
         this.group = group;
         
+        System.out.println(id);
+        
         Parameter.getInstance().setParameter("request_serial", 
                                              String.valueOf(id + 1));
     }

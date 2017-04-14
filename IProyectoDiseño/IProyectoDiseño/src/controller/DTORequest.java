@@ -50,7 +50,7 @@ public class DTORequest {
         return requesterId;
     }
 
-    public void setREquesterId(String requesterId) {
+    public void setRequesterId(String requesterId) {
         this.requesterId = requesterId;
     }
 

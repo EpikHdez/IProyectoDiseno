@@ -6,7 +6,11 @@
 package view;
 
 import controller.UIRequest;
+import java.io.File;
+import java.io.FileFilter;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -18,6 +22,22 @@ public class FrRequest extends javax.swing.JFrame {
 
     public JComboBox<String> getCbcategory() {
         return cbcategory;
+    }
+
+    public JTextField getTxtidr() {
+        return txtidr;
+    }
+
+    public void setTxtidr(JTextField txtidr) {
+        this.txtidr = txtidr;
+    }
+
+    public JTextField getTxtnamer() {
+        return txtnamer;
+    }
+
+    public void setTxtnamer(JTextField txtnamer) {
+        this.txtnamer = txtnamer;
     }
 
     public void setCbcategory(JComboBox<String> cbcategory) {
@@ -40,12 +60,20 @@ public class FrRequest extends javax.swing.JFrame {
         this.cbgroup = cbgroup;
     }
 
+    public JLabel getLbNameCourse() {
+        return lbNameCourse;
+    }
+
+    public void setLbNameCourse(JLabel lbNameCourse) {
+        this.lbNameCourse = lbNameCourse;
+    }
+
     public JTextField getTxtcarne() {
-        return txtcarne;
+        return txtidr;
     }
 
     public void setTxtcarne(JTextField txtcarne) {
-        this.txtcarne = txtcarne;
+        this.txtidr = txtcarne;
     }
 
     public JTextArea getTxtdescription() {
@@ -72,33 +100,37 @@ public class FrRequest extends javax.swing.JFrame {
         this.txtname = txtname;
     }
 
-    public JTextField getTxtperiod() {
-        return txtperiod;
+    public JComboBox<String> getCbperiod() {
+        return cbperiod;
     }
 
-    public void setTxtperiod(JTextField txtperiod) {
-        this.txtperiod = txtperiod;
+    public void setCbperiod(JComboBox<String> cbperiod) {
+        this.cbperiod = cbperiod;
     }
 
     public JTextField getTxtphone() {
-        return txtphone;
+        return txtnamer;
     }
 
     /**
      * Creates new form FrRequest
      */
     public void setTxtphone(JTextField txtphone) {
-        this.txtphone = txtphone;
+        this.txtnamer = txtphone;
     }
 
     
     private UIRequest uiRequest; 
     public FrRequest() {
         uiRequest=new UIRequest();
-        
         initComponents();
+        uiRequest.setallPeriods(this);
+        cbperiod.setSelectedIndex(0);
         uiRequest.setallCourses(this);
-        //uiRequest.setallGroups(this);
+        cbcourse.setSelectedIndex(0);
+        uiRequest.setallGroups(this);
+        cbgroup.setSelectedIndex(0);
+        
     }
 
     /**
@@ -110,53 +142,19 @@ public class FrRequest extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        FrViewRequest = new javax.swing.JFrame();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
-        txtcarne = new javax.swing.JTextField();
+        txtidr = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtname = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtemail = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtphone = new javax.swing.JTextField();
+        txtnamer = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtperiod = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         cbcategory = new javax.swing.JComboBox<>();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         btnOK = new javax.swing.JButton();
         btnAddFile = new javax.swing.JButton();
@@ -165,6 +163,14 @@ public class FrRequest extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtdescription = new javax.swing.JTextArea();
+        lbNameCourse = new javax.swing.JLabel();
+        cbperiod = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        txtcarne = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        txtphone = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -173,259 +179,58 @@ public class FrRequest extends javax.swing.JFrame {
         btnViewRequest = new javax.swing.JMenuItem();
         btnviewStadistics = new javax.swing.JMenuItem();
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel11.setText("Solicitud");
-
-        jLabel13.setText("Periodo");
-
-        jLabel14.setText("Carné");
-
-        jLabel15.setText("Curso");
-
-        jLabel16.setText("Grupo");
-
-        jLabel17.setText("Nombre");
-
-        jLabel18.setText("Descripción");
-
-        jLabel19.setText("Categoría");
-
-        jLabel20.setText("Correo");
-
-        jLabel21.setText("Información Básica del Estudiante Afectado");
-
-        jLabel22.setText("Teléfono");
-
-        jLabel23.setText("Información del Problema");
-
-        jLabel24.setText("#########################");
-
-        jLabel25.setText("#########################");
-
-        jLabel26.setText("#########################");
-
-        jLabel27.setText("#########################");
-
-        jLabel28.setText("#########################");
-
-        jLabel29.setText("#########################");
-
-        jLabel30.setText("#########################");
-
-        jLabel31.setText("#########################");
-
-        jLabel32.setText("#########################");
-
-        jButton3.setText("Cancelar Solicitud ");
-
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
-
-        jMenu4.setText("Ver ");
-
-        jMenuItem6.setText("Ver Solicitudes");
-        jMenu4.add(jMenuItem6);
-
-        jMenuBar2.add(jMenu4);
-
-        jMenu3.setText("Archivo");
-
-        jMenuItem4.setText("Nueva Solicitud...");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem4);
-
-        jMenuItem5.setText("Nueva Resolución...");
-        jMenu3.add(jMenuItem5);
-
-        jMenuBar2.add(jMenu3);
-
-        FrViewRequest.setJMenuBar(jMenuBar2);
-
-        javax.swing.GroupLayout FrViewRequestLayout = new javax.swing.GroupLayout(FrViewRequest.getContentPane());
-        FrViewRequest.getContentPane().setLayout(FrViewRequestLayout);
-        FrViewRequestLayout.setHorizontalGroup(
-            FrViewRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FrViewRequestLayout.createSequentialGroup()
-                .addGroup(FrViewRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, FrViewRequestLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(FrViewRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(FrViewRequestLayout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, FrViewRequestLayout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addGroup(FrViewRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(FrViewRequestLayout.createSequentialGroup()
-                                .addComponent(jLabel26)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
-                                .addComponent(jLabel29))
-                            .addGroup(FrViewRequestLayout.createSequentialGroup()
-                                .addComponent(jLabel27)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel31))
-                            .addGroup(FrViewRequestLayout.createSequentialGroup()
-                                .addComponent(jLabel25)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel30))
-                            .addGroup(FrViewRequestLayout.createSequentialGroup()
-                                .addGroup(FrViewRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jComboBox4, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel28))))
-                    .addGroup(FrViewRequestLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(FrViewRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel32)
-                            .addComponent(jButton3))))
-                .addGap(89, 89, 89))
-            .addGroup(FrViewRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(FrViewRequestLayout.createSequentialGroup()
-                    .addGap(21, 21, 21)
-                    .addGroup(FrViewRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(FrViewRequestLayout.createSequentialGroup()
-                            .addGap(65, 65, 65)
-                            .addComponent(jLabel21)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 267, Short.MAX_VALUE)
-                            .addComponent(jLabel23)
-                            .addGap(115, 115, 115))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FrViewRequestLayout.createSequentialGroup()
-                            .addGroup(FrViewRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel17)
-                                .addComponent(jLabel14)
-                                .addComponent(jLabel20)
-                                .addComponent(jLabel22))
-                            .addGap(369, 369, 369)
-                            .addGroup(FrViewRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel13)
-                                .addComponent(jLabel15)
-                                .addComponent(jLabel16)
-                                .addComponent(jLabel19)
-                                .addComponent(jLabel18))
-                            .addGap(0, 0, Short.MAX_VALUE)))))
-        );
-        FrViewRequestLayout.setVerticalGroup(
-            FrViewRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FrViewRequestLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(FrViewRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(FrViewRequestLayout.createSequentialGroup()
-                        .addGroup(FrViewRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(71, 71, 71)
-                        .addComponent(jLabel24)
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel26)
-                        .addGap(18, 18, 18))
-                    .addGroup(FrViewRequestLayout.createSequentialGroup()
-                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel29)
-                        .addGap(27, 27, 27)))
-                .addGroup(FrViewRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel25)
-                    .addComponent(jLabel30))
-                .addGroup(FrViewRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(FrViewRequestLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel27)
-                        .addGap(42, 42, 42))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FrViewRequestLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel31)
-                        .addGap(33, 33, 33)))
-                .addComponent(jLabel32)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(jButton3)
-                .addContainerGap(43, Short.MAX_VALUE))
-            .addGroup(FrViewRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(FrViewRequestLayout.createSequentialGroup()
-                    .addGap(70, 70, 70)
-                    .addGroup(FrViewRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel21))
-                    .addGroup(FrViewRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(FrViewRequestLayout.createSequentialGroup()
-                            .addGap(25, 25, 25)
-                            .addComponent(jLabel14)
-                            .addGap(24, 24, 24)
-                            .addComponent(jLabel17)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel20)
-                            .addGap(29, 29, 29)
-                            .addComponent(jLabel22))
-                        .addGroup(FrViewRequestLayout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel16)
-                            .addGap(25, 25, 25)
-                            .addComponent(jLabel15)
-                            .addGap(27, 27, 27)
-                            .addComponent(jLabel13)
-                            .addGap(29, 29, 29)
-                            .addComponent(jLabel19)
-                            .addGap(30, 30, 30)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(193, Short.MAX_VALUE)))
-        );
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
-        jLabel1.setText("Carné");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+        jLabel1.setText("ID/Carné");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, 20));
 
-        txtcarne.addActionListener(new java.awt.event.ActionListener() {
+        txtidr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtcarneActionPerformed(evt);
+                txtidrActionPerformed(evt);
             }
         });
-        getContentPane().add(txtcarne, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 233, -1));
+        getContentPane().add(txtidr, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 233, -1));
 
         jLabel2.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel2.setText("Nombre");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, 20));
 
         txtname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnameActionPerformed(evt);
             }
         });
-        getContentPane().add(txtname, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 233, -1));
+        getContentPane().add(txtname, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 233, -1));
 
         jLabel3.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel3.setText("Correo");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
-        getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 233, 30));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 174, -1, 30));
+        getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 233, 20));
 
         jLabel4.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel4.setText("Teléfono");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
-        getContentPane().add(txtphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 233, 30));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, 20));
+
+        txtnamer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnamerActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtnamer, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 233, 20));
 
         jLabel5.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel5.setText("Periodo");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, -1, 20));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, -1, 20));
 
         jLabel6.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel6.setText("Curso");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, -1, -1));
-        getContentPane().add(txtperiod, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 180, 280, -1));
 
         jLabel7.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel7.setText("Grupo");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, -1, 20));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, -1, 20));
 
         jLabel8.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel8.setText("Categoría");
@@ -439,13 +244,9 @@ public class FrRequest extends javax.swing.JFrame {
         });
         getContentPane().add(cbcategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 220, 280, 20));
 
-        jLabel9.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
-        jLabel9.setText("Información Básica del Estudiante ");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 330, -1));
-
         jLabel10.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         jLabel10.setText("Información del Problema");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 50, -1, -1));
 
         btnOK.setText("Aceptar");
         btnOK.addActionListener(new java.awt.event.ActionListener() {
@@ -453,7 +254,7 @@ public class FrRequest extends javax.swing.JFrame {
                 btnOKActionPerformed(evt);
             }
         });
-        getContentPane().add(btnOK, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 440, -1, -1));
+        getContentPane().add(btnOK, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 380, -1, -1));
 
         btnAddFile.setText("Agregar Archivo ");
         btnAddFile.addActionListener(new java.awt.event.ActionListener() {
@@ -461,30 +262,73 @@ public class FrRequest extends javax.swing.JFrame {
                 btnAddFileActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAddFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, -1, -1));
+        getContentPane().add(btnAddFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 380, 140, 20));
 
-        getContentPane().add(cbgroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 90, 280, -1));
+        cbgroup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbgroupActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cbgroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 180, 280, -1));
 
         cbcourse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbcourseActionPerformed(evt);
             }
         });
-        getContentPane().add(cbcourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, 280, -1));
+        getContentPane().add(cbcourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, 80, -1));
 
         jLabel12.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel12.setText("Descripción");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, 23));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, 23));
 
         txtdescription.setColumns(20);
         txtdescription.setRows(5);
         jScrollPane1.setViewportView(txtdescription);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 900, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 270, 280, -1));
+        getContentPane().add(lbNameCourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 140, 190, 20));
+
+        cbperiod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbperiodActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cbperiod, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 100, 280, -1));
+
+        jLabel11.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
+        jLabel11.setText("Información Básica del Estudiante ");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 280, 20));
+
+        jLabel13.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
+        jLabel13.setText("Información Básica del Solicitante");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 280, -1));
+
+        jLabel14.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
+        jLabel14.setText("Carné");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, 20));
+
+        txtcarne.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcarneActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtcarne, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 233, -1));
+
+        jLabel15.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
+        jLabel15.setText("Nombre");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, 20));
+
+        txtphone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtphoneActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 233, 20));
 
         jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/images/5193848-white-wallpaper.jpg"))); // NOI18N
         jLabel33.setText("jLabel2");
-        getContentPane().add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 480));
+        getContentPane().add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 550));
 
         jMenu1.setText("Archivo");
 
@@ -525,19 +369,18 @@ public class FrRequest extends javax.swing.JFrame {
 
     private void btnNewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewRequestActionPerformed
         // TODO add your handling code here:
-        txtcarne.setText("");
+        txtidr.setText("");
         txtdescription.setText("");
         txtemail.setText("");
         txtname.setText("");
-        txtperiod.setText("");
-        txtphone.setText("");
+        txtnamer.setText("");
                     
                 
     }//GEN-LAST:event_btnNewRequestActionPerformed
 
-    private void txtcarneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcarneActionPerformed
+    private void txtidrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidrActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtcarneActionPerformed
+    }//GEN-LAST:event_txtidrActionPerformed
 
     private void cbcategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbcategoryActionPerformed
         // TODO add your handling code here:
@@ -545,12 +388,11 @@ public class FrRequest extends javax.swing.JFrame {
 
     private void btnAddFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFileActionPerformed
         // TODO add your handling code here:
+        JFileChooser jfc= new JFileChooser();
+        jfc.showOpenDialog(null);
+        File f=jfc.getSelectedFile();
+        String filename= f.getAbsolutePath();
     }//GEN-LAST:event_btnAddFileActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void btnViewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRequestActionPerformed
         // TODO add your handling code here:
@@ -576,6 +418,8 @@ public class FrRequest extends javax.swing.JFrame {
 
     private void cbcourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbcourseActionPerformed
         // TODO add your handling code here:
+         uiRequest.setallGroups(this);
+         cbgroup.setSelectedIndex(0);
     }//GEN-LAST:event_cbcourseActionPerformed
 
     private void btnviewStadisticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewStadisticsActionPerformed
@@ -585,6 +429,26 @@ public class FrRequest extends javax.swing.JFrame {
         this.setVisible(false);
         
     }//GEN-LAST:event_btnviewStadisticsActionPerformed
+
+    private void cbperiodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbperiodActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbperiodActionPerformed
+
+    private void cbgroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbgroupActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbgroupActionPerformed
+
+    private void txtnamerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnamerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnamerActionPerformed
+
+    private void txtcarneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcarneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcarneActionPerformed
+
+    private void txtphoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtphoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtphoneActionPerformed
 
     /**
      * @param args the command line arguments
@@ -622,7 +486,6 @@ public class FrRequest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFrame FrViewRequest;
     private javax.swing.JButton btnAddFile;
     private javax.swing.JMenuItem btnNewRequest;
     private javax.swing.JButton btnOK;
@@ -631,8 +494,7 @@ public class FrRequest extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbcategory;
     private javax.swing.JComboBox<String> cbcourse;
     private javax.swing.JComboBox<String> cbgroup;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JComboBox<String> cbperiod;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -640,49 +502,25 @@ public class FrRequest extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JLabel lbNameCourse;
     private javax.swing.JTextField txtcarne;
     private javax.swing.JTextArea txtdescription;
     private javax.swing.JTextField txtemail;
+    private javax.swing.JTextField txtidr;
     private javax.swing.JTextField txtname;
-    private javax.swing.JTextField txtperiod;
+    private javax.swing.JTextField txtnamer;
     private javax.swing.JTextField txtphone;
     // End of variables declaration//GEN-END:variables
 }
