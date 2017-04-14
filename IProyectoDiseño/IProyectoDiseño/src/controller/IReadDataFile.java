@@ -5,12 +5,10 @@
  */
 package controller;
 
-import model.Resolution;
-
 /**
  *
- * @author Usuario
+ * @author ErickHdez
  */
-public interface DocumentGenerator {
-    public void GenerateDocument(Resolution doc); 
+public interface IReadDataFile {
+    public void readData();
 }

@@ -16,14 +16,12 @@ public class Plan {
     private int code;  
     private int year;  
     private boolean active; 
-    private ArrayList<Course> courses; 
-    private ArrayList<Group> groups; 
+    private ArrayList<Course> courses;
 
-    public Plan(int code, int year, ArrayList<Course> courses, ArrayList<Group> groups) {
+    public Plan(int code, int year, ArrayList<Course> courses) {
         this.code = code;
         this.year = year;
         this.courses = courses;
-        this.groups = groups;
         this.active = true; 
     }
 
@@ -60,17 +58,9 @@ public class Plan {
         this.courses = courses;
     }
 
-    public ArrayList<Group> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(ArrayList<Group> groups) {
-        this.groups = groups;
-    }
-
     @Override
     public String toString() {
-        return "Plan{" + "code=" + code + ", year=" + year + ", active=" + active + ", courses=" + courses + ", groups=" + groups + '}';
+        return "Plan{" + "code=" + code + ", year=" + year + ", active=" + active + ", courses=" + courses + '}';
     }
     
     

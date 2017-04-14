@@ -67,7 +67,7 @@ public class DAOData {
             }
            
         }
-        Plan plan = new Plan(410, 2010, courses, new ArrayList<>()); 
+        Plan plan = new Plan(410, 2010, courses); 
         return plan; 
     }
     

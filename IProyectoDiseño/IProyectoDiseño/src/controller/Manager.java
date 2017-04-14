@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Usuario
  */
-public abstract class Manager {
+public abstract class Manager implements IReadDataFile {
     protected ArrayList<Object> elements;
     
     public abstract void insert(Object parameter);
@@ -19,5 +19,4 @@ public abstract class Manager {
     public abstract void delete (String id);
     public abstract Object select(String id);
     public abstract ArrayList<Object> selectAll();
-    public abstract void read(); 
 }

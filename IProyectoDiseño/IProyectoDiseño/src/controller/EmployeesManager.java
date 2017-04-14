@@ -13,13 +13,14 @@ import model.Employee;
  *
  * @author Usuario
  */
-public class EmployeesManager extends Manager{
+public final class EmployeesManager extends Manager {
     private DAOData data; 
     private ArrayList<Employee> employees; 
 
     public EmployeesManager(DAOData data) {
         this.data = data;
         this.employees = new ArrayList<>();
+        readData();
     }
     
     public ArrayList<Employee> createTop3Professors(){
@@ -53,7 +54,7 @@ public class EmployeesManager extends Manager{
     }
 
     @Override
-    public void read() {
+    public void readData() {
         employees = data.readProfessors(); 
         data.printArrayEmployee(employees);
     }

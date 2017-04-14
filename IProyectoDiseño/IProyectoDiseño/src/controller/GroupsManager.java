@@ -12,13 +12,14 @@ import model.Group;
  *
  * @author ErickHdez
  */
-class GroupsManager extends Manager {
+public final class GroupsManager extends Manager {
     private ArrayList<Group> groups;
     private DAOData data; 
 
     public GroupsManager(DAOData data) {
         this.data = data;
         this.groups = new  ArrayList<>();
+        readData();
     }
     
     
@@ -45,7 +46,7 @@ class GroupsManager extends Manager {
         
         for(Group g : groups) {
             if(g.getNumber() == groupNumber) {
-                if (g.getCourse().getCode() == codeCourse)
+                if (g.getCourse().getCode().equals(codeCourse))
                     return g;
             }
         }
@@ -59,7 +60,7 @@ class GroupsManager extends Manager {
     }
 
     @Override
-    public void read() {
+    public void readData() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

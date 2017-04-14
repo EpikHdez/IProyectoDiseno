@@ -49,6 +49,11 @@ public class Course {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        return code.equals(((Course) obj).getCode());
+    }
+    
+    @Override
     public String toString() {
         return "Course{" + "name=" + name + ", code=" + code + ", credits=" + credits + '}';
     }

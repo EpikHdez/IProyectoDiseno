@@ -10,12 +10,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import model.Course;
 import model.Employee;
 import model.Group;
-import model.Person;
 import model.Request;
 import model.Resolution;
-import model.Student;
 
 /**
  *
@@ -23,22 +22,34 @@ import model.Student;
  */
 public class School  {
     private static School INSTANCE = null;
-    private DocumentGenerator docGenerator; 
-    private EmployeesManager personsManager; 
+    private IDocumentGenerator docGenerator; 
+    private EmployeesManager employeesManager; 
     private RequestsManager requestsManager; 
     private PlansManager plansManager;
     private GroupsManager groupsManager;
     
-    private School() throws FileNotFoundException, IOException {
-        FileInputStream fis = new FileInputStream(new File("src\\files\\DatosProyecto1.xlsx"));
-        DAOData data = new DAOData(fis); 
-        personsManager = new EmployeesManager(data);
-        requestsManager = new RequestsManager();
+    private School() {
+        DAOData data = getDataFile();
+        
+        employeesManager = new EmployeesManager(data);
         plansManager = new PlansManager(data);
-        groupsManager = new GroupsManager(data);
+        //groupsManager = new GroupsManager(data);
+        
+        requestsManager = new RequestsManager();
     }
     
-    public static synchronized School getInstance() throws IOException {
+    private DAOData getDataFile() {
+        try {
+            FileInputStream fis = new FileInputStream(new File("src/files/DatosProyecto1.xlsx"));
+            return new DAOData(fis);
+        } catch(Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return null;
+    }
+    
+    public static synchronized School getInstance() {
         if(INSTANCE == null)
             INSTANCE = new School();
         
@@ -84,6 +95,17 @@ public class School  {
     
     
     
+    
+    public Course selectCourse(String id) {
+        return plansManager.selectCourse("410", id); //Como por ahora es el unico que existe
+    }
+    
+    public ArrayList<Course> selectAllCourses() {
+        return plansManager.selectAllCourses("410");
+    }
+    
+    
+    
     public Group selectGroup(int groupNumber, String courseCode) {
         //Se juntan para enviarlo buscar, ya que para buscar se recibe un
         //solo parametro
@@ -100,6 +122,7 @@ public class School  {
     
     
     public void insertResolution(DTOResolution res){
+        requestsManager.insertResolution(res);
         
     }
    
@@ -119,29 +142,12 @@ public class School  {
         return false; 
     }
 
-    public static School getINSTANCE() {
-        return INSTANCE;
-    }
-
-    public static void setINSTANCE(School INSTANCE) {
-        School.INSTANCE = INSTANCE;
-    }
-
-
-    public DocumentGenerator getDocGenerator() {
+    public IDocumentGenerator getDocGenerator() {
         return docGenerator;
     }
 
-    public void setDocGenerator(DocumentGenerator docGenerator) {
+    public void setDocGenerator(IDocumentGenerator docGenerator) {
         this.docGenerator = docGenerator;
-    }
-
-    public EmployeesManager getPersonsManager() {
-        return personsManager;
-    }
-
-    public void setPersonsManager(EmployeesManager personsManager) {
-        this.personsManager = personsManager;
     }
 
     public RequestsManager getRequestsManager() {
@@ -168,5 +174,7 @@ public class School  {
         this.groupsManager = groupsManager;
     }
     
-    
+    public DTOTemplate getTemplate(){
+        return requestsManager.getTemplate();
+    };
 }

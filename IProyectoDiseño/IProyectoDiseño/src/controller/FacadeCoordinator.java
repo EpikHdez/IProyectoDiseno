@@ -6,6 +6,9 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -13,11 +16,22 @@ import java.io.IOException;
  */
 public class FacadeCoordinator {
     private School school; 
+
+    public FacadeCoordinator() {
+        try {
+            school= School.getInstance();
+        } catch (IOException ex) {
+            Logger.getLogger(FacadeCoordinator.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void createRequest(DTORequest dtoRequest) throws IOException{
-        school= School.getInstance();
+       
+       
         school.insertRequest(dtoRequest);
     }
-    public void createResolution(){
+    public void createResolution(DTOResolution dtoResolution){
+        school.insertResolution(dtoResolution);
     }
     public void viewRequestStadistics(){
     }
@@ -26,5 +40,13 @@ public class FacadeCoordinator {
     public void Top3Professors(){
     }
     public void createDocument(){
+    }
+    public DTOTemplate getTemplate(){
+        return school.getTemplate();
+    }
+    
+    public ArrayList<Object> selectallGroups(){
+       
+        return school.selectAllGroups();
     }
 }

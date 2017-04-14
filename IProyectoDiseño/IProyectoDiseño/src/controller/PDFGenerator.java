@@ -11,7 +11,7 @@ import model.Resolution;
  *
  * @author Usuario
  */
-public class PDFGenerator implements DocumentGenerator{
+public class PDFGenerator implements IDocumentGenerator{
 
     @Override
     public void GenerateDocument(Resolution doc) {

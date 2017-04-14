@@ -25,21 +25,11 @@ public class IProyectoDiseño {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws FileNotFoundException, IOException {
+    public static void main(String[] args) {
         // TODO code application logic here
+        School.getInstance();
+        
         FrMain fm= new FrMain();
         fm.setVisible(true);
-
-        //FileInputStream fis = new FileInputStream(new File("src\\files\\DatosProyecto1.xlsx"));
-        //DAOData data = new DAOData(fis); 
-        //data.readPlan();
-        //data.readProfessors();
-        School school = School.getInstance();
-        PlansManager manager = school.getPlansManager();
-        manager.read();
-        school.getPersonsManager().read();
-   
-
     }
-    
 }

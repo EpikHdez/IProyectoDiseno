@@ -11,7 +11,7 @@ import model.Resolution;
  *
  * @author Usuario
  */
-public class HTMLGenerator implements DocumentGenerator{
+public class HTMLGenerator implements IDocumentGenerator{
 
     @Override
     public void GenerateDocument(Resolution doc) {

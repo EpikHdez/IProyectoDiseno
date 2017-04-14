@@ -19,7 +19,7 @@ import model.Student;
  *
  * @author Usuario
  */
-public class RequestsManager extends Manager{
+public class RequestsManager extends Manager {
    // private final DAOData daoRequest;
     private Request currentRequest;
     private DirectorResolution director;
@@ -37,7 +37,7 @@ public class RequestsManager extends Manager{
         Group group = null;
         try {
             group = School.getInstance().selectGroup(dto.getNumGroup(), dto.getCodCourse());
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(RequestsManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         Student student = new Student(dto.getIdStudent(), dto.getNameStudent(),
@@ -169,7 +169,7 @@ public class RequestsManager extends Manager{
           
 
     @Override
-    public void read() {
+    public void readData() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 
     }
