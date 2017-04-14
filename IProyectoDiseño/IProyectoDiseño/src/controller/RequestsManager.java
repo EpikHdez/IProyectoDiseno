@@ -23,12 +23,14 @@ public class RequestsManager extends Manager {
    // private final DAOData daoRequest;
     private Request currentRequest;
     private DirectorResolution director;
+    private DAORequest data; 
     
-    public RequestsManager() {
+    public RequestsManager(DAORequest dao) {
         elements = new ArrayList();
         director = new DirectorResolution();
-       // daoRequest = new DAOData();
+        data = dao; 
         currentRequest = null;
+        readData();
     }
 
     @Override
@@ -164,7 +166,11 @@ public class RequestsManager extends Manager {
 
     @Override
     public void readData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<Request> requests = data.readRequests(); 
+        for (Request request : requests) {
+            elements.add(request);
+        }
+        System.out.println(elements.toString());
 
     }
 }

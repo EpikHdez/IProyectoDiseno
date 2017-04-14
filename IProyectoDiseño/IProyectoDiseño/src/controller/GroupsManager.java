@@ -71,4 +71,14 @@ public final class GroupsManager extends Manager {
     public void readData() {
         elements = data.readGroups();
     }
+
+    public Group findGroup(String period, String course, int numberGroup){
+        for (Object element : elements) {
+            Group group = (Group) element; 
+            if(group.getPeriod().equals(period) || group.getCourse().getCode().equals(course) || group.getNumber() == numberGroup){
+                return group; 
+            }
+        }
+        return null; 
+    }
 }

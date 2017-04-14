@@ -139,4 +139,11 @@ public class Request {
     public boolean equals(Object obj) {
         return id == ((Request) obj).getId();
     }
+
+    @Override
+    public String toString() {
+        return "Request{" + "id=" + id + ", date=" + date + ", description=" + description + ", evidence=" + evidence + ", inconsistencie=" + inconsistencie + ", requestState=" + requestState + ", note=" + note + ", resolution=" + resolution + ", affected=" + affected + ", requester=" + requester + ", group=" + group + '}';
+    }
+    
+    
 }

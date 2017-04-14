@@ -37,6 +37,20 @@ public class School  {
         return null;
     }
     
+    
+        private DAORequest getRequestFile() {
+        try {
+            FileInputStream fis = new FileInputStream(new File("src//files//DatosFormulario.xlsx"));
+            return new DAORequest(fis);
+        } catch(Exception ex) {
+            System.out.println("error from getRequest file");
+            System.out.println(ex.getMessage());
+        }
+        
+        return null;
+    }
+    
+    
     public static synchronized School getInstance() {
         if(INSTANCE == null) {
             INSTANCE = new School();
@@ -48,10 +62,11 @@ public class School  {
     
     private void loadData() {
         DAOData data = getDataFile();
+        DAORequest req = getRequestFile(); 
         employeesManager = new EmployeesManager(data);
         plansManager = new PlansManager(data);
         groupsManager = new GroupsManager(data);
-        requestsManager = new RequestsManager();
+        requestsManager = new RequestsManager(req);
     }
    
     public void insertRequest(DTORequest req) {
@@ -165,5 +180,9 @@ public class School  {
     
     public void loadDataGroups(){
         groupsManager.readData();
+    }
+
+    public Group findGroup(String period, String courseCode, int numberGroup){
+        return groupsManager.findGroup(period, courseCode, numberGroup); 
     }
 }
