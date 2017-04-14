@@ -23,7 +23,6 @@ public final class GroupsManager extends Manager {
     public GroupsManager(DAOData data) {
         this.data = data;
         this.elements = new  ArrayList<>();
-        readData();
     }
     
     
