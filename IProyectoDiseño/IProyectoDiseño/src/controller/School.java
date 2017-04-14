@@ -166,4 +166,8 @@ public class School  {
     public void loadDataGroups(){
         groupsManager.readData();
     }
+    public void cancelRequest(String message){
+        requestsManager.CancelRequest(message);
+    
+    }
 }

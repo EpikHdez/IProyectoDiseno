@@ -23,6 +23,7 @@ public class FrViewRequest extends javax.swing.JFrame {
         return spmotivo;
     }
 
+
     public void setSpmotivo(JScrollPane spmotivo) {
         this.spmotivo = spmotivo;
     }
@@ -538,6 +539,11 @@ public class FrViewRequest extends javax.swing.JFrame {
         getContentPane().add(lbemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
 
         btncancel.setText("Cancelar Solicitud ");
+        btncancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncancelActionPerformed(evt);
+            }
+        });
         getContentPane().add(btncancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 410, -1, -1));
 
         cdRequest.addActionListener(new java.awt.event.ActionListener() {
@@ -664,6 +670,11 @@ public class FrViewRequest extends javax.swing.JFrame {
         // TODO add your handling code here:
         uiRequest.setallRequest(this);
     }//GEN-LAST:event_cbtyperequestActionPerformed
+
+    private void btncancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelActionPerformed
+        // TODO add your handling code here:
+        uiRequest.CancelRequest(this);
+    }//GEN-LAST:event_btncancelActionPerformed
 
     /**
      * @param args the command line arguments

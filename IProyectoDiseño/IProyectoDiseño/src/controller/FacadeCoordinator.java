@@ -65,4 +65,7 @@ public class FacadeCoordinator {
                 
         return null;
     }
+    public void CancelRequest(String message){
+        school.cancelRequest(message);
+    }
 }
