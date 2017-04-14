@@ -205,8 +205,8 @@ public class DAOData {
         return schedules; 
     }
     
-    public ArrayList<Group> readGroups() throws IOException{
-        ArrayList<Group> groups = new ArrayList<>(); 
+    public ArrayList<Object> readGroups() {
+        ArrayList<Object> groups = new ArrayList(); 
         XSSFSheet sheet = workbook.getSheet("OFERTA");
         
         //for to go over the sheet info - like the rows 
@@ -215,7 +215,7 @@ public class DAOData {
             Course course = null;
             int numberGroup = 0;
             Employee employee = null;
-            ArrayList<Schedule> schedules = new ArrayList<>(); 
+            ArrayList<Schedule> schedules = new ArrayList(); 
             String scheduleS = null; 
             String classroom = null; 
          

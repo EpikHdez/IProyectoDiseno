@@ -438,7 +438,7 @@
     <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel33">
+    <Component class="javax.swing.JLabel" name="lbcarne">
       <Properties>
         <Property name="text" type="java.lang.String" value="#########################"/>
       </Properties>
@@ -448,7 +448,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel34">
+    <Component class="javax.swing.JLabel" name="lbperiod">
       <Properties>
         <Property name="text" type="java.lang.String" value="#########################"/>
       </Properties>
@@ -468,7 +468,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel36">
+    <Component class="javax.swing.JLabel" name="lbname">
       <Properties>
         <Property name="text" type="java.lang.String" value="#########################"/>
       </Properties>
@@ -528,7 +528,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel41">
+    <Component class="javax.swing.JLabel" name="lbdescription">
       <Properties>
         <Property name="text" type="java.lang.String" value="#########################"/>
       </Properties>
@@ -608,7 +608,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel47">
+    <Component class="javax.swing.JLabel" name="lbphone">
       <Properties>
         <Property name="text" type="java.lang.String" value="#########################"/>
       </Properties>
@@ -628,7 +628,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel49">
+    <Component class="javax.swing.JLabel" name="lbgroup">
       <Properties>
         <Property name="text" type="java.lang.String" value="#########################"/>
       </Properties>
@@ -638,7 +638,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel50">
+    <Component class="javax.swing.JLabel" name="lbcourse">
       <Properties>
         <Property name="text" type="java.lang.String" value="#########################"/>
       </Properties>
@@ -658,7 +658,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel52">
+    <Component class="javax.swing.JLabel" name="lbemail">
       <Properties>
         <Property name="text" type="java.lang.String" value="#########################"/>
       </Properties>
@@ -678,17 +678,15 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox5">
+    <Component class="javax.swing.JComboBox" name="cdRequest">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cdRequestActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>

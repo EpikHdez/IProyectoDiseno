@@ -15,6 +15,8 @@ import model.EInconsistencie;
 import model.ERequestState;
 import view.FrRequest;
 import model.Group;
+import model.Request;
+import view.FrViewRequest;
 
 
 /**
@@ -96,5 +98,29 @@ public class UIRequest {
         
     }
     }
+    public void setallRequest(FrViewRequest frviewrequest){
+        int i=0;
+        for (Object o:facade.selectallRequest()){
+            frviewrequest.getCdRequest().insertItemAt(Integer.toString(((Request)o).getId()), i);
+            i++;
+        }
+            
+            
+    }
+     public void setRequest(FrViewRequest frviewrequest){
+       
+            Request r=facade.selectRequest(frviewrequest.getCdRequest().getSelectedItem().toString());
+            frviewrequest.getLbCategory().setText(r.getInconsistencie().toString());
+            frviewrequest.getLbcarne().setText(r.getAffected().getId());
+            frviewrequest.getLbcourse().setText(r.getGroup().getCourse().getCode()+" "+r.getGroup().getCourse().getName());
+            frviewrequest.getLbdescription().setText(r.getDescription());
+            frviewrequest.getLbemail().setText(r.getAffected().getEmail());
+            frviewrequest.getLbgroup().setText(Integer.toString(r.getGroup().getNumber()));
+            frviewrequest.getLbname().setText(r.getAffected().getName());
+            frviewrequest.getLbperiod().setText(r.getGroup().getPeriod());
+            frviewrequest.getLbphone().setText(r.getAffected().getPhone());
+            
+    }
+    
     
 }
