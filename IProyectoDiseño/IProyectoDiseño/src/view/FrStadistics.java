@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package view;
-/*
+
 import controller.UIStadistics;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,7 +19,6 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 import org.jfree.util.Rotation;
-*/
 
 
 
@@ -30,7 +29,7 @@ import org.jfree.util.Rotation;
  */
 
 
-/*
+
 public class FrStadistics extends javax.swing.JFrame {
     private UIStadistics uiStadistics; 
 
@@ -292,4 +291,3 @@ public class FrStadistics extends javax.swing.JFrame {
     private javax.swing.JPanel pnRP;
     // End of variables declaration//GEN-END:variables
 }
-*/
