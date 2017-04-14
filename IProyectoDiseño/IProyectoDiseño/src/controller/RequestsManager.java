@@ -138,13 +138,9 @@ public class RequestsManager extends Manager {
     }
     
     public void insertResolution(DTOResolution res) {
-        
-        
-    
-            director.constructResolution(res.getConsiderations(), res.getIntro(), 
-                    res.getNotify(), res.getResolve(), res.getResult());
-            currentRequest.setResolution(director.getResolution());
-   
+        director.buildResolution(res.getConsiderations(), res.getIntro(), 
+                res.getNotify(), res.getResolve(), res.getResult());
+        currentRequest.setResolution(director.getResolution());
     }
     
     public ArrayList<Request> createRequestStadistics(){
@@ -163,8 +159,6 @@ public class RequestsManager extends Manager {
           }
           catch(Exception ex) {}
           return null;
-          
-          
     }
           
 

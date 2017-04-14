@@ -32,6 +32,68 @@ public class Resolution {
         this.employee = employee;
         this.considerations = considerations;
     }
-    
-    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    public String getResolve() {
+        return resolve;
+    }
+
+    public void setResolve(String resolve) {
+        this.resolve = resolve;
+    }
+
+    public String getNotify() {
+        return notify;
+    }
+
+    public void setNotify(String notify) {
+        this.notify = notify;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public ArrayList<String> getConsiderations() {
+        return considerations;
+    }
+
+    public void setConsiderations(ArrayList<String> considerations) {
+        this.considerations = considerations;
+    }
 }

@@ -5,10 +5,7 @@
  */
 package controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.Course;
 
 /**
@@ -22,9 +19,7 @@ public class FacadeCoordinator {
         school= School.getInstance();
     }
     
-    public void createRequest(DTORequest dtoRequest) throws IOException{
-       
-       
+    public void createRequest(DTORequest dtoRequest) {
         school.insertRequest(dtoRequest);
     }
     public void createResolution(DTOResolution dtoResolution){
@@ -38,12 +33,12 @@ public class FacadeCoordinator {
     }
     public void createDocument(){
     }
+    
     public DTOTemplate getTemplate(){
         return school.getTemplate();
     }
     
     public ArrayList<Object> selectallGroups(){
-       
         return school.selectAllGroups();
     }
     public ArrayList<Course> selectallCourses(){
