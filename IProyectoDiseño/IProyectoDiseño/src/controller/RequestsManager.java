@@ -160,11 +160,9 @@ public final class RequestsManager extends Manager {
     
     public void CancelRequest(String message){
       currentRequest.setRequestState(CANCELED);
-
       currentRequest.setNote(message);
       String subject="SOLICITUD "+ currentRequest.getInconsistencie()
              +currentRequest.getId()+": NO ACEPTADA";
-      
       String info="Saludos Cordiales,\nSe le informa, que se le ha denegado la solicitud sobre " +currentRequest.getInconsistencie()+"del alumno "+
               currentRequest.getAffected().getName()+",con identificación " +currentRequest.getAffected().getId()+
               ", en el curso "+currentRequest.getGroup().getCourse().getCode()+" "+currentRequest.getGroup().getCourse().getName()
