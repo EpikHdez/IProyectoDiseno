@@ -280,15 +280,14 @@ public class FrResolution extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         int i=JOptionPane.showConfirmDialog(this, "¿Seguro de que quiere crear una Resolución?","",JOptionPane.YES_NO_OPTION);
-        
+        EDocType format=(EDocType) JOptionPane.showInputDialog(this, 
+        "Guardar como...",
+        "Favorite Pizza",
+        JOptionPane.QUESTION_MESSAGE, 
+        null, 
+        EDocType.values(), 
+        EDocType.values()[0]);
         if(i==JOptionPane.YES_OPTION){
-            EDocType format=(EDocType) JOptionPane.showInputDialog(this, 
-            "Guardar como...",
-            "",
-            JOptionPane.QUESTION_MESSAGE, 
-            null, 
-            EDocType.values(), 
-            EDocType.values()[0]);
             uiResolution.createResolution(this,format);
             FrViewRequest fvr=new FrViewRequest();
             fvr.setVisible(true);

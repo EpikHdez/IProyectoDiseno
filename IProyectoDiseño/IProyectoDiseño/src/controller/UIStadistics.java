@@ -67,7 +67,6 @@ public class UIStadistics {
     }
     }
      public DefaultCategoryDataset top5CoursesResolutionsByPeriod(FrStadistics frstadistics){
-        if (frstadistics.getCbperiod().getSelectedItem().toString()!=null){ 
         HashMap<Course, Integer> c=facade.top5CoursesResolutionsByPeriod(frstadistics.getCbperiod().getSelectedItem().toString());
          DefaultCategoryDataset dataset=new DefaultCategoryDataset();
          
@@ -75,10 +74,6 @@ public class UIStadistics {
              dataset.setValue(course.getValue(), "", course.getKey().getName());
          }
          return dataset;
-        }else{
-           return null;
-        }
-        
     }
       public DefaultCategoryDataset top3ProfessorsResolutions() {
         HashMap<Employee, Integer> e= facade.top3ProfessorsResolutions();
