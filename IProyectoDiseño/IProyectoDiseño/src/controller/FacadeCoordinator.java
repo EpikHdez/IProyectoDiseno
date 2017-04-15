@@ -7,6 +7,7 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import model.Course;
 import model.Employee;
 import model.Request;
@@ -75,10 +76,10 @@ public class FacadeCoordinator {
         return school.processedRequestsInDateRange(start, end);
     }
     
-    public ArrayList<Course> top5CoursesResolutionsByPeriod(String period){
+    public HashMap<Course,Integer> top5CoursesResolutionsByPeriod(String period){
         return school.top5CoursesResolutionsByPeriod(period);
     }
-     public ArrayList<Employee> top3ProfessorsResolutions() {
+     public HashMap<Employee, Integer> top3ProfessorsResolutions() {
         return school.top3ProfessorsResolutions();
     }
 }

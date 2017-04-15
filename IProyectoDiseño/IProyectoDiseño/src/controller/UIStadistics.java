@@ -7,6 +7,8 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import model.Course;
 import model.Employee;
 import model.Group;
@@ -66,18 +68,19 @@ public class UIStadistics {
     }
     }
      public DefaultCategoryDataset top5CoursesResolutionsByPeriod(FrStadistics frstadistics){
-        ArrayList<Course> c=facade.top5CoursesResolutionsByPeriod(frstadistics.getCbperiod().getSelectedItem().toString());
+        HashMap<Course, Integer> c=facade.top5CoursesResolutionsByPeriod(frstadistics.getCbperiod().getSelectedItem().toString());
          DefaultCategoryDataset dataset=new DefaultCategoryDataset();
-         for(Course course:c){
-             dataset.setValue(100, "", course.getName());
+         
+         for(Map.Entry<Course, Integer> course:c.entrySet()){
+             dataset.setValue(course.getValue(), "", course.getKey().getName());
          }
          return dataset;
     }
       public DefaultCategoryDataset top3ProfessorsResolutions() {
-        ArrayList<Employee> e= facade.top3ProfessorsResolutions();
+        HashMap<Employee, Integer> e= facade.top3ProfessorsResolutions();
         DefaultCategoryDataset dataset=new DefaultCategoryDataset();
-        for(Employee employee:e){
-            dataset.setValue(1000, "", employee.getName());
+        for(Map.Entry<Employee, Integer> employee:e.entrySet()){
+            dataset.setValue(employee.getValue(), "", employee.getKey().getName());
         }
         return dataset;
     }

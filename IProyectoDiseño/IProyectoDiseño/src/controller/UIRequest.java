@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.swing.JOptionPane;
 import model.Course;
 import model.EInconsistencie;
 import model.ERequestState;
@@ -17,7 +19,7 @@ import view.FrRequest;
 import model.Group;
 import model.Request;
 import view.FrViewRequest;
-
+import org.apache.commons.validator.routines.EmailValidator;
 
 /**
  *
@@ -50,7 +52,12 @@ public class UIRequest {
     public void createRequest(FrRequest frrequest){
         Date date = new Date();
         dtoRequest=new DTORequest();
-       
+      
+        String email=frrequest.getTxtemail().getText();
+        String phone=frrequest.getTxtphone().getText();
+        System.out.println(email);
+        System.out.println(phone);
+        if(EmailValidator.getInstance().isValid(email)&&phone.matches("\\d{4}[-\\.\\s]\\d{4}||\\d{8}")){
         dtoRequest.setCodCourse(frrequest.getCbcourse().getSelectedItem().toString());
         dtoRequest.setDate(date);
         dtoRequest.setDescription(frrequest.getTxtdescription().getText());
@@ -65,6 +72,9 @@ public class UIRequest {
         dtoRequest.setRequesterId(frrequest.getTxtidr().getText());
         dtoRequest.setRequesterName(frrequest.getTxtnamer().getText());
         facade.createRequest(dtoRequest);
+        }else{
+         JOptionPane.showMessageDialog(frrequest, "Se ha Ingresado un Correo o Número de Teléfono Inválido.");
+        }
     }
     
     public void setallGroups(FrRequest frrequest){
