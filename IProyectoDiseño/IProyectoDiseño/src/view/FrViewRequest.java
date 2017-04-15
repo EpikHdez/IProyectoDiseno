@@ -506,21 +506,27 @@ public class FrViewRequest extends javax.swing.JFrame {
         lbname.setText("#########################");
         getContentPane().add(lbname, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, -1, -1));
 
+        jLabel12.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel12.setText("Solicitud #");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, -1, 20));
 
+        jLabel37.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel37.setText("Teléfono");
         getContentPane().add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, -1));
 
+        jLabel38.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel38.setText("Grupo");
         getContentPane().add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 170, -1, -1));
 
+        jLabel39.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel39.setText("Descripción");
         getContentPane().add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 230, -1, -1));
 
+        jLabel40.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel40.setText("Curso");
         getContentPane().add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 200, -1, -1));
 
+        jLabel42.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel42.setText("Periodo");
         getContentPane().add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, -1, -1));
 
@@ -528,9 +534,11 @@ public class FrViewRequest extends javax.swing.JFrame {
         jLabel43.setText("Información del Problema");
         getContentPane().add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, -1, 30));
 
+        jLabel44.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel44.setText("Correo");
         getContentPane().add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
 
+        jLabel45.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel45.setText("ID/Carné");
         getContentPane().add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, -1, -1));
 
@@ -540,6 +548,7 @@ public class FrViewRequest extends javax.swing.JFrame {
         lbphone.setText("#########################");
         getContentPane().add(lbphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
 
+        jLabel48.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel48.setText("Categoría");
         getContentPane().add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 110, -1, -1));
 
@@ -549,6 +558,7 @@ public class FrViewRequest extends javax.swing.JFrame {
         lbcourse.setText("#########################");
         getContentPane().add(lbcourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, -1, -1));
 
+        jLabel51.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel51.setText("Nombre");
         getContentPane().add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, -1, -1));
 
@@ -561,7 +571,7 @@ public class FrViewRequest extends javax.swing.JFrame {
                 btncancelActionPerformed(evt);
             }
         });
-        getContentPane().add(btncancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 530, -1, -1));
+        getContentPane().add(btncancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 540, -1, -1));
 
         cdRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -570,12 +580,14 @@ public class FrViewRequest extends javax.swing.JFrame {
         });
         getContentPane().add(cdRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 20, 70, 20));
 
+        jLabel52.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel52.setText("Nombre");
         getContentPane().add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, -1, -1));
 
         lbnamer.setText("#########################");
         getContentPane().add(lbnamer, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, -1, -1));
 
+        jLabel46.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel46.setText("Carné");
         getContentPane().add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, -1));
 
@@ -586,9 +598,11 @@ public class FrViewRequest extends javax.swing.JFrame {
         jLabel36.setText("Información Básica del Estudiante Afectado");
         getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, 30));
 
+        lbmotivo.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         lbmotivo.setText("Motivo:");
         getContentPane().add(lbmotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel4.setText("Filtrar por:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, 20));
 
@@ -598,11 +612,11 @@ public class FrViewRequest extends javax.swing.JFrame {
                 cbtyperequestActionPerformed(evt);
             }
         });
-        getContentPane().add(cbtyperequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+        getContentPane().add(cbtyperequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
 
         jScrollPane3.setViewportView(lbdescription);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, 290, 110));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, 320, 110));
 
         spmotivo.setViewportView(txtMotivo);
 

@@ -156,7 +156,6 @@ public class FrRequest extends javax.swing.JFrame {
         cbcategory = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         btnOK = new javax.swing.JButton();
-        btnAddFile = new javax.swing.JButton();
         cbgroup = new javax.swing.JComboBox<>();
         cbcourse = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
@@ -175,6 +174,7 @@ public class FrRequest extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         btnNewRequest = new javax.swing.JMenuItem();
         btnExel = new javax.swing.JMenuItem();
+        btnAddFile = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btnViewRequest = new javax.swing.JMenuItem();
         btnviewStadistics = new javax.swing.JMenuItem();
@@ -185,18 +185,18 @@ public class FrRequest extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel1.setText("ID/Carné");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, 20));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, 20));
 
         txtidr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtidrActionPerformed(evt);
             }
         });
-        getContentPane().add(txtidr, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 233, -1));
+        getContentPane().add(txtidr, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 230, -1));
 
         jLabel2.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel2.setText("Nombre");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, 20));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, -1, 20));
 
         txtname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,7 +219,7 @@ public class FrRequest extends javax.swing.JFrame {
                 txtnamerActionPerformed(evt);
             }
         });
-        getContentPane().add(txtnamer, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 233, 20));
+        getContentPane().add(txtnamer, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 230, 20));
 
         jLabel5.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel5.setText("Periodo");
@@ -243,11 +243,11 @@ public class FrRequest extends javax.swing.JFrame {
                 cbcategoryActionPerformed(evt);
             }
         });
-        getContentPane().add(cbcategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 220, 280, 20));
+        getContentPane().add(cbcategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, 280, 20));
 
         jLabel10.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         jLabel10.setText("Información del Problema");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 50, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 50, -1, -1));
 
         btnOK.setText("Aceptar");
         btnOK.addActionListener(new java.awt.event.ActionListener() {
@@ -255,29 +255,21 @@ public class FrRequest extends javax.swing.JFrame {
                 btnOKActionPerformed(evt);
             }
         });
-        getContentPane().add(btnOK, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 380, -1, -1));
-
-        btnAddFile.setText("Agregar Archivo ");
-        btnAddFile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddFileActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnAddFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 380, 140, 20));
+        getContentPane().add(btnOK, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 380, -1, -1));
 
         cbgroup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbgroupActionPerformed(evt);
             }
         });
-        getContentPane().add(cbgroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 180, 280, -1));
+        getContentPane().add(cbgroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, 280, -1));
 
         cbcourse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbcourseActionPerformed(evt);
             }
         });
-        getContentPane().add(cbcourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, 80, -1));
+        getContentPane().add(cbcourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, 80, -1));
 
         jLabel12.setFont(new java.awt.Font("Georgia", 0, 11)); // NOI18N
         jLabel12.setText("Descripción");
@@ -287,15 +279,15 @@ public class FrRequest extends javax.swing.JFrame {
         txtdescription.setRows(5);
         jScrollPane1.setViewportView(txtdescription);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 270, 280, -1));
-        getContentPane().add(lbNameCourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 140, 190, 20));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, 280, 100));
+        getContentPane().add(lbNameCourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 140, 190, 20));
 
         cbperiod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbperiodActionPerformed(evt);
             }
         });
-        getContentPane().add(cbperiod, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 100, 280, -1));
+        getContentPane().add(cbperiod, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 280, -1));
 
         jLabel11.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         jLabel11.setText("Información Básica del Estudiante ");
@@ -336,6 +328,14 @@ public class FrRequest extends javax.swing.JFrame {
             }
         });
         jMenu1.add(btnExel);
+
+        btnAddFile.setText("Agregar Evidencia...");
+        btnAddFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddFileActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnAddFile);
 
         jMenuBar1.add(jMenu1);
 
@@ -382,14 +382,6 @@ public class FrRequest extends javax.swing.JFrame {
     private void cbcategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbcategoryActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbcategoryActionPerformed
-
-    private void btnAddFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFileActionPerformed
-        // TODO add your handling code here:
-        JFileChooser jfc= new JFileChooser();
-        jfc.showOpenDialog(null);
-        File f=jfc.getSelectedFile();
-        String filename= f.getAbsolutePath();
-    }//GEN-LAST:event_btnAddFileActionPerformed
 
     private void btnViewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRequestActionPerformed
         // TODO add your handling code here:
@@ -447,6 +439,14 @@ public class FrRequest extends javax.swing.JFrame {
         String filename= f.getAbsolutePath();
     }//GEN-LAST:event_btnExelActionPerformed
 
+    private void btnAddFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFileActionPerformed
+        // TODO add your handling code here:
+        JFileChooser jfc= new JFileChooser();
+        jfc.showOpenDialog(null);
+        File f=jfc.getSelectedFile();
+        String filename= f.getAbsolutePath();
+    }//GEN-LAST:event_btnAddFileActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -483,7 +483,7 @@ public class FrRequest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddFile;
+    private javax.swing.JMenuItem btnAddFile;
     private javax.swing.JMenuItem btnExel;
     private javax.swing.JMenuItem btnNewRequest;
     private javax.swing.JButton btnOK;
