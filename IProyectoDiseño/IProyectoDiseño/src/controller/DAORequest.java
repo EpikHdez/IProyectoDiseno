@@ -37,8 +37,8 @@ public class DAORequest {
             System.out.println(object.toString());
         }
     }
-    public ArrayList<Request> readRequests(){
-        ArrayList<Request> requests = new ArrayList<>(); 
+    public ArrayList<Object> readRequests(){
+        ArrayList<Object> requests = new ArrayList(); 
         XSSFSheet sheet = workbook.getSheetAt(0); 
         
         for(Row row : sheet){
@@ -76,9 +76,7 @@ public class DAORequest {
                             numberGroup = (int) cell.getNumericCellValue(); 
                             break; 
                         case 8: 
-                           
                             inconsistencie = cell.getStringCellValue();
-                            
                             break; 
                         case 9: 
                             description = cell.getStringCellValue(); 

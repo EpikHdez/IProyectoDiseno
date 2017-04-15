@@ -9,7 +9,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,9 +17,8 @@ import java.util.logging.Logger;
  * @author Usuario
  */
 public class Parameter {
-    
     private static Parameter INSTANCE = null; 
-    private Properties parameters ;
+    private XProperties parameters ;
     
     private Parameter(){
         loadProperties(); 
@@ -36,7 +34,7 @@ public class Parameter {
 
     private boolean loadProperties() {
         try {
-            parameters = new Properties();
+            parameters = new XProperties();
             parameters.load(new FileInputStream("src//files//Parameters.properties"));
             return true;
         } catch (FileNotFoundException ex) {

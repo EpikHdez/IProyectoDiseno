@@ -5,6 +5,8 @@
  */
 package controller;
 
+import model.Parameter;
+
 
 
 /**
@@ -12,31 +14,33 @@ package controller;
  * @author Usuario
  */
 public class GradeErrorResolutionBuilder extends ResolutionBuilder{
+    @Override
+    public void buildTitle() {
+        resolution.setTitle(Parameter.getInstance().getParameter("resolutionTitle"));
+    }
     
     @Override
     public void buildIntro() {
-        resolution.setIntro(config.getProperty("intro").toString());
-        System.out.println(resolution.getIntro());
+        resolution.setIntro(Parameter.getInstance().getParameter("intro"));
     }
 
     @Override
     public void buildResult() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        resolution.setResult(Parameter.getInstance().getParameter("result"));
     }
 
     @Override
     public void buildConsider() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        resolution.setConsider(Parameter.getInstance().getParameter("consider"));
     }
 
     @Override
     public void buildResolve() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        resolution.setResolve(Parameter.getInstance().getParameter("resolve"));
     }
 
     @Override
     public void buildNotify() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        resolution.setNotify(Parameter.getInstance().getParameter("notify"));
     }
-    
 }

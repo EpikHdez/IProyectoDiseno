@@ -35,5 +35,10 @@ public class InclusionResolutionBuilder extends ResolutionBuilder {
     public void buildNotify() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void buildTitle() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

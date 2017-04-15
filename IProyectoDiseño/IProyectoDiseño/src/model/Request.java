@@ -109,9 +109,13 @@ public class Request {
     public Resolution getResolution() {
         return resolution;
     }
+    
+    public void setResolution(Resolution resolution) {
+        this.resolution = resolution;
+    }
 
-    public void setResolution(DTOResolution res) {
-        setResolutionParameters(res);
+    public Resolution createTemplateResolution() {
+        setResolutionParameters();
         
         Package pack = ResolutionBuilder.class.getPackage();
         String builder = String.format("%s.%sResolutionBuilder", pack.getName(), 
@@ -122,14 +126,15 @@ public class Request {
             ResolutionBuilder rb = (ResolutionBuilder) Class.forName(builder).newInstance();
             dir.setResolutionBuilder(rb);
             dir.buildResolution();
-            this.resolution = dir.getResolution();
+            return dir.getResolution();
         } catch(Exception ex) {}
+        
+        return null;
     }
     
-    private void setResolutionParameters(DTOResolution res) {
+    private void setResolutionParameters() {
         Parameter prop = Parameter.getInstance();
         
-        prop.setParameter("date", this.date.toString());
         prop.setParameter("studentName", this.affected.getName());
         prop.setParameter("studentCarne", this.affected.getId());
         prop.setParameter("courseCode", this.group.getCourse().getCode());

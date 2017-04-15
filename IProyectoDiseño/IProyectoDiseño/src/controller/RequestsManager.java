@@ -12,6 +12,7 @@ import static model.ERequestState.*;
 import model.Group;
 import model.Person;
 import model.Request;
+import model.Resolution;
 import model.Student;
 
 /**
@@ -48,7 +49,6 @@ public final class RequestsManager extends Manager {
                                      group);
         
         elements.add(currentRequest);
-        currentRequest.setResolution(null);
     }
 
     @Override
@@ -137,7 +137,11 @@ public final class RequestsManager extends Manager {
         return elements;
     }
     
-    public void insertResolution(DTOResolution res) {
+    public Resolution createTemplateResolution() {
+        return currentRequest.createTemplateResolution();
+    }
+    
+    public void setResolution(Resolution res) {
         currentRequest.setResolution(res);
     }
     
@@ -148,12 +152,7 @@ public final class RequestsManager extends Manager {
 
     @Override
     public void readData() {
-        ArrayList<Request> requests = data.readRequests(); 
-        for (Request request : requests) {
-            elements.add(request);
-        }
-        System.out.println(elements.toString());
-
+        elements = data.readRequests();
     }
     public void CancelRequest(String message){
       currentRequest.setRequestState(CANCELED);

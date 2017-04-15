@@ -7,47 +7,30 @@ package controller;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Parameter;
 import model.Resolution;
-import org.apache.commons.configuration2.Configuration;
-import org.apache.commons.configuration2.FileBasedConfiguration;
-import org.apache.commons.configuration2.PropertiesConfiguration;
-import org.apache.commons.configuration2.builder.FileBasedConfigurationBuilder;
-import org.apache.commons.configuration2.builder.fluent.Parameters;
-import org.apache.commons.configuration2.ex.ConfigurationException;
 
 /**
  *
  * @author Usuario
  */
 public abstract class ResolutionBuilder {
-    protected Configuration config;
     protected Resolution resolution; 
     
     public void createNewResolution(){
         resolution = new Resolution();
-        config = getConfiguration();
+        
+        int resNumber = Integer.parseInt(Parameter.getInstance().getParameter("resolution_serial"));
+        resolution.setId(resNumber);
+        Parameter.getInstance().setParameter("resolution_serial", String.valueOf(resNumber + 1));
+        Parameter.getInstance().saveParameters();
     }
     
     public Resolution getResolution(){
         return this.resolution; 
     }
     
-    private Configuration getConfiguration() {
-        try {
-            Parameters params = new Parameters();
-            FileBasedConfigurationBuilder<FileBasedConfiguration> builder =
-                    new FileBasedConfigurationBuilder<FileBasedConfiguration>
-                        (PropertiesConfiguration.class).configure(params.properties().
-                                setFileName("src//files//Parameters.properties"));
-            
-            return builder.getConfiguration();
-        } catch (ConfigurationException ex) {
-            Logger.getLogger(ResolutionBuilder.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return null;
-    }
-    
+    public abstract void buildTitle();
     public abstract void buildIntro();
     public abstract void buildResult();
     public abstract void buildConsider();

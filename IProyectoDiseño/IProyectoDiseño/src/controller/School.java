@@ -139,9 +139,12 @@ public class School  {
     
     
     
-    public void insertResolution(DTOResolution res){
-        requestsManager.insertResolution(res);
-        
+    public Resolution createTemplateResolution(){
+        return requestsManager.createTemplateResolution();
+    }
+    
+    public void setResolution(Resolution res) {
+        requestsManager.setResolution(res);
     }
    
     

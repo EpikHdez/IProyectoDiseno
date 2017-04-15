@@ -24,8 +24,9 @@ public class DirectorResolution {
    
     public void buildResolution() {
         resolutionBuilder.createNewResolution();
-        resolutionBuilder.buildConsider();
+        resolutionBuilder.buildTitle();
         resolutionBuilder.buildIntro();
+        resolutionBuilder.buildConsider();
         resolutionBuilder.buildNotify();
         resolutionBuilder.buildResolve();
         resolutionBuilder.buildResult();

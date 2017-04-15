@@ -14,24 +14,14 @@ import java.util.Date;
  */
 public class Resolution {
     private int id; 
-    private Date date; 
+    private String title;
     private String intro; 
     private String result;
     private String resolve; 
     private String notify;
-    private ArrayList<String> considerations;
+    private String considerations;
     
     public Resolution(){}
-
-    public Resolution(Date date, String intro, String result, String resolve, 
-                      String notify, ArrayList<String> considerations) {
-        this.date = date;
-        this.intro = intro;
-        this.result = result;
-        this.resolve = resolve;
-        this.notify = notify;
-        this.considerations = considerations;
-    }
 
     public int getId() {
         return id;
@@ -41,12 +31,12 @@ public class Resolution {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
+    public String getTitle() {
+        return title;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getIntro() {
@@ -81,11 +71,11 @@ public class Resolution {
         this.notify = notify;
     }
 
-    public ArrayList<String> getConsiderations() {
+    public String getConsider() {
         return considerations;
     }
 
-    public void setConsiderations(ArrayList<String> considerations) {
+    public void setConsider(String considerations) {
         this.considerations = considerations;
     }
 }
