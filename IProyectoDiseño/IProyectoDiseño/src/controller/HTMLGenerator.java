@@ -8,6 +8,7 @@ package controller;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.Calendar;
+import model.Parameter;
 import model.Resolution;
 
 /**
@@ -15,37 +16,43 @@ import model.Resolution;
  * @author Usuario
  */
 public class HTMLGenerator implements IDocumentGenerator{
-    String buffer;
+    private String buffer;
     
-    public HTMLGenerator() {
-        buffer = "<html>\n"
-                + "\t<head>\n"
-                + "\t\t<meta charset=\"utf-8\">\n"
-                + "\t\t<title>";
-    }
-
     @Override
     public void GenerateDocument(Resolution doc) {
         String resId = "RES-IC-" + format(doc.getId()) + "-" +
                 Calendar.getInstance().get(Calendar.YEAR);
         
-        buffer += resId + "</title>\n"
-                + "\t</head>\n"
-                + "\t<body>\n"
-                + "\t\t<b><center>" + doc.getTitle() + "</center></b><br>\n"
-                + "\t\t<b><center>" + resId + "</center></b><br><br>\n"
-                + "\t\t<b>Atención: </b>" + doc.getAttention() + "<br>\n"
-                + "\t\t<p>" + doc.getIntro() + "</p><br>\n"
-                + "\t\t<b>Resultando único:</b><br>\n"
-                + "\t\t<p>" + doc.getResult() + "<p><br>\n"
-                + "\t\t<b>Considerando único:</b><br>\n"
-                + "\t\t<p>" + doc.getConsider() + "</p><br>\n"
-                + "\t\t<b>Resuelvo:</b><br>\n"
-                + "\t\t<p>" + doc.getResolve() + "</p><br>\n"
-                + "\t\t<b>Notifiquese</b><br>\n"
-                + "\t\t<p>" + doc.getNotify() + "</p>\n"
-                + "\t</body>\n"
-                + "</html>";
+        buffer = createHead(resId)
+                + "	<body class=\"default-font\">\n" +
+"		<b><center>" + doc.getTitle() + "</b><br><br>\n" +
+"		<b>" + resId + "</center></b><br>\n" +
+"		<div>\n" +
+"			<div>\n" +
+"				<pre class=\"default-font\"><b>Atención:	</b></pre>\n" +
+"			</div>\n" +
+"			<div><pre class=\"default-font\">" 
+                + Parameter.getInstance().getParameter("attention") + "</pre>\n" +
+"			</div>\n" +
+"		</div>\n" +
+"\n" +
+"		<div>\n" +
+"			<p>" + doc.getIntro() + "</p><br>\n" +
+"			<b>Resultando único:</b><br>\n" +
+"			<p>" + doc.getResult() + "<p><br>\n" +
+"			<b>Considerando único:</b><br>\n" +
+"			<p>" + doc.getConsider() + "</p><br>\n" +
+"			<b>Resuelvo:</b><br>\n" +
+"			<p>" + doc.getResolve() + "</p><br>\n" +
+"		</div>\n" +
+"\n" +
+"		<div>\n" +
+"			<b>Notifiquese</b><br>\n" +
+"			<pre class=\"indent-notify default-font\">"
+                + Parameter.getInstance().getParameter("notify") + "</pre>\n" +
+"		</div>\n" +
+"	</body>\n" +
+"</html>";
         
         try {
             FileOutputStream file = new FileOutputStream(resId + ".html");
@@ -61,5 +68,41 @@ public class HTMLGenerator implements IDocumentGenerator{
             return "0" + id;
         
         return String.valueOf(id);
+    }
+    
+    private String createHead(String resId) {
+        return "<html>\n" +
+"	<head>\n" +
+"		<meta charset=\"utf-8\">\n" +
+"		<title>" + resId + "</title>\n" +
+"		<style>\n" +
+"			body {\n" +
+"				margin: auto 28%;\n" +
+"				text-align:justify;\n" +
+"			}\n" +
+"\n" +
+"			.default-font {\n" +
+"				font-family: sans-serif;\n" +
+"				font-style: normal;\n" +
+"			}\n" +
+"			div {\n" +
+"				overflow: hidden;\n" +
+"			}\n" +
+"\n" +
+"			div div {\n" +
+"				display: inline;\n" +
+"				float: left;\n" +
+"			}\n" +
+"\n" +
+"			.indent-attention {\n" +
+"				margin-left: 5%;\n" +
+"			}\n" +
+"\n" +
+"			.indent-notify {\n" +
+"				text-align: left;\n" +
+"				margin-left: 43%;\n" +
+"			}\n" +
+"		</style>\n" +
+"	</head>";
     }
 }
