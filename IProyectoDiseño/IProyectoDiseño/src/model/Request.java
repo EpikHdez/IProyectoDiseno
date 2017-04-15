@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package model;
-import controller.DTOResolution;
+
 import controller.DirectorResolution;
 import controller.ResolutionBuilder;
 import java.io.File;

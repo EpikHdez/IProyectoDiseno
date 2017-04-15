@@ -8,6 +8,7 @@ package controller;
 import java.util.ArrayList;
 import model.Course;
 import model.Request;
+import model.Resolution;
 
 /**
  *
@@ -23,8 +24,8 @@ public class FacadeCoordinator {
     public void createRequest(DTORequest dtoRequest) {
         school.insertRequest(dtoRequest);
     }
-    public void createResolution(DTOResolution dtoResolution){
-        
+    public void createResolution(Resolution res){
+        school.setResolution(res);
     }
     public void viewRequestStadistics(){
     }
@@ -63,5 +64,9 @@ public class FacadeCoordinator {
     }
     public void CancelRequest(String message){
         school.cancelRequest(message);
+    }
+    
+    public Resolution createTemplateResolution() {
+        return school.createTemplateResolution();
     }
 }

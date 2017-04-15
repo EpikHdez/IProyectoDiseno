@@ -7,6 +7,7 @@ package view;
 
 import controller.UIResolution;
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
 /**
  *
@@ -20,49 +21,55 @@ public class FrResolution extends javax.swing.JFrame {
     public FrResolution() {
         uiResolution= new UIResolution();
         initComponents();
-        //uiResolution.getTemplate(this);
+        uiResolution.createTemplateResolution(this);
+       
+
         
     }
 
-    public JTextArea getTxtconsider() {
-        return txtconsider;
-    }
 
-    public void setTxtconsider(JTextArea txtconsider) {
-        this.txtconsider = txtconsider;
-    }
-
-    public JTextArea getTxtintro() {
+    public JTextPane getTxtintro() {
         return txtintro;
     }
 
-    public void setTxtintro(JTextArea txtintro) {
+    public void setTxtintro(JTextPane txtintro) {
         this.txtintro = txtintro;
     }
 
-    public JTextArea getTxtnotify() {
+    public JTextPane getTxtconsider() {
+        return txtconsider;
+    }
+
+    public void setTxtconsider(JTextPane txtconsider) {
+        this.txtconsider = txtconsider;
+    }
+
+    public JTextPane getTxtnotify() {
         return txtnotify;
     }
 
-    public void setTxtnotify(JTextArea txtnotify) {
+    public void setTxtnotify(JTextPane txtnotify) {
         this.txtnotify = txtnotify;
     }
 
-    public JTextArea getTxtresolve() {
+    public JTextPane getTxtresolve() {
         return txtresolve;
     }
 
-    public void setTxtresolve(JTextArea txtresolve) {
+    public void setTxtresolve(JTextPane txtresolve) {
         this.txtresolve = txtresolve;
     }
 
-    public JTextArea getTxtresult() {
+    public JTextPane getTxtresult() {
         return txtresult;
     }
 
-    public void setTxtresult(JTextArea txtresult) {
+    public void setTxtresult(JTextPane txtresult) {
         this.txtresult = txtresult;
     }
+
+   
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -76,31 +83,30 @@ public class FrResolution extends javax.swing.JFrame {
         jDialog1 = new javax.swing.JDialog();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtintro = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        txtintro = new javax.swing.JTextPane();
         jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtresult = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtresult = new javax.swing.JTextPane();
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtconsider = new javax.swing.JTextArea();
-        btnaddConsideration = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtconsider = new javax.swing.JTextPane();
         jLabel4 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        txtresolve = new javax.swing.JTextArea();
         jLabel9 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtresolve = new javax.swing.JTextPane();
         jLabel3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        txtnotify = new javax.swing.JTextArea();
         btnok = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtnotify = new javax.swing.JTextPane();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
@@ -126,15 +132,13 @@ public class FrResolution extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtintro.setColumns(20);
-        txtintro.setRows(5);
-        jScrollPane1.setViewportView(txtintro);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 760, 300));
-
         jLabel1.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         jLabel1.setText("Introducción:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
+
+        jScrollPane6.setViewportView(txtintro);
+
+        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 710, 310));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/images/5193848-white-wallpaper.jpg"))); // NOI18N
         jLabel6.setText("jLabel2");
@@ -144,15 +148,13 @@ public class FrResolution extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtresult.setColumns(20);
-        txtresult.setRows(5);
-        jScrollPane2.setViewportView(txtresult);
-
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 770, 300));
-
         jLabel7.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         jLabel7.setText("Resultado:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
+
+        jScrollPane1.setViewportView(txtresult);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 710, 300));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/images/5193848-white-wallpaper.jpg"))); // NOI18N
         jLabel5.setText("jLabel2");
@@ -162,23 +164,13 @@ public class FrResolution extends javax.swing.JFrame {
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtconsider.setColumns(20);
-        txtconsider.setRows(5);
-        jScrollPane3.setViewportView(txtconsider);
-
-        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 780, 300));
-
-        btnaddConsideration.setText("Agregar Considerando");
-        btnaddConsideration.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnaddConsiderationActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnaddConsideration, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 420, -1, -1));
-
         jLabel8.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         jLabel8.setText("Considerando:");
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
+
+        jScrollPane2.setViewportView(txtconsider);
+
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 710, 300));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/images/5193848-white-wallpaper.jpg"))); // NOI18N
         jLabel4.setText("jLabel2");
@@ -188,15 +180,13 @@ public class FrResolution extends javax.swing.JFrame {
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtresolve.setColumns(20);
-        txtresolve.setRows(5);
-        jScrollPane4.setViewportView(txtresolve);
-
-        jPanel4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 728, 300));
-
         jLabel9.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         jLabel9.setText("Resuelvo:");
         jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
+
+        jScrollPane3.setViewportView(txtresolve);
+
+        jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 710, 300));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/images/5193848-white-wallpaper.jpg"))); // NOI18N
         jLabel3.setText("jLabel2");
@@ -206,23 +196,21 @@ public class FrResolution extends javax.swing.JFrame {
 
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtnotify.setColumns(20);
-        txtnotify.setRows(5);
-        jScrollPane5.setViewportView(txtnotify);
-
-        jPanel5.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 99, 793, 299));
-
         btnok.setText("Aceptar");
         btnok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnokActionPerformed(evt);
             }
         });
-        jPanel5.add(btnok, new org.netbeans.lib.awtextra.AbsoluteConstraints(819, 416, -1, -1));
+        jPanel5.add(btnok, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 420, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         jLabel10.setText("Notifíquese:");
         jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 60, -1, -1));
+
+        jScrollPane4.setViewportView(txtnotify);
+
+        jPanel5.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 710, 300));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/images/5193848-white-wallpaper.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -296,11 +284,6 @@ public class FrResolution extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnViewRequestActionPerformed
 
-    private void btnaddConsiderationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddConsiderationActionPerformed
-        // TODO add your handling code here:
-        uiResolution.addConsideration(this);
-    }//GEN-LAST:event_btnaddConsiderationActionPerformed
-
     private void btnokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnokActionPerformed
         // TODO add your handling code here:
         uiResolution.createResolution(this);
@@ -353,7 +336,6 @@ public class FrResolution extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnNewRequest;
     private javax.swing.JMenuItem btnSaveAs;
     private javax.swing.JMenuItem btnViewRequest;
-    private javax.swing.JButton btnaddConsideration;
     private javax.swing.JButton btnok;
     private javax.swing.JMenuItem btnviewStadistics;
     private javax.swing.JDialog jDialog1;
@@ -379,12 +361,12 @@ public class FrResolution extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea txtconsider;
-    private javax.swing.JTextArea txtintro;
-    private javax.swing.JTextArea txtnotify;
-    private javax.swing.JTextArea txtresolve;
-    private javax.swing.JTextArea txtresult;
+    private javax.swing.JTextPane txtconsider;
+    private javax.swing.JTextPane txtintro;
+    private javax.swing.JTextPane txtnotify;
+    private javax.swing.JTextPane txtresolve;
+    private javax.swing.JTextPane txtresult;
     // End of variables declaration//GEN-END:variables
 }

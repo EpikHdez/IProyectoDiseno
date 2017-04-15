@@ -142,6 +142,7 @@ public final class RequestsManager extends Manager {
     }
     
     public void setResolution(Resolution res) {
+        currentRequest.setRequestState(PROCESSED);
         currentRequest.setResolution(res);
     }
     

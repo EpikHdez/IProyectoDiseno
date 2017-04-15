@@ -7,6 +7,7 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.Date;
+import model.Resolution;
 import view.FrResolution;
 
 /**
@@ -14,9 +15,9 @@ import view.FrResolution;
  * @author Usuario
  */
 public class UIResolution {
-    private DTOResolution dtoResolution; 
+    private Resolution r; 
     private FacadeCoordinator facade; 
-    private ArrayList<String> considerations =new ArrayList<String>();
+
 
     public UIResolution() {
         facade=new FacadeCoordinator();
@@ -25,27 +26,24 @@ public class UIResolution {
     public void createResolution(FrResolution frResolution)
     {
         
-        Date date = new Date();
-        dtoResolution.setIntro(frResolution.getTxtintro().getText());
-        dtoResolution.setNotify(frResolution.getTxtnotify().getText());
-        dtoResolution.setResolve(frResolution.getTxtresolve().getText());
-        dtoResolution.setResult(frResolution.getTxtresult().getText());
-        dtoResolution.setConsiderations(considerations);
-        dtoResolution.setDate(date);
-        
+     
+        r.setIntro(frResolution.getTxtintro().getText());
+        r.setNotify(frResolution.getTxtnotify().getText());
+        r.setResolve(frResolution.getTxtresolve().getText());
+        r.setResult(frResolution.getTxtresult().getText());
+        r.setConsider(frResolution.getTxtconsider().getText());
+       
+        facade.createResolution(r);
     }
     
-    public void addConsideration(FrResolution frResolution){
-        considerations.add(frResolution.getTxtconsider().getText());                
-    }
-    public void constructResolution(FrResolution frResolution)
-    {
-        
-        facade.createResolution(dtoResolution);
-        
-        
-        
-        
-        
+ 
+  
+    public void createTemplateResolution(FrResolution frResolution) {
+      r=facade.createTemplateResolution();
+       frResolution.getTxtintro().setText(r.getIntro());
+       frResolution.getTxtnotify().setText(r.getNotify());
+       frResolution.getTxtresolve().setText(r.getResolve());
+       frResolution.getTxtresult().setText(r.getResult());
+       frResolution.getTxtconsider().setText(r.getConsider());
     }
 }
