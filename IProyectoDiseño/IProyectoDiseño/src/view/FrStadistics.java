@@ -8,7 +8,9 @@ package view;
 import controller.UIStadistics;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.io.File;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import org.jfree.chart.ChartFactory;
@@ -184,6 +186,7 @@ public class FrStadistics extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         btnnewRequest = new javax.swing.JMenuItem();
+        btnExel = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btnviewRequest = new javax.swing.JMenuItem();
         btnviewStadistics = new javax.swing.JMenuItem();
@@ -338,6 +341,14 @@ public class FrStadistics extends javax.swing.JFrame {
         });
         jMenu1.add(btnnewRequest);
 
+        btnExel.setText("Cargar Excel...");
+        btnExel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExelActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnExel);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Ver ");
@@ -413,6 +424,14 @@ public class FrStadistics extends javax.swing.JFrame {
         uiStadistics.processedRequestsInDateRange(this);
     }//GEN-LAST:event_btnsearchActionPerformed
 
+    private void btnExelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExelActionPerformed
+        // TODO add your handling code here:
+        JFileChooser jfc= new JFileChooser();
+        jfc.showOpenDialog(null);
+        File f=jfc.getSelectedFile();
+        String filename= f.getAbsolutePath();
+    }//GEN-LAST:event_btnExelActionPerformed
+
   
     public static void main(String args[]) {
         
@@ -443,6 +462,7 @@ public class FrStadistics extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnExel;
     private javax.swing.JMenuItem btnnewRequest;
     private javax.swing.JButton btnok;
     private javax.swing.JToggleButton btnsearch;

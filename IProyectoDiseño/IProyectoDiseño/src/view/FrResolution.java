@@ -7,8 +7,9 @@ package view;
 
 import controller.EDocType;
 import controller.UIResolution;
+import java.io.File;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
 /**
@@ -113,6 +114,7 @@ public class FrResolution extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         btnNewRequest = new javax.swing.JMenuItem();
         btnSaveAs = new javax.swing.JMenuItem();
+        btnExel = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         btnViewRequest = new javax.swing.JMenuItem();
         btnviewStadistics = new javax.swing.JMenuItem();
@@ -232,6 +234,14 @@ public class FrResolution extends javax.swing.JFrame {
         });
         jMenu3.add(btnSaveAs);
 
+        btnExel.setText("Cargar Excel...");
+        btnExel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExelActionPerformed(evt);
+            }
+        });
+        jMenu3.add(btnExel);
+
         jMenuBar2.add(jMenu3);
 
         jMenu4.setText("Ver ");
@@ -300,6 +310,14 @@ public class FrResolution extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnviewStadisticsActionPerformed
 
+    private void btnExelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExelActionPerformed
+        // TODO add your handling code here:
+        JFileChooser jfc= new JFileChooser();
+        jfc.showOpenDialog(null);
+        File f=jfc.getSelectedFile();
+        String filename= f.getAbsolutePath();
+    }//GEN-LAST:event_btnExelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -336,6 +354,7 @@ public class FrResolution extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnExel;
     private javax.swing.JMenuItem btnNewRequest;
     private javax.swing.JMenuItem btnSaveAs;
     private javax.swing.JMenuItem btnViewRequest;

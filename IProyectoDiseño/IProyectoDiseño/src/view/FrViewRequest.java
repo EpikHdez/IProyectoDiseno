@@ -10,8 +10,10 @@ import java.awt.Color;
 import static java.awt.Color.blue;
 import static java.awt.Color.green;
 import static java.awt.Color.red;
+import java.io.File;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
@@ -268,6 +270,7 @@ public class FrViewRequest extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         btnNewRequest1 = new javax.swing.JMenuItem();
         btnNewResolution1 = new javax.swing.JMenuItem();
+        btnExel = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         btnViewRequest1 = new javax.swing.JMenuItem();
         btnviewStadistics = new javax.swing.JMenuItem();
@@ -504,7 +507,7 @@ public class FrViewRequest extends javax.swing.JFrame {
         getContentPane().add(lbname, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, -1, -1));
 
         jLabel12.setText("Solicitud #");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, 20));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, -1, 20));
 
         jLabel37.setText("Teléfono");
         getContentPane().add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, -1));
@@ -565,7 +568,7 @@ public class FrViewRequest extends javax.swing.JFrame {
                 cdRequestActionPerformed(evt);
             }
         });
-        getContentPane().add(cdRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 70, 20));
+        getContentPane().add(cdRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 20, 70, 20));
 
         jLabel52.setText("Nombre");
         getContentPane().add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, -1, -1));
@@ -626,6 +629,14 @@ public class FrViewRequest extends javax.swing.JFrame {
             }
         });
         jMenu5.add(btnNewResolution1);
+
+        btnExel.setText("Cargar Excel...");
+        btnExel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExelActionPerformed(evt);
+            }
+        });
+        jMenu5.add(btnExel);
 
         jMenuBar3.add(jMenu5);
 
@@ -698,6 +709,14 @@ public class FrViewRequest extends javax.swing.JFrame {
         uiRequest.CancelRequest(this);
     }//GEN-LAST:event_btncancelActionPerformed
 
+    private void btnExelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExelActionPerformed
+        // TODO add your handling code here:
+        JFileChooser jfc= new JFileChooser();
+        jfc.showOpenDialog(null);
+        File f=jfc.getSelectedFile();
+        String filename= f.getAbsolutePath();
+    }//GEN-LAST:event_btnExelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -736,6 +755,7 @@ public class FrViewRequest extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFrame FrViewRequest;
     private javax.swing.JButton btnCancelRequest;
+    private javax.swing.JMenuItem btnExel;
     private javax.swing.JMenuItem btnNewRequest;
     private javax.swing.JMenuItem btnNewRequest1;
     private javax.swing.JMenuItem btnNewResolution;

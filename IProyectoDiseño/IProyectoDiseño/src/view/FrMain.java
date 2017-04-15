@@ -5,6 +5,9 @@
  */
 package view;
 
+import java.io.File;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author Ximena
@@ -29,8 +32,9 @@ public class FrMain extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        btnexel = new javax.swing.JMenu();
         btnNewRequest = new javax.swing.JMenuItem();
+        btnExel = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btnViewRequest = new javax.swing.JMenuItem();
         btnviewStadistics = new javax.swing.JMenuItem();
@@ -45,7 +49,7 @@ public class FrMain extends javax.swing.JFrame {
 
         jMenuBar1.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 14)); // NOI18N
 
-        jMenu1.setText("Archivo");
+        btnexel.setText("Archivo");
 
         btnNewRequest.setText("Nueva Solicitud...");
         btnNewRequest.addActionListener(new java.awt.event.ActionListener() {
@@ -53,9 +57,17 @@ public class FrMain extends javax.swing.JFrame {
                 btnNewRequestActionPerformed(evt);
             }
         });
-        jMenu1.add(btnNewRequest);
+        btnexel.add(btnNewRequest);
 
-        jMenuBar1.add(jMenu1);
+        btnExel.setText("Cargar Excel...");
+        btnExel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExelActionPerformed(evt);
+            }
+        });
+        btnexel.add(btnExel);
+
+        jMenuBar1.add(btnexel);
 
         jMenu2.setText("Ver ");
 
@@ -105,6 +117,14 @@ public class FrMain extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnviewStadisticsActionPerformed
 
+    private void btnExelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExelActionPerformed
+        // TODO add your handling code here:
+        JFileChooser jfc= new JFileChooser();
+        jfc.showOpenDialog(null);
+        File f=jfc.getSelectedFile();
+        String filename= f.getAbsolutePath();
+    }//GEN-LAST:event_btnExelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -141,11 +161,12 @@ public class FrMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnExel;
     private javax.swing.JMenuItem btnNewRequest;
     private javax.swing.JMenuItem btnViewRequest;
+    private javax.swing.JMenu btnexel;
     private javax.swing.JMenuItem btnviewStadistics;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
