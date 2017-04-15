@@ -5,10 +5,12 @@
  */
 package controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JFileChooser;
 import model.Course;
 import model.Employee;
 import model.Group;
@@ -80,5 +82,19 @@ public class UIStadistics {
             dataset.setValue(employee.getValue(), "", employee.getKey().getName());
         }
         return dataset;
+    }
+      public void loadfile(){
+        JFileChooser jfc= new JFileChooser();
+        jfc.setFileFilter(new FileTypeFilter(".xls","Excel"));
+        jfc.setFileFilter(new FileTypeFilter(".xlsx","Excel"));
+        jfc.setAcceptAllFileFilterUsed(false);
+        File f=jfc.getSelectedFile();
+        int result=jfc.showOpenDialog(null);
+        if(result==JFileChooser.APPROVE_OPTION){
+           jfc.getSelectedFile().getPath();
+           
+           FacadeCoordinator facade= new FacadeCoordinator();
+           facade.loadRequests( jfc.getSelectedFile().getPath());
+        }
     }
 }

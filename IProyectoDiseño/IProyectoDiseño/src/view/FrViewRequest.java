@@ -725,10 +725,7 @@ public class FrViewRequest extends javax.swing.JFrame {
 
     private void btnExelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExelActionPerformed
         // TODO add your handling code here:
-        JFileChooser jfc= new JFileChooser();
-        jfc.showOpenDialog(null);
-        File f=jfc.getSelectedFile();
-        String filename= f.getAbsolutePath();
+      uiRequest.loadfile();
     }//GEN-LAST:event_btnExelActionPerformed
 
     /**

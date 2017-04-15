@@ -5,8 +5,11 @@
  */
 package view;
 
+import controller.FacadeCoordinator;
+import controller.FileTypeFilter;
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
 
 /**
  *
@@ -120,9 +123,18 @@ public class FrMain extends javax.swing.JFrame {
     private void btnExelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExelActionPerformed
         // TODO add your handling code here:
         JFileChooser jfc= new JFileChooser();
-        jfc.showOpenDialog(null);
+        jfc.setFileFilter(new FileTypeFilter(".xls","Excel"));
+        jfc.setFileFilter(new FileTypeFilter(".xlsx","Excel"));
+        jfc.setAcceptAllFileFilterUsed(false);
         File f=jfc.getSelectedFile();
-        String filename= f.getAbsolutePath();
+        int result=jfc.showOpenDialog(null);
+        if(result==JFileChooser.APPROVE_OPTION){
+           jfc.getSelectedFile().getPath();
+           
+           FacadeCoordinator facade= new FacadeCoordinator();
+           facade.loadRequests( jfc.getSelectedFile().getPath());
+        }
+        
     }//GEN-LAST:event_btnExelActionPerformed
 
     /**

@@ -5,11 +5,13 @@
  */
 package controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 
 import javax.swing.JOptionPane;
 import model.Course;
@@ -227,6 +229,21 @@ public class UIRequest {
     public void CancelRequest(FrViewRequest frviewrequest){
         facade.CancelRequest(frviewrequest.getTxtMotivo().getText());
         setallRequest(frviewrequest);
+    }
+    
+    public void loadfile(){
+        JFileChooser jfc= new JFileChooser();
+        jfc.setFileFilter(new FileTypeFilter(".xls","Excel"));
+        jfc.setFileFilter(new FileTypeFilter(".xlsx","Excel"));
+        jfc.setAcceptAllFileFilterUsed(false);
+        File f=jfc.getSelectedFile();
+        int result=jfc.showOpenDialog(null);
+        if(result==JFileChooser.APPROVE_OPTION){
+           jfc.getSelectedFile().getPath();
+           
+           FacadeCoordinator facade= new FacadeCoordinator();
+           facade.loadRequests( jfc.getSelectedFile().getPath());
+        }
     }
     
 }

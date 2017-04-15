@@ -79,8 +79,10 @@ public class FacadeCoordinator {
     public HashMap<Course,Integer> top5CoursesResolutionsByPeriod(String period){
         return school.top5CoursesResolutionsByPeriod(period);
     }
-     public HashMap<Employee, Integer> top3ProfessorsResolutions() {
+    public HashMap<Employee, Integer> top3ProfessorsResolutions() {
         return school.top3ProfessorsResolutions();
     }
-     
+    public void loadRequests(String path) {
+        school.loadRequests(path);
+    }
 }
