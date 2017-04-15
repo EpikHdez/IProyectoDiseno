@@ -40,12 +40,12 @@ public class School  {
     }
     
     
-        private DAORequest getRequestFile() {
+    private DAORequest getRequestsFile(String path) {
         try {
-            FileInputStream fis = new FileInputStream(new File("src//files//DatosFormulario.xlsx"));
+            FileInputStream fis = new FileInputStream(new File(path));
             return new DAORequest(fis);
         } catch(Exception ex) {
-            System.out.println("error from getRequest file");
+            System.out.println("Error from getRequest file");
             System.out.println(ex.getMessage());
         }
         
@@ -64,11 +64,17 @@ public class School  {
     
     private void loadData() {
         DAOData data = getDataFile();
-        DAORequest req = getRequestFile(); 
+        DAORequest req = getRequestsFile("src//files//DatosFormulario.xlsx"); 
         employeesManager = new EmployeesManager(data);
         plansManager = new PlansManager(data);
         groupsManager = new GroupsManager(data);
         requestsManager = new RequestsManager(req);
+    }
+    
+    public void loadRequests(String path) {
+        DAORequest data = getRequestsFile(path);
+        requestsManager.setDAOData(data);
+        requestsManager.readData();
     }
    
     public void insertRequest(DTORequest req) {

@@ -23,7 +23,6 @@ import model.Student;
  * @author Usuario
  */
 public final class RequestsManager extends Manager {
-   // private final DAOData daoRequest;
     private Request currentRequest;
     private DAORequest data; 
     
@@ -152,10 +151,14 @@ public final class RequestsManager extends Manager {
               +" con el profesor "+ currentRequest.getGroup().getProfessor().getName()+".";
       SendMail.send(currentRequest.getAffected().getEmail(),subject ,info, "correo.informativo.xbf@gmail.com", "12345678A");
     }
+    
+    public void setDAOData(DAORequest data) {
+        this.data = data;
+    }
 
     @Override
     public void readData() {
-        elements = data.readRequests();
+        elements.addAll(data.readRequests());
     }
     
     public void CancelRequest(String message){
