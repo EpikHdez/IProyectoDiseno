@@ -31,6 +31,7 @@ public abstract class ResolutionBuilder {
     }
     
     public abstract void buildTitle();
+    public abstract void buildAttention();
     public abstract void buildIntro();
     public abstract void buildResult();
     public abstract void buildConsider();

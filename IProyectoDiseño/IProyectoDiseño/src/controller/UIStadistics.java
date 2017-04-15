@@ -13,10 +13,7 @@ import model.Course;
 import model.Employee;
 import model.Group;
 import model.Request;
-import static org.apache.xmlbeans.impl.jam.internal.javadoc.JavadocRunner.start;
-import static org.apache.xmlbeans.impl.schema.StscState.end;
 import org.jfree.data.category.DefaultCategoryDataset;
-import view.FrRequest;
 import view.FrStadistics;
 
 /**

@@ -14,6 +14,7 @@ import java.util.Date;
  */
 public class Resolution {
     private int id; 
+    private String attention;
     private String title;
     private String intro; 
     private String result;
@@ -29,6 +30,14 @@ public class Resolution {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getAttention() {
+        return attention;
+    }
+
+    public void setAttention(String attention) {
+        this.attention = attention;
     }
 
     public String getTitle() {

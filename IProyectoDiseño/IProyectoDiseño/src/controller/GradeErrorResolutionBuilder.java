@@ -14,6 +14,12 @@ import model.Parameter;
  * @author Usuario
  */
 public class GradeErrorResolutionBuilder extends ResolutionBuilder{
+
+    @Override
+    public void buildAttention() {
+        resolution.setAttention(Parameter.getInstance().getParameter("attention"));
+    }
+    
     @Override
     public void buildTitle() {
         resolution.setTitle(Parameter.getInstance().getParameter("resolutionTitle"));
