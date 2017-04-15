@@ -154,7 +154,7 @@ public class School  {
         return requestsManager.processedRequestsInDateRange(start, end);
     }
     
-    public ArrayList<Course> createTop3Professors(String period){
+    public ArrayList<Course> top5CoursesResolutionsByPeriod(String period){
         return requestsManager.top5CoursesResolutionsByPeriod(period);
     }
     
