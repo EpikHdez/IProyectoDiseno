@@ -8,6 +8,7 @@ package controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import model.Course;
 import model.Employee;
 import model.Group;
@@ -124,10 +125,10 @@ public class School  {
     
     
     
-    public Group selectGroup(int groupNumber, String courseCode) {
+    public Group selectGroup(String period, int groupNumber, String courseCode) {
         //Se juntan para enviarlo buscar, ya que para buscar se recibe un
         //solo parametro
-        String toSearch = groupNumber + "-" + courseCode;
+        String toSearch = period + "-" + groupNumber + "-" + courseCode;
         
         return (Group) groupsManager.select(toSearch);
     }
@@ -146,17 +147,22 @@ public class School  {
     public void setResolution(Resolution res) {
         requestsManager.setResolution(res);
     }
+    
    
     
-    public ArrayList<Resolution> createTop5Resolutions(){
-        ArrayList<Resolution> resolutions = new ArrayList<Resolution>(); 
-        return resolutions;
+    public ArrayList<Request> processedRequestsInDateRange(Date start, Date end) {
+        return requestsManager.processedRequestsInDateRange(start, end);
     }
     
-    public ArrayList<Employee> createTop3Professors(){
-        ArrayList<Employee> employees = new ArrayList<Employee>(); 
-        return employees;
+    public ArrayList<Course> createTop3Professors(String period){
+        return requestsManager.top5CoursesResolutionsByPeriod(period);
     }
+    
+    public ArrayList<Employee> top3ProfessorsResolutions() {
+        return requestsManager.top3ProfessorsResolutions();
+    }
+    
+    
     
     public boolean createDocument(EDocType docType){
         //we have to implement this

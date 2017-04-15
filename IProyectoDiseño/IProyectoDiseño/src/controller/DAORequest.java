@@ -90,7 +90,7 @@ public class DAORequest {
             }
             if(carnet != 0){
                 affected = new Student(Integer.toString(carnet), name, email, Integer.toString(celStu)); 
-                group = School.getInstance().selectGroup(numberGroup,course); 
+                group = School.getInstance().selectGroup(period, numberGroup,course); 
                 einconsistencie = identifyEInconsistencie(inconsistencie); 
                 requests.add(new Request(new Date(2017, 5, 12), description, einconsistencie, affected, affected, group));
             }

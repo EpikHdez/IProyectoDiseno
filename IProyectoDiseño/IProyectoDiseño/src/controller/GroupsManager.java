@@ -46,16 +46,19 @@ public final class GroupsManager extends Manager {
     @Override
     public Object select(String id) {
         String[] parameters = id.split("-");
-        int groupNumber = Integer.parseInt(parameters[0]);
-        String codeCourse = parameters[1];
+        String period = parameters[0];
+        int groupNumber = Integer.parseInt(parameters[1]);
+        String codeCourse = parameters[2];
         Group g;
         
         for(Object o : elements) {
             g = (Group) o;
             
-            if(g.getNumber() == groupNumber) {
-                if (g.getCourse().getCode().equals(codeCourse))
-                    return g;
+            if(g.getPeriod().equals(period)) {
+                if(g.getNumber() == groupNumber) {
+                    if (g.getCourse().getCode().equals(codeCourse))
+                        return g;
+                }
             }
         }
         
