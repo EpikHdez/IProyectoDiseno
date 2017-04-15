@@ -24,7 +24,7 @@ public class UIResolution {
         facade=new FacadeCoordinator();
     }
    
-    public void createResolution(FrResolution frResolution)
+    public void createResolution(FrResolution frResolution,EDocType format)
     {
         
      
@@ -33,7 +33,8 @@ public class UIResolution {
         r.setResolve(frResolution.getTxtresolve().getText());
         r.setResult(frResolution.getTxtresult().getText());
         r.setConsider(frResolution.getTxtconsider().getText());
-        facade.createResolution(r);
+       
+        facade.createResolution(r,format);
         JOptionPane.showMessageDialog(frResolution, "Se ha creado una Resolución con Éxito.");
     }
     

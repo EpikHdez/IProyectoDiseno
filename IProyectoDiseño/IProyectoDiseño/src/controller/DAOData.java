@@ -226,7 +226,7 @@ public class DAOData {
                         case 0: 
                             period = cell.getStringCellValue(); break; 
                         case 1: 
-                            course = School.getInstance().findCourse(cell.getStringCellValue()); break;
+                            course = School.getInstance().selectCourse(cell.getStringCellValue()); break;
                         case 2: 
                             numberGroup = (int) cell.getNumericCellValue();break; 
                         case 3: 

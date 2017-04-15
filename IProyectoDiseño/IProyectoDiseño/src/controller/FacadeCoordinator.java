@@ -27,8 +27,8 @@ public class FacadeCoordinator {
     public void createRequest(DTORequest dtoRequest) {
         school.insertRequest(dtoRequest);
     }
-    public void createResolution(Resolution res){
-        school.setResolution(res);
+    public void createResolution(Resolution res,EDocType format ){
+        school.setResolution(res,format);
     }
     public void viewRequestStadistics(){
     }

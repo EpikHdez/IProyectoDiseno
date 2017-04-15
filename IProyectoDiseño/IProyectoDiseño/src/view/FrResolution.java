@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.EDocType;
 import controller.UIResolution;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
@@ -104,7 +105,6 @@ public class FrResolution extends javax.swing.JFrame {
         txtresolve = new javax.swing.JTextPane();
         jLabel3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        btnok = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         txtnotify = new javax.swing.JTextPane();
@@ -197,14 +197,6 @@ public class FrResolution extends javax.swing.JFrame {
 
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnok.setText("Aceptar");
-        btnok.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnokActionPerformed(evt);
-            }
-        });
-        jPanel5.add(btnok, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 420, -1, -1));
-
         jLabel10.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         jLabel10.setText("Notifíquese:");
         jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 60, -1, -1));
@@ -231,7 +223,7 @@ public class FrResolution extends javax.swing.JFrame {
         });
         jMenu3.add(btnNewRequest);
 
-        btnSaveAs.setText("Guardar Como...");
+        btnSaveAs.setText("Guardar...");
         btnSaveAs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveAsActionPerformed(evt);
@@ -275,6 +267,20 @@ public class FrResolution extends javax.swing.JFrame {
 
     private void btnSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAsActionPerformed
         // TODO add your handling code here:
+        
+        int i=JOptionPane.showConfirmDialog(this, "¿Seguro de que quiere crear una Resolución?","",JOptionPane.YES_NO_OPTION);
+        EDocType format=(EDocType) JOptionPane.showInputDialog(this, 
+        "Guardar como...",
+        "Favorite Pizza",
+        JOptionPane.QUESTION_MESSAGE, 
+        null, 
+        EDocType.values(), 
+        EDocType.values()[0]);
+        if(i==JOptionPane.YES_OPTION){
+            uiResolution.createResolution(this,format);
+            FrViewRequest fvr=new FrViewRequest();
+            fvr.setVisible(true);
+            this.setVisible(false);}
     }//GEN-LAST:event_btnSaveAsActionPerformed
 
     private void btnViewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRequestActionPerformed
@@ -284,17 +290,6 @@ public class FrResolution extends javax.swing.JFrame {
         this.setVisible(false);
 
     }//GEN-LAST:event_btnViewRequestActionPerformed
-
-    private void btnokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnokActionPerformed
-        // TODO add your handling code here:
-        int i=JOptionPane.showConfirmDialog(this, "¿Seguro de que quiere crear una Resolución?","",JOptionPane.YES_NO_OPTION);
-        if(i==JOptionPane.YES_OPTION){
-            uiResolution.createResolution(this);
-            FrViewRequest fvr=new FrViewRequest();
-            fvr.setVisible(true);
-            this.setVisible(false);}
-        
-    }//GEN-LAST:event_btnokActionPerformed
 
     private void btnviewStadisticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewStadisticsActionPerformed
         // TODO add your handling code here:
@@ -343,7 +338,6 @@ public class FrResolution extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnNewRequest;
     private javax.swing.JMenuItem btnSaveAs;
     private javax.swing.JMenuItem btnViewRequest;
-    private javax.swing.JButton btnok;
     private javax.swing.JMenuItem btnviewStadistics;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
