@@ -135,12 +135,12 @@ public class Request {
     private void setResolutionParameters() {
         Parameter prop = Parameter.getInstance();
         
-        prop.setParameter("studentName", this.affected.getName());
-        prop.setParameter("studentCarne", this.affected.getId());
-        prop.setParameter("courseCode", this.group.getCourse().getCode());
-        prop.setParameter("courseName", this.group.getCourse().getName());
-        prop.setParameter("groupNumber", String.valueOf(this.group.getNumber()));
-        prop.setParameter("professor", this.group.getProfessor().getName());
+        prop.setParameter("studentName", this.affected.getName().toUpperCase());
+        prop.setParameter("studentCarne", this.affected.getId().toUpperCase());
+        prop.setParameter("courseCode", this.group.getCourse().getCode().toUpperCase());
+        prop.setParameter("courseName", this.group.getCourse().getName().toUpperCase());
+        prop.setParameter("groupNumber", String.valueOf(this.group.getNumber()).toUpperCase());
+        prop.setParameter("professor", this.group.getProfessor().getName().toUpperCase());
         
         prop.saveParameters();
     }

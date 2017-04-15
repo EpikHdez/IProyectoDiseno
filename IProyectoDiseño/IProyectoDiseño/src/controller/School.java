@@ -142,8 +142,16 @@ public class School  {
         return requestsManager.createTemplateResolution();
     }
     
-    public void setResolution(Resolution res) {
+    public void setResolution(Resolution res, EDocType type) {
         requestsManager.setResolution(res);
+        
+        Package pack = EDocType.class.getPackage();
+        String creatorName = String.format("%s.%sGenerator", pack.getName(), type.name());
+        
+        try {
+            docGenerator = (IDocumentGenerator) Class.forName(creatorName).newInstance();
+            docGenerator.GenerateDocument(res);
+        } catch(Exception ex) {}
     }
     
    
@@ -175,15 +183,6 @@ public class School  {
     public void setDocGenerator(IDocumentGenerator docGenerator) {
         this.docGenerator = docGenerator;
     }
-
-    public Course findCourse(String code){
-        return plansManager.findCourse(code);
-    }
-    
-    public void loadDataGroups(){
-        groupsManager.readData();
-    }
-
  
     public void cancelRequest(String message){
         requestsManager.CancelRequest(message);
