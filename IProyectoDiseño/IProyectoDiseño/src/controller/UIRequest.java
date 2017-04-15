@@ -72,6 +72,10 @@ public class UIRequest {
         dtoRequest.setRequesterId(frrequest.getTxtidr().getText());
         dtoRequest.setRequesterName(frrequest.getTxtnamer().getText());
         facade.createRequest(dtoRequest);
+        JOptionPane.showMessageDialog(frrequest, "Se ha Creado Una Solicitud con Éxito.");
+        FrRequest fr=new FrRequest();
+        fr.setVisible(true);
+        frrequest.setVisible(false);
         }else{
          JOptionPane.showMessageDialog(frrequest, "Se ha Ingresado un Correo o Número de Teléfono Inválido.");
         }
