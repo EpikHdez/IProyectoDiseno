@@ -170,7 +170,7 @@ public final class RequestsManager extends Manager {
         return processed;
     }
     
-    public ArrayList<Course> top5CoursesResolutionsByPeriod(String period) {
+    public HashMap<Course, Integer> top5CoursesResolutionsByPeriod(String period) {
         HashMap<Course, Integer> courses = new HashMap();
         Request r;
         Course c;
@@ -191,20 +191,17 @@ public final class RequestsManager extends Manager {
         return filterTop5Courses(courses);
     }
     
-    private ArrayList<Course> filterTop5Courses(HashMap<Course, Integer> courses) {
-        int counter = 0;
-        int values[] = new int[5]; 
-        ArrayList<Course> top5 = new ArrayList();
+    private HashMap<Course, Integer> filterTop5Courses(HashMap<Course, Integer> courses) {
+        HashMap<Course, Integer> top5 = new HashMap();
         
-        for(Map.Entry<Course, Integer> entry : courses.entrySet()) {
-            if(counter < 5) {
-                top5.add(entry.getKey());
-                values[counter++] = entry.getValue();
+        for(Map.Entry<Course, Integer> oentry : courses.entrySet()) {
+            if(top5.size() <= 5) {
+                top5.put(oentry.getKey(), oentry.getValue());
             } else {
-                for(int i = 0; i < 5; i++) {
-                    if(entry.getValue() > values[i]) {
-                        top5.remove(i);
-                        top5.add(entry.getKey());
+                for(Map.Entry<Course, Integer> ientry : top5.entrySet()) {
+                    if(oentry.getValue() > ientry.getValue()) {
+                        top5.remove(ientry.getKey());
+                        top5.put(oentry.getKey(), oentry.getValue());
                     }
                 }
             }
@@ -213,7 +210,7 @@ public final class RequestsManager extends Manager {
         return top5;
     }
     
-    public ArrayList<Employee> top3ProfessorsResolutions() {
+    public HashMap<Employee, Integer> top3ProfessorsResolutions() {
         HashMap<Employee, Integer> professors = new HashMap();
         Request r;
         Employee e;
@@ -231,20 +228,17 @@ public final class RequestsManager extends Manager {
         return filterTop3Professors(professors);
     }
     
-    private ArrayList<Employee> filterTop3Professors(HashMap<Employee, Integer> professors) {
-        int counter = 0;
-        int values[] = new int[3]; 
-        ArrayList<Employee> top3 = new ArrayList();
+    private HashMap<Employee, Integer> filterTop3Professors(HashMap<Employee, Integer> professors) {
+        HashMap<Employee, Integer> top3 = new HashMap();
         
-        for(Map.Entry<Employee, Integer> entry : professors.entrySet()) {
-            if(counter < 3) {
-                top3.add(entry.getKey());
-                values[counter++] = entry.getValue();
+        for(Map.Entry<Employee, Integer> oentry : professors.entrySet()) {
+            if(top3.size() <= 3) {
+                top3.put(oentry.getKey(), oentry.getValue());
             } else {
-                for(int i = 0; i < 3; i++) {
-                    if(entry.getValue() > values[i]) {
-                        top3.remove(i);
-                        top3.add(entry.getKey());
+                for(Map.Entry<Employee, Integer> ientry : top3.entrySet()) {
+                    if(oentry.getValue() > ientry.getValue()) {
+                        top3.remove(ientry.getKey());
+                        top3.put(oentry.getKey(), oentry.getValue());
                     }
                 }
             }

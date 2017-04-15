@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import model.Course;
 import model.Employee;
 import model.Group;
@@ -151,11 +152,11 @@ public class School  {
         return requestsManager.processedRequestsInDateRange(start, end);
     }
     
-    public ArrayList<Course> top5CoursesResolutionsByPeriod(String period){
+    public HashMap<Course, Integer> top5CoursesResolutionsByPeriod(String period){
         return requestsManager.top5CoursesResolutionsByPeriod(period);
     }
     
-    public ArrayList<Employee> top3ProfessorsResolutions() {
+    public HashMap<Employee, Integer> top3ProfessorsResolutions() {
         return requestsManager.top3ProfessorsResolutions();
     }
     
