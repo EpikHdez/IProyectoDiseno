@@ -12,6 +12,7 @@ import java.io.File;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
@@ -411,6 +412,7 @@ public class FrStadistics extends javax.swing.JFrame {
 
     private void btnokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnokActionPerformed
         // TODO add your handling code here:\
+        try{
         DefaultCategoryDataset dataset;
         dataset= uiStadistics.top5CoursesResolutionsByPeriod(this);
         JFreeChart chart= ChartFactory.createBarChart("Cursos", "", "", dataset, PlotOrientation.HORIZONTAL, false, true, false);
@@ -423,6 +425,9 @@ public class FrStadistics extends javax.swing.JFrame {
         pnRP.add(chartPanel, BorderLayout.CENTER);
         pnRP.validate();
 
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Tiene que seleccionar un periodo.");
+        }
     }//GEN-LAST:event_btnokActionPerformed
 
     private void btnviewStadisticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewStadisticsActionPerformed

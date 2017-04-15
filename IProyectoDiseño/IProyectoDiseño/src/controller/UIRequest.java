@@ -227,8 +227,12 @@ public class UIRequest {
       }
     }
     public void CancelRequest(FrViewRequest frviewrequest){
-        facade.CancelRequest(frviewrequest.getTxtMotivo().getText());
-        setallRequest(frviewrequest);
+        try{
+            facade.CancelRequest(frviewrequest.getTxtMotivo().getText());
+            setallRequest(frviewrequest);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(frviewrequest, "Debe de Seleccionar una Solicitud.");
+        }
     }
     
     public void loadfile(){

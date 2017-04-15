@@ -16,6 +16,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
@@ -694,9 +695,14 @@ public class FrViewRequest extends javax.swing.JFrame {
 
     private void btnNewResolution1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewResolution1ActionPerformed
         // TODO add your handling code here:
+       if(cdRequest.getSelectedItem()!=null){
         FrResolution fr=new FrResolution();
         fr.setVisible(true);
         this.setVisible(false);
+       }else {
+           JOptionPane.showMessageDialog(this, "No puede crear una Resolución, sin haber seleccionado una Solicitud.");
+       }
+       
 
     }//GEN-LAST:event_btnNewResolution1ActionPerformed
 

@@ -162,16 +162,17 @@ public final class RequestsManager extends Manager {
     }
     
     public void CancelRequest(String message){
-      currentRequest.setRequestState(CANCELED);
-      currentRequest.setNote(message);
-      String subject="SOLICITUD "+ currentRequest.getInconsistencie()
-             +currentRequest.getId()+": NO ACEPTADA";
-      String info="Saludos Cordiales,\nSe le informa, que se le ha denegado la solicitud sobre " +currentRequest.getInconsistencie()+"del alumno "+
-              currentRequest.getAffected().getName()+",con identificación " +currentRequest.getAffected().getId()+
-              ", en el curso "+currentRequest.getGroup().getCourse().getCode()+" "+currentRequest.getGroup().getCourse().getName()
-              +" con el profesor "+ currentRequest.getGroup().getProfessor().getName() +".\n Por el siguiente motivo:\n"+message;
-      SendMail.send(currentRequest.getAffected().getEmail(),subject ,info, "correo.informativo.xbf@gmail.com", "12345678A");
-    
+
+        currentRequest.setRequestState(CANCELED);
+        currentRequest.setNote(message);
+        String subject="SOLICITUD "+ currentRequest.getInconsistencie()
+               +currentRequest.getId()+": NO ACEPTADA";
+        String info="Saludos Cordiales,\nSe le informa, que se le ha denegado la solicitud sobre " +currentRequest.getInconsistencie()+"del alumno "+
+                currentRequest.getAffected().getName()+",con identificación " +currentRequest.getAffected().getId()+
+                ", en el curso "+currentRequest.getGroup().getCourse().getCode()+" "+currentRequest.getGroup().getCourse().getName()
+                +" con el profesor "+ currentRequest.getGroup().getProfessor().getName() +".\n Por el siguiente motivo:\n"+message;
+        SendMail.send(currentRequest.getAffected().getEmail(),subject ,info, "correo.informativo.xbf@gmail.com", "12345678A");
+
     }
     
     public ArrayList<Request> processedRequestsInDateRange(Date start, Date end) {
