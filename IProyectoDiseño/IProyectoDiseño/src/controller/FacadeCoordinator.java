@@ -6,7 +6,9 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import model.Course;
+import model.Employee;
 import model.Request;
 import model.Resolution;
 
@@ -68,5 +70,15 @@ public class FacadeCoordinator {
     
     public Resolution createTemplateResolution() {
         return school.createTemplateResolution();
+    }
+    public ArrayList<Request> processedRequestsInDateRange(Date start, Date end) {
+        return school.processedRequestsInDateRange(start, end);
+    }
+    
+    public ArrayList<Course> top5CoursesResolutionsByPeriod(String period){
+        return school.top5CoursesResolutionsByPeriod(period);
+    }
+     public ArrayList<Employee> top3ProfessorsResolutions() {
+        return school.top3ProfessorsResolutions();
     }
 }

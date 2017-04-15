@@ -8,6 +8,9 @@ package view;
 import controller.UIStadistics;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JSpinner;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.ChartPanel;
@@ -33,13 +36,100 @@ import org.jfree.util.Rotation;
 public class FrStadistics extends javax.swing.JFrame {
     private UIStadistics uiStadistics; 
 
+    public JComboBox<String> getCbResolutions() {
+        return cbResolutions;
+    }
+
+    public void setCbResolutions(JComboBox<String> cbResolutions) {
+        this.cbResolutions = cbResolutions;
+    }
+
+    public JLabel getLbcarne() {
+        return lbcarne;
+    }
+
+    public void setLbcarne(JLabel lbcarne) {
+        this.lbcarne = lbcarne;
+    }
+
+    public JLabel getLbcourse() {
+        return lbcourse;
+    }
+
+    public void setLbcourse(JLabel lbcourse) {
+        this.lbcourse = lbcourse;
+    }
+
+    public JLabel getLbgroup() {
+        return lbgroup;
+    }
+
+    public JComboBox<String> getCbperiod() {
+        return cbperiod;
+    }
+
+    public void setCbperiod(JComboBox<String> cbperiod) {
+        this.cbperiod = cbperiod;
+    }
+
+    public void setLbgroup(JLabel lbgroup) {
+        this.lbgroup = lbgroup;
+    }
+
+    public JLabel getLbinconsistence() {
+        return lbinconsistence;
+    }
+
+    public void setLbinconsistence(JLabel lbinconsistence) {
+        this.lbinconsistence = lbinconsistence;
+    }
+
+    public JLabel getLbname() {
+        return lbname;
+    }
+
+    public void setLbname(JLabel lbname) {
+        this.lbname = lbname;
+    }
+
+    public JLabel getLbperiod() {
+        return lbperiod;
+    }
+
+    public void setLbperiod(JLabel lbperiod) {
+        this.lbperiod = lbperiod;
+    }
+
+    public JLabel getLbresolution() {
+        return lbresolution;
+    }
+
+    public void setLbresolution(JLabel lbresolution) {
+        this.lbresolution = lbresolution;
+    }
+
+    public JSpinner getSpFinalD() {
+        return spFinalD;
+    }
+
+    public void setSpFinalD(JSpinner spFinalD) {
+        this.spFinalD = spFinalD;
+    }
+
+    public JSpinner getSpInitialD() {
+        return spInitialD;
+    }
+
+    public void setSpInitialD(JSpinner spInitialD) {
+        this.spInitialD = spInitialD;
+    }
+
     public FrStadistics() {
+        uiStadistics=new UIStadistics();
         initComponents();
         DefaultCategoryDataset dataset= new DefaultCategoryDataset();
-        dataset.setValue(100, "", "Holita");
-        dataset.setValue(150, "", "Holita1");
-        dataset.setValue(200, "", "Holita2");
-        JFreeChart chart= ChartFactory.createBarChart("hola", "", "", dataset, PlotOrientation.HORIZONTAL, false, true, false);
+        dataset=uiStadistics.top3ProfessorsResolutions();
+        JFreeChart chart= ChartFactory.createBarChart("Profesores", "", "", dataset, PlotOrientation.HORIZONTAL, false, true, false);
         CategoryPlot catPlot=chart.getCategoryPlot();
         catPlot.setRangeGridlinePaint(Color.BLACK);
         
@@ -48,6 +138,9 @@ public class FrStadistics extends javax.swing.JFrame {
         pnProf.setLayout(new java.awt.BorderLayout());
         pnProf.add(chartPanel, BorderLayout.CENTER);
         pnProf.validate();
+        uiStadistics.processedRequestsInDateRange(this);
+        uiStadistics.setallPeriods(this);
+        
     }
 
 
@@ -59,17 +152,34 @@ public class FrStadistics extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         pnRP = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        btnokResPer = new javax.swing.JButton();
+        cbperiod = new javax.swing.JComboBox<>();
+        btnok = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         pnProf = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
+        spInitialD = new javax.swing.JSpinner();
+        spFinalD = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        cbResolutions = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        lbname = new javax.swing.JLabel();
+        lbcarne = new javax.swing.JLabel();
+        lbresolution = new javax.swing.JLabel();
+        lbinconsistence = new javax.swing.JLabel();
+        lbperiod = new javax.swing.JLabel();
+        lbcourse = new javax.swing.JLabel();
+        lbgroup = new javax.swing.JLabel();
+        btnsearch = new javax.swing.JToggleButton();
         jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -99,18 +209,17 @@ public class FrStadistics extends javax.swing.JFrame {
         jPanel2.add(pnRP, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 490, 330));
 
         jLabel1.setText("Periodo ");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 70, 20));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, -1, -1));
+        jPanel2.add(cbperiod, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 70, -1));
 
-        btnokResPer.setText("Aceptar");
-        btnokResPer.addActionListener(new java.awt.event.ActionListener() {
+        btnok.setText("Aceptar");
+        btnok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnokResPerActionPerformed(evt);
+                btnokActionPerformed(evt);
             }
         });
-        jPanel2.add(btnokResPer, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 390, -1, -1));
+        jPanel2.add(btnok, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 390, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/images/5193848-white-wallpaper.jpg"))); // NOI18N
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 470));
@@ -130,7 +239,7 @@ public class FrStadistics extends javax.swing.JFrame {
             .addGap(0, 350, Short.MAX_VALUE)
         );
 
-        jPanel3.add(pnProf, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 530, 350));
+        jPanel3.add(pnProf, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 530, 350));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/images/5193848-white-wallpaper.jpg"))); // NOI18N
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 470));
@@ -139,17 +248,77 @@ public class FrStadistics extends javax.swing.JFrame {
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jSpinner1.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(), new java.util.Date(1492139524776L), new java.util.Date(), java.util.Calendar.DAY_OF_MONTH));
-        jPanel4.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, 30));
+        spInitialD.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(), null, new java.util.Date(), java.util.Calendar.DAY_OF_MONTH));
+        jPanel4.add(spInitialD, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, 30));
 
-        jSpinner2.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(), new java.util.Date(1492139542749L), new java.util.Date(), java.util.Calendar.DAY_OF_MONTH));
-        jPanel4.add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, -1, 30));
+        spFinalD.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(), null, new java.util.Date(), java.util.Calendar.DAY_OF_MONTH));
+        jPanel4.add(spFinalD, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, -1, 30));
 
         jLabel2.setText("Fecha Final");
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, -1, -1));
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, -1, -1));
 
         jLabel6.setText("Fecha de Inicio");
-        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, -1, -1));
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
+
+        cbResolutions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbResolutionsActionPerformed(evt);
+            }
+        });
+        jPanel4.add(cbResolutions, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, 130, 30));
+
+        jLabel7.setText("Solicitud");
+        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, -1, 20));
+
+        jLabel8.setText("Periodo ");
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, -1, -1));
+
+        jLabel9.setText("Curso");
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, -1, -1));
+
+        jLabel10.setText("Grupo");
+        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 210, -1, -1));
+
+        jLabel11.setText("Nombre del Estudiante");
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, -1, -1));
+
+        jLabel12.setText("Carné");
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, -1, -1));
+
+        jLabel13.setText("Resolución");
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, -1, -1));
+
+        jLabel14.setText("Situación ");
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, -1));
+
+        lbname.setText("#######################");
+        jPanel4.add(lbname, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, -1, -1));
+
+        lbcarne.setText("#######################");
+        jPanel4.add(lbcarne, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, -1, -1));
+
+        lbresolution.setText("#######################");
+        jPanel4.add(lbresolution, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, -1, -1));
+
+        lbinconsistence.setText("#######################");
+        jPanel4.add(lbinconsistence, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, -1, -1));
+
+        lbperiod.setText("#######################");
+        jPanel4.add(lbperiod, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, -1, -1));
+
+        lbcourse.setText("#######################");
+        jPanel4.add(lbcourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 170, -1, -1));
+
+        lbgroup.setText("#######################");
+        jPanel4.add(lbgroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, -1, -1));
+
+        btnsearch.setText("Buscar");
+        btnsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsearchActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnsearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 390, 100, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/images/5193848-white-wallpaper.jpg"))); // NOI18N
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 470));
@@ -202,15 +371,11 @@ public class FrStadistics extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnnewRequestActionPerformed
 
-    private void btnokResPerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnokResPerActionPerformed
+    private void btnokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnokActionPerformed
         // TODO add your handling code here:\
-        DefaultCategoryDataset dataset= new DefaultCategoryDataset();
-        dataset.setValue(100, "", "Holita");
-        dataset.setValue(150, "", "Holita1");
-        dataset.setValue(200, "", "Holita2");
-        dataset.setValue(150, "", "Holita3");
-        dataset.setValue(200, "", "Holita4");
-        JFreeChart chart= ChartFactory.createBarChart("hola", "", "", dataset, PlotOrientation.HORIZONTAL, false, true, false);
+        DefaultCategoryDataset dataset;
+        dataset= uiStadistics.top5CoursesResolutionsByPeriod(this);
+        JFreeChart chart= ChartFactory.createBarChart("Cursos", "", "", dataset, PlotOrientation.HORIZONTAL, false, true, false);
         CategoryPlot catPlot=chart.getCategoryPlot();
         catPlot.setRangeGridlinePaint(Color.BLACK);
         
@@ -220,7 +385,7 @@ public class FrStadistics extends javax.swing.JFrame {
         pnRP.add(chartPanel, BorderLayout.CENTER);
         pnRP.validate();
 
-    }//GEN-LAST:event_btnokResPerActionPerformed
+    }//GEN-LAST:event_btnokActionPerformed
 
     private void btnviewStadisticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewStadisticsActionPerformed
         // TODO add your handling code here:
@@ -236,6 +401,16 @@ public class FrStadistics extends javax.swing.JFrame {
         fvr.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnviewRequestActionPerformed
+
+    private void cbResolutionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbResolutionsActionPerformed
+        // TODO add your handling code here:
+        uiStadistics.getRequest(this);
+    }//GEN-LAST:event_cbResolutionsActionPerformed
+
+    private void btnsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchActionPerformed
+        // TODO add your handling code here:
+        uiStadistics.processedRequestsInDateRange(this);
+    }//GEN-LAST:event_btnsearchActionPerformed
 
   
     public static void main(String args[]) {
@@ -268,26 +443,43 @@ public class FrStadistics extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnnewRequest;
-    private javax.swing.JButton btnokResPer;
+    private javax.swing.JButton btnok;
+    private javax.swing.JToggleButton btnsearch;
     private javax.swing.JMenuItem btnviewRequest;
     private javax.swing.JMenuItem btnviewStadistics;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cbResolutions;
+    private javax.swing.JComboBox<String> cbperiod;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lbcarne;
+    private javax.swing.JLabel lbcourse;
+    private javax.swing.JLabel lbgroup;
+    private javax.swing.JLabel lbinconsistence;
+    private javax.swing.JLabel lbname;
+    private javax.swing.JLabel lbperiod;
+    private javax.swing.JLabel lbresolution;
     private javax.swing.JPanel pnProf;
     private javax.swing.JPanel pnRP;
+    private javax.swing.JSpinner spFinalD;
+    private javax.swing.JSpinner spInitialD;
     // End of variables declaration//GEN-END:variables
 }

@@ -102,10 +102,7 @@ public class School  {
         return requestsManager.selectAll();
     }
     
-    public ArrayList<Request> viewRequestStadistics(){
-        ArrayList<Request> requests = new ArrayList<Request>(); 
-        return requests; 
-    }
+
     
     public ArrayList<Object> viewEmployees(){
         return employeesManager.elements; 
