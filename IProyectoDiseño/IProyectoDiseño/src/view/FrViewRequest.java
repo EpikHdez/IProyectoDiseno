@@ -13,6 +13,7 @@ import static java.awt.Color.red;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
@@ -23,6 +24,14 @@ import javax.swing.JTextPane;
  */
 public class FrViewRequest extends javax.swing.JFrame {
     private UIRequest uiRequest;
+
+    public JMenuItem getBtnNewResolution1() {
+        return btnNewResolution1;
+    }
+
+    public void setBtnNewResolution1(JMenuItem btnNewResolution1) {
+        this.btnNewResolution1 = btnNewResolution1;
+    }
 
     public JScrollPane getSpmotivo() {
         return spmotivo;

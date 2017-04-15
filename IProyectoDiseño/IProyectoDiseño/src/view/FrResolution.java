@@ -6,6 +6,7 @@
 package view;
 
 import controller.UIResolution;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
@@ -286,7 +287,13 @@ public class FrResolution extends javax.swing.JFrame {
 
     private void btnokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnokActionPerformed
         // TODO add your handling code here:
-        uiResolution.createResolution(this);
+        int i=JOptionPane.showConfirmDialog(this, "¿Seguro de que quiere crear una Resolución?","",JOptionPane.YES_NO_OPTION);
+        if(i==JOptionPane.YES_OPTION){
+            uiResolution.createResolution(this);
+            FrViewRequest fvr=new FrViewRequest();
+            fvr.setVisible(true);
+            this.setVisible(false);}
+        
     }//GEN-LAST:event_btnokActionPerformed
 
     private void btnviewStadisticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewStadisticsActionPerformed

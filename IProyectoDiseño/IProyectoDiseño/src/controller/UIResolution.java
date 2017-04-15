@@ -7,6 +7,7 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import model.Resolution;
 import view.FrResolution;
 
@@ -32,8 +33,8 @@ public class UIResolution {
         r.setResolve(frResolution.getTxtresolve().getText());
         r.setResult(frResolution.getTxtresult().getText());
         r.setConsider(frResolution.getTxtconsider().getText());
-       
         facade.createResolution(r);
+        JOptionPane.showMessageDialog(frResolution, "Se ha creado una Resolución con Éxito.");
     }
     
  
