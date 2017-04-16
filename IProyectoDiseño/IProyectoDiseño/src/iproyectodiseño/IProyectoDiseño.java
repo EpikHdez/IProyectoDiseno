@@ -5,15 +5,7 @@
  */
 package iproyectodiseño;
 
-import controller.DAOData;
-import controller.DTORequest;
-import controller.PlansManager;
 import controller.School;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import view.FrMain;
 
 /**
@@ -31,10 +23,5 @@ public class IProyectoDiseño {
       
         FrMain fm= new FrMain();
         fm.setVisible(true);
-       
-       
- 
-
-
     }
 }
