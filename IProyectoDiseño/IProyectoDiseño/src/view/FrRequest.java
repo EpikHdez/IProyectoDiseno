@@ -14,6 +14,7 @@ import java.io.FileFilter;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -391,33 +392,7 @@ public class FrRequest extends javax.swing.JFrame {
         FrViewRequest fvr=new FrViewRequest();
         this.setVisible(false);
         fvr.setVisible(true);
-        fvr.setDefaultCloseOperation(fvr.DO_NOTHING_ON_CLOSE);
-        fvr.addWindowListener(new WindowListener(){
-            @Override
-            public void windowOpened(WindowEvent e) {
-                System.out.println("window new request openned");
-            }
-            @Override
-            public void windowClosing(WindowEvent e) {
-                School.getInstance().saveRequest();
-                fvr.setVisible(false);
-                fvr.dispose();
-            }
-            @Override
-            public void windowClosed(WindowEvent e) {   
-                School.getInstance().saveRequest();
-                fvr.setVisible(false);
-                fvr.dispose();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}        
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
+       
 
     }//GEN-LAST:event_btnViewRequestActionPerformed
 
@@ -427,10 +402,12 @@ public class FrRequest extends javax.swing.JFrame {
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
         // TODO add your handling code here:
-        
-    
-       
-        uiRequest.createRequest(this);
+         if(!txtcarne.getText().equals("")&&!txtdescription.getText().equals("")&&!txtemail.getText().equals("")&&!txtidr.getText().equals("") 
+           &&!txtname.getText().equals("")&&!txtnamer.getText().equals("")&&!txtphone.getText().equals(""))  {  
+            uiRequest.createRequest(this);} 
+        else{ 
+            JOptionPane.showMessageDialog(this,"Tiene que llenar todos los espacios establecidos."); 
+    } 
         
         
         
@@ -447,33 +424,7 @@ public class FrRequest extends javax.swing.JFrame {
         FrStadistics frstadistics= new FrStadistics();
         frstadistics.setVisible(true);
         this.setVisible(false);
-        frstadistics.setDefaultCloseOperation(frstadistics.DO_NOTHING_ON_CLOSE);
-        frstadistics.addWindowListener(new WindowListener(){
-            @Override
-            public void windowOpened(WindowEvent e) {
-                System.out.println("window new request openned");
-            }
-            @Override
-            public void windowClosing(WindowEvent e) {
-                School.getInstance().saveRequest();
-                frstadistics.setVisible(false);
-                frstadistics.dispose();
-            }
-            @Override
-            public void windowClosed(WindowEvent e) {   
-                School.getInstance().saveRequest();
-                frstadistics.setVisible(false);
-                frstadistics.dispose();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}        
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
+   
 
         
     }//GEN-LAST:event_btnviewStadisticsActionPerformed

@@ -19,6 +19,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
@@ -692,69 +693,20 @@ public class FrViewRequest extends javax.swing.JFrame {
         FrRequest fr=new FrRequest();
         fr.setVisible(true);
         this.setVisible(false);
-        fr.setDefaultCloseOperation(fr.DO_NOTHING_ON_CLOSE);
-        fr.addWindowListener(new WindowListener(){
-            @Override
-            public void windowOpened(WindowEvent e) {
-                System.out.println("window new request openned");
-            }
-            @Override
-            public void windowClosing(WindowEvent e) {
-                School.getInstance().saveRequest();
-                fr.setVisible(false);
-                fr.dispose();
-            }
-            @Override
-            public void windowClosed(WindowEvent e) {   
-                School.getInstance().saveRequest();
-                fr.setVisible(false);
-                fr.dispose();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}        
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
+    
 
     }//GEN-LAST:event_btnNewRequest1ActionPerformed
 
     private void btnNewResolution1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewResolution1ActionPerformed
         // TODO add your handling code here:
-        FrResolution fr=new FrResolution();
-        fr.setVisible(true);
-        this.setVisible(false);
-        fr.setDefaultCloseOperation(fr.DO_NOTHING_ON_CLOSE);
-        fr.addWindowListener(new WindowListener(){
-            @Override
-            public void windowOpened(WindowEvent e) {
-                System.out.println("window new request openned");
-            }
-            @Override
-            public void windowClosing(WindowEvent e) {
-                School.getInstance().saveRequest();
-                fr.setVisible(false);
-                fr.dispose();
-            }
-            @Override
-            public void windowClosed(WindowEvent e) {   
-                School.getInstance().saveRequest();
-                fr.setVisible(false);
-                fr.dispose();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}        
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-
+         if(cdRequest.getSelectedItem()!=null){ 
+            FrResolution fr=new FrResolution(); 
+            fr.setVisible(true); 
+            this.setVisible(false); 
+        }else{ 
+            JOptionPane.showMessageDialog(this, "No se puede realizar una resolución, sin una solicitud seleccionada."); 
+        } 
+        
     }//GEN-LAST:event_btnNewResolution1ActionPerformed
 
     private void btnviewStadisticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewStadisticsActionPerformed
@@ -762,33 +714,7 @@ public class FrViewRequest extends javax.swing.JFrame {
         FrStadistics frstadistics= new FrStadistics();
         frstadistics.setVisible(true);
         this.setVisible(false);
-        frstadistics.setDefaultCloseOperation(frstadistics.DO_NOTHING_ON_CLOSE);
-        frstadistics.addWindowListener(new WindowListener(){
-            @Override
-            public void windowOpened(WindowEvent e) {
-                System.out.println("window new request openned");
-            }
-            @Override
-            public void windowClosing(WindowEvent e) {
-                School.getInstance().saveRequest();
-                frstadistics.setVisible(false);
-                frstadistics.dispose();
-            }
-            @Override
-            public void windowClosed(WindowEvent e) {   
-                School.getInstance().saveRequest();
-                frstadistics.setVisible(false);
-                frstadistics.dispose();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}        
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
+ 
 
 
     }//GEN-LAST:event_btnviewStadisticsActionPerformed
@@ -805,7 +731,11 @@ public class FrViewRequest extends javax.swing.JFrame {
 
     private void btncancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelActionPerformed
         // TODO add your handling code here:
-        uiRequest.CancelRequest(this);
+           if(cdRequest.getSelectedItem()!=null){ 
+            uiRequest.CancelRequest(this);} 
+         else{ 
+            JOptionPane.showMessageDialog(this, "Tiene que seleccionar una solicitud, para poder cancelar."); 
+         } 
     }//GEN-LAST:event_btncancelActionPerformed
 
     private void btnExelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExelActionPerformed
