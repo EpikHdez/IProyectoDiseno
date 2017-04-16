@@ -23,6 +23,18 @@ public class HTMLGenerator implements IDocumentGenerator{
         String resId = "RES-IC-" + format(doc.getId()) + "-" +
                 Calendar.getInstance().get(Calendar.YEAR);
         
+        String attention[] = doc.getAttention().split("\n");
+        int i = 0;
+        
+        System.out.println(attention[0]);
+        System.out.println(attention[1]);
+        
+        while(attention[1].charAt(i) == '\t' || attention[1].charAt(i) == ' ')
+            i++;
+        
+        System.out.println(i);
+        attention[1] = attention[1].substring(i);
+        
         buffer = createHead(resId)
                 + "	<body class=\"default-font\">\n" +
 "		<b><center>" + doc.getTitle() + "</b><br><br>\n" +
@@ -31,8 +43,8 @@ public class HTMLGenerator implements IDocumentGenerator{
 "			<div>\n" +
 "				<pre class=\"default-font\"><b>Atención:	</b></pre>\n" +
 "			</div>\n" +
-"			<div><pre class=\"default-font\">" 
-                + Parameter.getInstance().getParameter("attention") + "</pre>\n" +
+"			<div><pre class=\"default-font\">" + attention[0] + "\n"
+                            + attention [1] + "</pre>\n" +
 "			</div>\n" +
 "		</div>\n" +
 "\n" +
