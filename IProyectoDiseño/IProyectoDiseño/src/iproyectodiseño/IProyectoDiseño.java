@@ -6,6 +6,8 @@
 package iproyectodiseño;
 
 import controller.School;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import view.FrMain;
 
 /**
@@ -23,5 +25,49 @@ public class IProyectoDiseño {
       
         FrMain fm= new FrMain();
         fm.setVisible(true);
+        fm.setDefaultCloseOperation(fm.DO_NOTHING_ON_CLOSE);
+        fm.addWindowListener(new WindowListener(){
+            @Override
+            public void windowOpened(WindowEvent e) {
+                System.out.println("window opened");
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                System.out.println("windowclosing");
+                School.getInstance().saveRequest();
+                fm.setVisible(false);
+                fm.dispose();
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                System.out.println("ingresa al window closed");
+                School.getInstance().saveRequest();
+                fm.setVisible(false);
+                fm.dispose();
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+                System.out.println("window iconified");
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+                System.out.println("window deiconified");
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+                System.out.println("window activated");
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+                System.out.println("window deactivated");
+            }
+        
+        });
     }
 }

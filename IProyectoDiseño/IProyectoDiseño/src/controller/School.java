@@ -193,4 +193,11 @@ public class School  {
     public void cancelRequest(String message){
         requestsManager.CancelRequest(message);
     }
+    
+    public void saveRequest() {
+        System.out.println("ingresa a school, save request");
+        requestsManager.saveRequest();
+    }
+    
+    
 }

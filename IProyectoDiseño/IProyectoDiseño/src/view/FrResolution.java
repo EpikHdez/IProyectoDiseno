@@ -6,7 +6,10 @@
 package view;
 
 import controller.EDocType;
+import controller.School;
 import controller.UIResolution;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -274,25 +277,81 @@ public class FrResolution extends javax.swing.JFrame {
         FrRequest fr=new FrRequest();
         fr.setVisible(true);
         this.setVisible(false);
+        fr.setDefaultCloseOperation(fr.DO_NOTHING_ON_CLOSE);
+        fr.addWindowListener(new WindowListener(){
+            @Override
+            public void windowOpened(WindowEvent e) {
+                System.out.println("window new request openned");
+            }
+            @Override
+            public void windowClosing(WindowEvent e) {
+                School.getInstance().saveRequest();
+                fr.setVisible(false);
+                fr.dispose();
+            }
+            @Override
+            public void windowClosed(WindowEvent e) {   
+                School.getInstance().saveRequest();
+                fr.setVisible(false);
+                fr.dispose();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}        
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+
     }//GEN-LAST:event_btnNewRequestActionPerformed
 
     private void btnSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAsActionPerformed
         // TODO add your handling code here:
         
         int i=JOptionPane.showConfirmDialog(this, "¿Seguro de que quiere crear una Resolución?","",JOptionPane.YES_NO_OPTION);
-        
+        EDocType format=(EDocType) JOptionPane.showInputDialog(this, 
+        "Guardar como...",
+        "Favorite Pizza",
+        JOptionPane.QUESTION_MESSAGE, 
+        null, 
+        EDocType.values(), 
+        EDocType.values()[0]);
         if(i==JOptionPane.YES_OPTION){
-            EDocType format=(EDocType) JOptionPane.showInputDialog(this, 
-            "Guardar como...",
-            "",
-            JOptionPane.QUESTION_MESSAGE, 
-            null, 
-            EDocType.values(), 
-            EDocType.values()[0]);
             uiResolution.createResolution(this,format);
             FrViewRequest fvr=new FrViewRequest();
             fvr.setVisible(true);
-            this.setVisible(false);}
+            this.setVisible(false);
+            fvr.setDefaultCloseOperation(fvr.DO_NOTHING_ON_CLOSE);
+            fvr.addWindowListener(new WindowListener(){
+            @Override
+            public void windowOpened(WindowEvent e) {
+                System.out.println("window new request openned");
+            }
+            @Override
+            public void windowClosing(WindowEvent e) {
+                School.getInstance().saveRequest();
+                fvr.setVisible(false);
+                fvr.dispose();
+            }
+            @Override
+            public void windowClosed(WindowEvent e) {   
+                School.getInstance().saveRequest();
+                fvr.setVisible(false);
+                fvr.dispose();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}        
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+
+        }
     }//GEN-LAST:event_btnSaveAsActionPerformed
 
     private void btnViewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRequestActionPerformed
@@ -300,6 +359,34 @@ public class FrResolution extends javax.swing.JFrame {
         FrViewRequest fvr=new FrViewRequest();
         fvr.setVisible(true);
         this.setVisible(false);
+        fvr.setDefaultCloseOperation(fvr.DO_NOTHING_ON_CLOSE);
+        fvr.addWindowListener(new WindowListener(){
+            @Override
+            public void windowOpened(WindowEvent e) {
+                System.out.println("window new request openned");
+            }
+            @Override
+            public void windowClosing(WindowEvent e) {
+                School.getInstance().saveRequest();
+                fvr.setVisible(false);
+                fvr.dispose();
+            }
+            @Override
+            public void windowClosed(WindowEvent e) {   
+                School.getInstance().saveRequest();
+                fvr.setVisible(false);
+                fvr.dispose();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}        
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+
 
     }//GEN-LAST:event_btnViewRequestActionPerformed
 
@@ -308,6 +395,34 @@ public class FrResolution extends javax.swing.JFrame {
         FrStadistics frstadistics= new FrStadistics();
         frstadistics.setVisible(true);
         this.setVisible(false);
+        frstadistics.setDefaultCloseOperation(frstadistics.DO_NOTHING_ON_CLOSE);
+        frstadistics.addWindowListener(new WindowListener(){
+            @Override
+            public void windowOpened(WindowEvent e) {
+                System.out.println("window new request openned");
+            }
+            @Override
+            public void windowClosing(WindowEvent e) {
+                School.getInstance().saveRequest();
+                frstadistics.setVisible(false);
+                frstadistics.dispose();
+            }
+            @Override
+            public void windowClosed(WindowEvent e) {   
+                School.getInstance().saveRequest();
+                frstadistics.setVisible(false);
+                frstadistics.dispose();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}        
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+
 
     }//GEN-LAST:event_btnviewStadisticsActionPerformed
 

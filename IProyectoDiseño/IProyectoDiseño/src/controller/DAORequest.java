@@ -7,15 +7,21 @@ package controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.EInconsistencie;
 import model.Group;
 import model.Request;
 import model.Student;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFDataFormat;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -32,18 +38,14 @@ public class DAORequest {
         this.workbook = new XSSFWorkbook(FIS); 
         
     }
-    public void printArrayRequest(ArrayList<Request> objects){
-        for (Request object : objects) {
-            System.out.println(object.toString());
-        }
-    }
+
     public ArrayList<Object> readRequests(){
         ArrayList<Object> requests = new ArrayList(); 
         XSSFSheet sheet = workbook.getSheetAt(0); 
         
         for(Row row : sheet){
             Date date= null; 
-            Student affected; int carnet = 0; String name = null; String email = null; int celStu = 0; 
+            Student affected; String carnet = null; String name = null; String email = null; String celStu = null; 
             Group group; String period = null; String course = null; int numberGroup = 0; 
             EInconsistencie einconsistencie; String inconsistencie = null; 
             String description = null; 
@@ -55,7 +57,10 @@ public class DAORequest {
                             date = row.getCell(0).getDateCellValue(); 
                             break; 
                         case 1: 
-                            carnet = (int) cell.getNumericCellValue();  
+                            if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC)
+                                carnet = Integer.toString((int) cell.getNumericCellValue());
+                            else if(cell.getCellType() == Cell.CELL_TYPE_STRING)
+                                carnet = cell.getStringCellValue(); 
                             break;
                         case 2: //es el nombre del estudiante
                             name = cell.getStringCellValue(); 
@@ -64,7 +69,10 @@ public class DAORequest {
                             email = cell.getStringCellValue();
                             break; 
                         case 4:  
-                            celStu = (int) cell.getNumericCellValue();
+                            if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC)
+                                celStu = Integer.toString((int) cell.getNumericCellValue());
+                            else if(cell.getCellType() == Cell.CELL_TYPE_STRING)
+                                celStu = cell.getStringCellValue(); 
                             break; 
                         case 5: 
                             period = cell.getStringCellValue(); 
@@ -88,14 +96,16 @@ public class DAORequest {
                 }
                 
             }
-            if(carnet != 0){
-                affected = new Student(Integer.toString(carnet), name, email, Integer.toString(celStu)); 
+            if(carnet != null){
+                affected = new Student(carnet, name, email, celStu); 
                 group = School.getInstance().selectGroup(period, numberGroup,course); 
                 einconsistencie = identifyEInconsistencie(inconsistencie); 
                 requests.add(new Request(new Date(2017, 5, 12), description, einconsistencie, affected, affected, group));
             }
            
         }
+        System.out.println("reads the requests");
+        printArrayRequest(requests);
         return requests;
     }
 
@@ -110,6 +120,90 @@ public class DAORequest {
             return EInconsistencie.RecordInclusion; 
         }
         return null; 
+    }
+    
+       
+    private String transformInconsistencieToSpanish(EInconsistencie inc){
+        if(inc == EInconsistencie.GradeError){
+            return "ERROR_NOTA"; 
+        }
+        else if(inc == EInconsistencie.RecordExclusion){
+            return "EXCLUSION_ACTA"; 
+        }
+        else if(inc == EInconsistencie.RecordInclusion){
+            return "INCLUSION_ACTA";
+        }
+        return null; 
+    }
+
+    public void saveRequest() {
+        System.out.println("llega al destino final");
+        XSSFSheet sheet = workbook.getSheetAt(0); 
+        System.out.println("1");
+        int rowI = 1; 
+        for(Object o: School.getInstance().selectAllRequests()){
+            printArrayRequest(School.getInstance().selectAllRequests());
+            System.out.println("2 for");
+            Request r = (Request) o; 
+            Row row = sheet.createRow(rowI); 
+            //
+            Cell cellDate = row.createCell(0); 
+            cellDate.setCellValue(r.getDate());
+            CellStyle styleCreationDate = workbook.createCellStyle(); 
+            XSSFDataFormat dfCreationDate = workbook.createDataFormat();
+            styleCreationDate.setDataFormat(dfCreationDate.getFormat("d/m/yy"));
+            cellDate.setCellStyle(styleCreationDate);
+            //
+            Cell cellCarnet = row.createCell(1); 
+            cellCarnet.setCellValue(r.getAffected().getId());
+            CellStyle styleCreationInt = workbook.createCellStyle(); 
+            XSSFDataFormat dfCreationInt = workbook.createDataFormat(); 
+            
+            Cell cellName = row.createCell(2); 
+            cellName.setCellValue(r.getAffected().getName());
+            Cell cellEmail = row.createCell(3); 
+            cellEmail.setCellValue(r.getAffected().getEmail());
+            Cell cellPhone = row.createCell(4); 
+            cellPhone.setCellValue(r.getAffected().getPhone());
+            Cell cellPeriod = row.createCell(5); 
+            cellPeriod.setCellValue(r.getGroup().getPeriod());
+            Cell cellCourse = row.createCell(6); 
+            cellCourse.setCellValue(r.getGroup().getCourse().getCode());
+            Cell cellNumGroup = row.createCell(7); 
+            cellNumGroup.setCellType(Cell.CELL_TYPE_NUMERIC);
+            cellNumGroup.setCellValue(r.getGroup().getNumber());
+            Cell cellInc = row.createCell(8); 
+            cellInc.setCellValue(transformInconsistencieToSpanish(r.getInconsistencie()));
+            Cell cellDescription = row.createCell(9); 
+            cellDescription.setCellValue(r.getDescription());
+            rowI++; 
+            System.out.println("end for");
+        }
+        System.out.println("out for");
+        // Save to excel file 
+        try{
+            System.out.println("inside try ");
+            FileOutputStream out = new FileOutputStream(new File("src//files//DatosFormulario.xlsx"));
+            System.out.println("3 ");
+            workbook.write(out);
+            System.out.println(" 4");
+            out.close(); 
+            System.out.println("5");
+            System.out.println("Excel written succesfully :D");
+        } catch (FileNotFoundException ex) {
+            System.out.println("entro al file exception");
+            Logger.getLogger(DAORequest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            System.out.println("entro al io exception");
+            Logger.getLogger(DAORequest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+
+    private void printArrayRequest(ArrayList<Object> objects) {
+             for (Object object : objects) {
+            System.out.println(object.toString());
+        }
     }
     
 }

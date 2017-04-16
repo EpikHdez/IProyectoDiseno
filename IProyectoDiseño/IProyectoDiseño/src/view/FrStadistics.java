@@ -5,9 +5,12 @@
  */
 package view;
 
+import controller.School;
 import controller.UIStadistics;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.File;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -407,6 +410,34 @@ public class FrStadistics extends javax.swing.JFrame {
         FrRequest fr=new FrRequest();
         fr.setVisible(true);
         this.setVisible(false);
+        fr.setDefaultCloseOperation(fr.DO_NOTHING_ON_CLOSE);
+        fr.addWindowListener(new WindowListener(){
+            @Override
+            public void windowOpened(WindowEvent e) {
+                System.out.println("window new request openned");
+            }
+            @Override
+            public void windowClosing(WindowEvent e) {
+                School.getInstance().saveRequest();
+                fr.setVisible(false);
+                fr.dispose();
+            }
+            @Override
+            public void windowClosed(WindowEvent e) {   
+                School.getInstance().saveRequest();
+                fr.setVisible(false);
+                fr.dispose();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}        
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+
     }//GEN-LAST:event_btnnewRequestActionPerformed
 
     private void btnokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnokActionPerformed
@@ -430,6 +461,34 @@ public class FrStadistics extends javax.swing.JFrame {
         FrStadistics frstadistics= new FrStadistics();
         frstadistics.setVisible(true);
         this.setVisible(false);
+        frstadistics.setDefaultCloseOperation(frstadistics.DO_NOTHING_ON_CLOSE);
+        frstadistics.addWindowListener(new WindowListener(){
+            @Override
+            public void windowOpened(WindowEvent e) {
+                System.out.println("window new request openned");
+            }
+            @Override
+            public void windowClosing(WindowEvent e) {
+                School.getInstance().saveRequest();
+                frstadistics.setVisible(false);
+                frstadistics.dispose();
+            }
+            @Override
+            public void windowClosed(WindowEvent e) {   
+                School.getInstance().saveRequest();
+                frstadistics.setVisible(false);
+                frstadistics.dispose();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}        
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+
 
     }//GEN-LAST:event_btnviewStadisticsActionPerformed
 
@@ -438,6 +497,34 @@ public class FrStadistics extends javax.swing.JFrame {
         FrViewRequest fvr=new FrViewRequest();
         fvr.setVisible(true);
         this.setVisible(false);
+        fvr.setDefaultCloseOperation(fvr.DO_NOTHING_ON_CLOSE);
+        fvr.addWindowListener(new WindowListener(){
+            @Override
+            public void windowOpened(WindowEvent e) {
+                System.out.println("window new request openned");
+            }
+            @Override
+            public void windowClosing(WindowEvent e) {
+                School.getInstance().saveRequest();
+                fvr.setVisible(false);
+                fvr.dispose();
+            }
+            @Override
+            public void windowClosed(WindowEvent e) {   
+                School.getInstance().saveRequest();
+                fvr.setVisible(false);
+                fvr.dispose();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}        
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+
     }//GEN-LAST:event_btnviewRequestActionPerformed
 
     private void cbResolutionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbResolutionsActionPerformed
