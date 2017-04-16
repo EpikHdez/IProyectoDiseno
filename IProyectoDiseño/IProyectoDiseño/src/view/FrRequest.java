@@ -11,6 +11,7 @@ import java.io.FileFilter;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -396,11 +397,12 @@ public class FrRequest extends javax.swing.JFrame {
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
         // TODO add your handling code here:
-        
-    
-       
-        uiRequest.createRequest(this);
-        
+    if(!txtcarne.getText().equals("")&&!txtdescription.getText().equals("")&&!txtemail.getText().equals("")&&!txtidr.getText().equals("")
+           &&!txtname.getText().equals("")&&!txtnamer.getText().equals("")&&!txtphone.getText().equals(""))  { 
+        uiRequest.createRequest(this);}
+    else{
+        JOptionPane.showMessageDialog(this,"Tiene que llenar todos los espacios establecidos.");
+    }
         
         
     }//GEN-LAST:event_btnOKActionPerformed
