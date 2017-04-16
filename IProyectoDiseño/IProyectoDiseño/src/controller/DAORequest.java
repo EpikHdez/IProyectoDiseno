@@ -187,7 +187,8 @@ public class DAORequest {
             System.out.println("3 ");
             workbook.write(out);
             System.out.println(" 4");
-            out.close(); 
+            out.close();
+            workbook.close();
             System.out.println("5");
             System.out.println("Excel written succesfully :D");
         } catch (FileNotFoundException ex) {
