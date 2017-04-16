@@ -16,6 +16,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
@@ -694,10 +695,13 @@ public class FrViewRequest extends javax.swing.JFrame {
 
     private void btnNewResolution1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewResolution1ActionPerformed
         // TODO add your handling code here:
-        FrResolution fr=new FrResolution();
-        fr.setVisible(true);
-        this.setVisible(false);
-
+        if(cdRequest.getSelectedItem()!=null){
+            FrResolution fr=new FrResolution();
+            fr.setVisible(true);
+            this.setVisible(false);
+        }else{
+            JOptionPane.showMessageDialog(this, "No se puede realizar una resolución, sin una solicitud seleccionada.");
+        }
     }//GEN-LAST:event_btnNewResolution1ActionPerformed
 
     private void btnviewStadisticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewStadisticsActionPerformed
@@ -720,7 +724,11 @@ public class FrViewRequest extends javax.swing.JFrame {
 
     private void btncancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelActionPerformed
         // TODO add your handling code here:
-        uiRequest.CancelRequest(this);
+         if(cdRequest.getSelectedItem()!=null){
+            uiRequest.CancelRequest(this);}
+         else{
+            JOptionPane.showMessageDialog(this, "Tiene que seleccionar una solicitud, para poder cancelar.");
+         }
     }//GEN-LAST:event_btncancelActionPerformed
 
     private void btnExelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExelActionPerformed
