@@ -62,34 +62,15 @@ public class DAOData {
             }
             if(code != null){
                 Course course = new Course(code, name, credits);
-                System.out.println(course.toString());
+             
                 courses.add(course); 
-                System.out.println("creating a course");
+            
                 code = null ; name = null; credits = 0; 
             }
            
         }
         Plan plan = new Plan(410, 2010, courses); 
         return plan; 
-    }
-    
-    
-     public void printArrayCourse(ArrayList<Course> objects){
-        for (Course object : objects) {
-            System.out.println(object.toString());
-        }
-    }
-    
-    public void printArrayPlan(ArrayList<Plan> objects){
-        for (Plan object : objects) {
-            System.out.println(object.toString());
-        }
-    }
-    
-    public void printArraySchedule(ArrayList<Schedule> objects){
-        for (Schedule object : objects) {
-            System.out.println(object.toString());
-        }
     }
     
     
@@ -122,7 +103,7 @@ public class DAOData {
             }
             if(id != null){
                 employees.add(new Employee(EEmployeeRol.PROFESSOR, id, name, email, phone)); 
-                System.out.println("creating professor");
+               
                 id = null; name = null; email = null; phone = null; 
             }
             
@@ -130,12 +111,6 @@ public class DAOData {
         }
         
         return employees;
-    }
-
-    public void printArrayEmployee(ArrayList<Employee> objects){
-        for (Employee object : objects) {
-            System.out.println(object.toString());
-        }
     }
     
     /*
@@ -243,7 +218,7 @@ public class DAOData {
             if(period != null){
                 schedules = identifySchedules(scheduleS, classroom); 
                 groups.add(new Group(numberGroup, period, true, employee, schedules, course)); 
-                System.out.println("creating groups");
+             
                 numberGroup = 0; 
                 course = null; 
                 period = null; 
@@ -253,7 +228,7 @@ public class DAOData {
       
             
         }
-        System.out.println(groups.toString());
+      
         return groups;
         
     }

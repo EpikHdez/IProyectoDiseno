@@ -105,33 +105,7 @@ public class FrMain extends javax.swing.JFrame {
         FrRequest fr= new FrRequest();
         fr.setVisible(true);
         this.setVisible(false);
-        fr.setDefaultCloseOperation(fr.DO_NOTHING_ON_CLOSE);
-        fr.addWindowListener(new WindowListener(){
-            @Override
-            public void windowOpened(WindowEvent e) {
-                System.out.println("window new request openned");
-            }
-            @Override
-            public void windowClosing(WindowEvent e) {
-                School.getInstance().saveRequest();
-                fr.setVisible(false);
-                fr.dispose();
-            }
-            @Override
-            public void windowClosed(WindowEvent e) {   
-                School.getInstance().saveRequest();
-                fr.setVisible(false);
-                fr.dispose();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}        
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
+   
 
     }//GEN-LAST:event_btnNewRequestActionPerformed
 
@@ -140,31 +114,7 @@ public class FrMain extends javax.swing.JFrame {
         FrViewRequest fvr=new FrViewRequest();
         this.setVisible(false);
         fvr.setVisible(true);
-        fvr.setDefaultCloseOperation(fvr.DO_NOTHING_ON_CLOSE);
-        fvr.addWindowListener(new WindowListener(){
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {
-                School.getInstance().saveRequest();
-                fvr.setVisible(false);
-                fvr.dispose();
-            }
-            @Override
-            public void windowClosed(WindowEvent e) {   
-                School.getInstance().saveRequest();
-                fvr.setVisible(false);
-                fvr.dispose();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}        
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
+     
         
     }//GEN-LAST:event_btnViewRequestActionPerformed
 
@@ -173,32 +123,7 @@ public class FrMain extends javax.swing.JFrame {
         FrStadistics frstadistics= new FrStadistics();
         frstadistics.setVisible(true);
         this.setVisible(false);
-        frstadistics.setDefaultCloseOperation(frstadistics.DO_NOTHING_ON_CLOSE);
-        frstadistics.addWindowListener(new WindowListener(){
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {
-                School.getInstance().saveRequest();
-                frstadistics.setVisible(false);
-                frstadistics.dispose();
-            }
-            @Override
-            public void windowClosed(WindowEvent e) {   
-                School.getInstance().saveRequest();
-                frstadistics.setVisible(false);
-                frstadistics.dispose();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}        
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-
+    
     }//GEN-LAST:event_btnviewStadisticsActionPerformed
 
     private void btnExelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExelActionPerformed
@@ -250,6 +175,7 @@ public class FrMain extends javax.swing.JFrame {
             public void run() {
                 new FrMain().setVisible(true);
             }
+            
         });
     }
 

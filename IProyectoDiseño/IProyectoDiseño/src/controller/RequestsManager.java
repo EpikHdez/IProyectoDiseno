@@ -158,7 +158,6 @@ public final class RequestsManager extends Manager {
 
     @Override
     public void readData() {
-        System.out.println("requestManager");
         elements.addAll(data.readRequests());
     }
     
@@ -267,9 +266,9 @@ public final class RequestsManager extends Manager {
     }
 
         public void saveRequest() {
-            System.out.println("ingresa a RequestManager al save request");
+           
             data.saveRequest();
-            System.out.println("{}");
+           
         }
     
     

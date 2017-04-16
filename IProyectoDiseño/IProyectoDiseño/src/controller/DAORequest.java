@@ -104,8 +104,8 @@ public class DAORequest {
             }
            
         }
-        System.out.println("reads the requests");
-        printArrayRequest(requests);
+    
+      
         return requests;
     }
 
@@ -137,13 +137,13 @@ public class DAORequest {
     }
 
     public void saveRequest() {
-        System.out.println("llega al destino final");
+       
         XSSFSheet sheet = workbook.getSheetAt(0); 
-        System.out.println("1");
+      
         int rowI = 1; 
         for(Object o: School.getInstance().selectAllRequests()){
-            printArrayRequest(School.getInstance().selectAllRequests());
-            System.out.println("2 for");
+        
+          
             Request r = (Request) o; 
             Row row = sheet.createRow(rowI); 
             //
@@ -177,34 +177,29 @@ public class DAORequest {
             Cell cellDescription = row.createCell(9); 
             cellDescription.setCellValue(r.getDescription());
             rowI++; 
-            System.out.println("end for");
+           
         }
-        System.out.println("out for");
+       
         // Save to excel file 
         try{
-            System.out.println("inside try ");
+            
             FileOutputStream out = new FileOutputStream(new File("src//files//DatosFormulario.xlsx"));
-            System.out.println("3 ");
+       
             workbook.write(out);
-            System.out.println(" 4");
-            out.close();
+         
             workbook.close();
-            System.out.println("5");
-            System.out.println("Excel written succesfully :D");
+            out.close();
+            
         } catch (FileNotFoundException ex) {
-            System.out.println("entro al file exception");
+            
             Logger.getLogger(DAORequest.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            System.out.println("entro al io exception");
+            
             Logger.getLogger(DAORequest.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
 
-    private void printArrayRequest(ArrayList<Object> objects) {
-             for (Object object : objects) {
-            System.out.println(object.toString());
-        }
-    }
+    
     
 }

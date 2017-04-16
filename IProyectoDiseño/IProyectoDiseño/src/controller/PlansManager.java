@@ -60,8 +60,7 @@ public class PlansManager extends Manager {
 
     @Override
     public void readData() {
-        elements.add(data.readPlan()); 
-        System.out.println(elements.toString());
+        elements.add(data.readPlan());
         
     }
 /*

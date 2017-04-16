@@ -437,9 +437,9 @@ public class FrStadistics extends javax.swing.JFrame {
 
     private void btnviewStadisticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewStadisticsActionPerformed
         // TODO add your handling code here:
-        FrStadistics frstadistics= new FrStadistics();
-        frstadistics.setVisible(true);
-        this.setVisible(false);
+            FrStadistics frstadistics= new FrStadistics();
+            frstadistics.setVisible(true);
+            this.setVisible(false);
 
     }//GEN-LAST:event_btnviewStadisticsActionPerformed
 

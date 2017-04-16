@@ -195,9 +195,9 @@ public class School  {
     }
     
     public void saveRequest() {
-        System.out.println("ingresa a school, save request");
+       
         requestsManager.saveRequest();
-        System.out.println("Sale de la escuela");
+        
     }
     
     

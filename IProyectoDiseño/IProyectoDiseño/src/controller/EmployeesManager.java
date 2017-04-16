@@ -60,7 +60,6 @@ public final class EmployeesManager extends Manager {
         for (Employee employee : employees) {
             elements.add(employee);
         }
-        System.out.println(elements.toString());
     }
     
     public Employee findEmployee(String id){
