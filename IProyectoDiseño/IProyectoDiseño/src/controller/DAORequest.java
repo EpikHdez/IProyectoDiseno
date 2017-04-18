@@ -15,9 +15,12 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.EInconsistencie;
+import model.ERequestState;
 import model.Group;
 import model.Request;
 import model.Student;
+import model.Person; 
+import model.Resolution; 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
@@ -50,13 +53,14 @@ public class DAORequest {
             Group group; String period = null; String course = null; int numberGroup = 0; 
             EInconsistencie einconsistencie; String inconsistencie = null; 
             String description = null; 
+            Person requester; String idReq= null; String nameReq= null; 
+            ERequestState reqState; String sreqState = null; 
             File evidence = null; 
             for(Cell cell : row){
                 if(row.getRowNum() != 0){
                     System.out.println("for ");
                     switch(cell.getColumnIndex()){
                         case 0:
-                            
                             date = row.getCell(0).getDateCellValue(); 
                             break; 
                         case 1: 
@@ -93,22 +97,32 @@ public class DAORequest {
                             description = cell.getStringCellValue(); 
                              break; 
                         case 10: 
-                            System.out.println("there is no file implementation yet");
+                            if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC)
+                                idReq = Integer.toString((int) cell.getNumericCellValue());
+                            else if(cell.getCellType() == Cell.CELL_TYPE_STRING)
+                                idReq = cell.getStringCellValue(); 
                             break;        
+                        case 11:
+                            nameReq = cell.getStringCellValue(); 
+                            break;
+                        case 12: 
+                            sreqState = cell.getStringCellValue(); 
+                            break; 
                     }
                 }
                 
             }
-            System.out.println("fuera for");
+            
             if(carnet != null){
-                System.out.println("en el if");
                 affected = new Student(carnet, name, email, celStu); 
+                requester = new Person(idReq, nameReq, null, null); 
                 group = School.getInstance().selectGroup(period, numberGroup,course); 
                 einconsistencie = identifyEInconsistencie(inconsistencie); 
-                requests.add(new Request(new Date(2017, 5, 12), description, einconsistencie, affected, affected, group));
-                System.out.println("casi fuera del if");
-            }
-           
+                reqState = identifyEReqState(sreqState); 
+                Request request = new Request(date, description, einconsistencie, affected, requester, group); 
+                request.setRequestState(reqState);
+                requests.add(request);             
+            }   
         }
     
       
@@ -116,36 +130,56 @@ public class DAORequest {
     }
 
     private EInconsistencie identifyEInconsistencie(String inconsistencie) {
-        if(inconsistencie.equals("ERROR_NOTA")){
-            return EInconsistencie.GradeError; 
-        }
-        else if(inconsistencie.equals("EXCLUSION_ACTA")){
-            return EInconsistencie.RecordExclusion; 
-        }
-        else if(inconsistencie.equals("INCLUSION_ACTA")){
-            return EInconsistencie.RecordInclusion; 
+        switch (inconsistencie) {
+            case "ERROR_NOTA":
+                return EInconsistencie.GradeError;
+            case "EXCLUSION_ACTA":
+                return EInconsistencie.RecordExclusion;
+            case "INCLUSION_ACTA":
+                return EInconsistencie.RecordInclusion;
+            default: 
+                break;
         }
         return null; 
     }
     
        
     private String transformInconsistencieToSpanish(EInconsistencie inc){
-        if(inc == EInconsistencie.GradeError){
-            return "ERROR_NOTA"; 
-        }
-        else if(inc == EInconsistencie.RecordExclusion){
-            return "EXCLUSION_ACTA"; 
-        }
-        else if(inc == EInconsistencie.RecordInclusion){
-            return "INCLUSION_ACTA";
+        if(null != inc)
+            switch (inc) {
+            case GradeError:
+                return "ERROR_NOTA";
+            case RecordExclusion:
+                return "EXCLUSION_ACTA";
+            case RecordInclusion:
+                return "INCLUSION_ACTA";
+            default:
+                break;
         }
         return null; 
     }
 
+        private String transformReqStatetoSpanish(ERequestState stt){
+        if(null != stt)
+            switch (stt) {
+            case CANCELED:
+                return "CANCELADO";
+            case PENDING:
+                return "PENDIENTE";
+            case PROCESSED:
+                return "PROCESADA";
+            default:
+                break;
+        }
+        return null; 
+    }
+        
     public void saveRequest() {
        
         XSSFSheet sheet = workbook.getSheetAt(0); 
-      
+        sheet.getRow(0).createCell(10).setCellValue("Id solicitante"); 
+        sheet.getRow(0).createCell(11).setCellValue("Nombre solicitante");
+        sheet.getRow(0).createCell(12).setCellValue("Estado de solicitud");
         int rowI = 1; 
         for(Object o: School.getInstance().selectAllRequests()){
         
@@ -182,6 +216,12 @@ public class DAORequest {
             cellInc.setCellValue(transformInconsistencieToSpanish(r.getInconsistencie()));
             Cell cellDescription = row.createCell(9); 
             cellDescription.setCellValue(r.getDescription());
+            Cell cellIdReq = row.createCell(10); 
+            cellIdReq.setCellValue(r.getRequester().getId());
+            Cell cellNameReq = row.createCell(11); 
+            cellNameReq.setCellValue(r.getRequester().getName());
+            Cell cellReqState = row.createCell(12); 
+            cellReqState.setCellValue(transformReqStatetoSpanish(r.getRequestState()));
             rowI++; 
            
         }
@@ -195,6 +235,7 @@ public class DAORequest {
          
             workbook.close();
             out.close();
+            saveResolution();
             
         } catch (FileNotFoundException ex) {
             
@@ -204,6 +245,90 @@ public class DAORequest {
             Logger.getLogger(DAORequest.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+    }
+
+    public void saveResolution() {
+        XSSFWorkbook reqWB = new XSSFWorkbook(); 
+        XSSFSheet sheet = reqWB.createSheet(); 
+        Row rowZ = sheet.createRow(0);  
+        sheet.getRow(0).createCell(0).setCellValue("Id"); 
+        sheet.getRow(0).createCell(1).setCellValue("Attention");
+        sheet.getRow(0).createCell(2).setCellValue("Title");
+        sheet.getRow(0).createCell(3).setCellValue("Intro"); 
+        sheet.getRow(0).createCell(4).setCellValue("Result");
+        sheet.getRow(0).createCell(5).setCellValue("Resolve");
+        sheet.getRow(0).createCell(6).setCellValue("Notify");
+        sheet.getRow(0).createCell(7).setCellValue("Considerations");
+        ArrayList<Resolution> resolutions = new ArrayList<>();
+        for(Object o: School.getInstance().selectAllRequests()){
+            Request r = (Request) o; 
+            if(r.getResolution() != null){
+                resolutions.add(r.getResolution()); 
+            }
+        }
+        
+        
+        int rowI = 1; 
+        for (Resolution r : resolutions) {       
+            Row row = sheet.createRow(rowI); 
+            //
+            Cell cellId = row.createCell(0); 
+            cellId.setCellValue(r.getId());
+            Cell cellAttention = row.createCell(1); 
+            cellAttention.setCellValue(r.getAttention());
+            Cell cellTitle = row.createCell(2); 
+            cellTitle.setCellValue(r.getTitle());
+            Cell cellIntro = row.createCell(3); 
+            cellIntro.setCellValue(r.getIntro());
+            Cell cellResult = row.createCell(4); 
+            cellResult.setCellValue(r.getResult());
+            Cell cellResolve = row.createCell(5); 
+            cellResolve.setCellValue(r.getResolve());
+            Cell cellNotify = row.createCell(6); 
+            cellNotify.setCellValue(r.getNotify());
+            Cell cellCons = row.createCell(7); 
+            cellCons.setCellValue(r.getConsider());
+            rowI++; 
+           
+        }
+       
+        // Save to excel file 
+        try{
+            
+            FileOutputStream out = new FileOutputStream(new File("src//files//DatosResolucion.xlsx"));
+       
+            reqWB.write(out);
+         
+            reqWB.close();
+            out.close();
+            
+        } catch (FileNotFoundException ex) {
+            
+            Logger.getLogger(DAORequest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            
+            Logger.getLogger(DAORequest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+
+
+
+
+
+    private ERequestState identifyEReqState(String sreqState) {
+        if(null != sreqState)
+            switch (sreqState) {
+            case "PENDIENTE":
+                return ERequestState.PENDING;
+            case "CANCELADO":
+                return ERequestState.CANCELED;
+            case "PROCESADA":
+                return ERequestState.PROCESSED;
+            default:
+                break;
+        }
+        return null;        
     }
 
     
