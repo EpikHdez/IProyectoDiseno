@@ -24,6 +24,19 @@ public class Resolution {
     
     public Resolution(){}
 
+    public Resolution(int id, String attention, String title, String intro, String result, String resolve, String notify, String considerations) {
+        this.id = id;
+        this.attention = attention;
+        this.title = title;
+        this.intro = intro;
+        this.result = result;
+        this.resolve = resolve;
+        this.notify = notify;
+        this.considerations = considerations;
+    }
+    
+    
+
     public int getId() {
         return id;
     }

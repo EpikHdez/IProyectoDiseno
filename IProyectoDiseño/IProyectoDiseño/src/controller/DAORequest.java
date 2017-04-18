@@ -44,6 +44,7 @@ public class DAORequest {
 
     public ArrayList<Object> readRequests(){
         ArrayList<Object> requests = new ArrayList(); 
+        ArrayList<Resolution> resolutions = readResolutions(); 
         XSSFSheet sheet = workbook.getSheetAt(0); 
         
         for(Row row : sheet){
@@ -54,11 +55,11 @@ public class DAORequest {
             EInconsistencie einconsistencie; String inconsistencie = null; 
             String description = null; 
             Person requester; String idReq= null; String nameReq= null; 
-            ERequestState reqState; String sreqState = null; 
-            File evidence = null; 
+            ERequestState reqState; String sreqState = null;
+            int numRes = 0; 
             for(Cell cell : row){
                 if(row.getRowNum() != 0){
-                    System.out.println("for ");
+              
                     switch(cell.getColumnIndex()){
                         case 0:
                             date = row.getCell(0).getDateCellValue(); 
@@ -108,6 +109,12 @@ public class DAORequest {
                         case 12: 
                             sreqState = cell.getStringCellValue(); 
                             break; 
+                        case 13: 
+                            if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC)
+                                numRes = (int)cell.getNumericCellValue(); 
+                            else if(cell.getCellType() == Cell.CELL_TYPE_STRING)
+                                numRes = Integer.parseInt(cell.getStringCellValue()); 
+                             break; 
                     }
                 }
                 
@@ -121,8 +128,17 @@ public class DAORequest {
                 reqState = identifyEReqState(sreqState); 
                 Request request = new Request(date, description, einconsistencie, affected, requester, group); 
                 request.setRequestState(reqState);
-                requests.add(request);             
-            }   
+                requests.add(request);      
+                if(numRes != 0){
+                    for (Resolution r: resolutions) {
+                        if(r.getId() == numRes)
+                            request.setResolution(r);
+                            System.out.println("linquea numRes: " + numRes + " con ReqId:" + request.getId());
+                    }
+                }
+            }
+            
+            
         }
     
       
@@ -180,6 +196,7 @@ public class DAORequest {
         sheet.getRow(0).createCell(10).setCellValue("Id solicitante"); 
         sheet.getRow(0).createCell(11).setCellValue("Nombre solicitante");
         sheet.getRow(0).createCell(12).setCellValue("Estado de solicitud");
+        sheet.getRow(0).createCell(13).setCellValue("Num de Resolucion");
         int rowI = 1; 
         for(Object o: School.getInstance().selectAllRequests()){
         
@@ -222,6 +239,12 @@ public class DAORequest {
             cellNameReq.setCellValue(r.getRequester().getName());
             Cell cellReqState = row.createCell(12); 
             cellReqState.setCellValue(transformReqStatetoSpanish(r.getRequestState()));
+            if(r.getRequestState() == ERequestState.PROCESSED){
+                Cell cellNumReso = row.createCell(13); 
+                cellNumReso.setCellValue(Integer.toString(r.getResolution().getId()));
+            }
+            
+            
             rowI++; 
            
         }
@@ -264,6 +287,7 @@ public class DAORequest {
             Request r = (Request) o; 
             if(r.getResolution() != null){
                 resolutions.add(r.getResolution()); 
+                
             }
         }
         
@@ -329,6 +353,65 @@ public class DAORequest {
                 break;
         }
         return null;        
+    }
+
+    private ArrayList<Resolution> readResolutions() {
+        ArrayList<Resolution> resolutions = new ArrayList(); 
+        try{
+            FileInputStream fis = new FileInputStream(new File("src//files//DatosResolucion.xlsx"));
+            XSSFWorkbook wb = new XSSFWorkbook(fis); 
+            XSSFSheet sheet = wb.getSheetAt(0); 
+        for(Row row : sheet){
+            int id = 0; String attention = null; String title= null; 
+            String intro = null; String result = null; String resolve = null; 
+            String notify = null; String considerations = null; 
+            for(Cell cell : row){
+                if(row.getRowNum() != 0){
+                    switch(cell.getColumnIndex()){
+                        case 0:
+                            id = (int)cell.getNumericCellValue(); 
+                            break; 
+                        case 1: 
+                            attention = cell.getStringCellValue(); 
+                            break;
+                        case 2: 
+                            title = cell.getStringCellValue(); 
+                            break; 
+                        case 3: 
+                            intro = cell.getStringCellValue();
+                            break; 
+                        case 4:  
+                            result = cell.getStringCellValue(); 
+                            break; 
+                        case 5: 
+                            resolve = cell.getStringCellValue(); 
+                            break; 
+                        case 6: 
+                            notify = cell.getStringCellValue(); 
+                            break; 
+                        case 7: 
+                            considerations = cell.getStringCellValue(); 
+                            break; 
+                        }
+                    }
+                }
+                if(id != 0){
+                    System.out.println("Resolution: [id: " + id + " attention: " + attention + "\ntitle: " + title + " \nintro: " + intro + " \nresult: " + result + " \nresolve: "+ resolve + " \nnotify: " + notify + " \nconsiderations: " + considerations + "\n]" ); 
+                    resolutions.add(new Resolution(id, attention, title, intro, result, resolve, notify, considerations));
+                }
+            }
+        
+        }
+            
+        
+        catch(FileNotFoundException e){
+            System.out.println("No hay archivo que cargar de Resolutions");
+        } catch (IOException ex) {
+            Logger.getLogger(DAORequest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        return resolutions; 
+        
     }
 
     
