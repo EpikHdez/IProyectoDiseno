@@ -44,16 +44,19 @@ public class DAORequest {
         XSSFSheet sheet = workbook.getSheetAt(0); 
         
         for(Row row : sheet){
+            System.out.println("1");
             Date date= null; 
             Student affected; String carnet = null; String name = null; String email = null; String celStu = null; 
             Group group; String period = null; String course = null; int numberGroup = 0; 
             EInconsistencie einconsistencie; String inconsistencie = null; 
             String description = null; 
-            File evidence; 
+            File evidence = null; 
             for(Cell cell : row){
                 if(row.getRowNum() != 0){
+                    System.out.println("for ");
                     switch(cell.getColumnIndex()){
                         case 0:
+                            
                             date = row.getCell(0).getDateCellValue(); 
                             break; 
                         case 1: 
@@ -96,11 +99,14 @@ public class DAORequest {
                 }
                 
             }
+            System.out.println("fuera for");
             if(carnet != null){
+                System.out.println("en el if");
                 affected = new Student(carnet, name, email, celStu); 
                 group = School.getInstance().selectGroup(period, numberGroup,course); 
                 einconsistencie = identifyEInconsistencie(inconsistencie); 
                 requests.add(new Request(new Date(2017, 5, 12), description, einconsistencie, affected, affected, group));
+                System.out.println("casi fuera del if");
             }
            
         }
