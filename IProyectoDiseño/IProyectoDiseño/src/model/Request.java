@@ -16,6 +16,8 @@ import static model.ERequestState.PENDING;
  * @author Usuario
  */
 public class Request {
+    private static int REQUESTS_SERIAL = 1;
+    
     private int id; 
     private Date date; 
     private String description; 
@@ -33,8 +35,7 @@ public class Request {
     public Request(Date date, String description, EInconsistencie inconsistencie, 
                    Student affected, Person requester, Group group) {
         
-        this.id = Integer.parseInt(Parameter.getInstance()
-                                   .getParameter("request_serial"));
+        this.id = REQUESTS_SERIAL++;
         this.date = date;
         this.description = description;
         this.inconsistencie = inconsistencie;
@@ -42,12 +43,6 @@ public class Request {
         this.affected = affected;
         this.requester = requester;
         this.group = group;
-        
-        System.out.println(id);
-        
-        Parameter.getInstance().setParameter("request_serial", 
-                                             String.valueOf(id + 1));
-        Parameter.getInstance().saveParameters();
     }
 
     public int getId() {
