@@ -126,7 +126,7 @@ public class DAORequest {
                 group = School.getInstance().selectGroup(period, numberGroup,course); 
                 einconsistencie = identifyEInconsistencie(inconsistencie); 
                 reqState = identifyEReqState(sreqState); 
-                Request request = new Request(date, description, einconsistencie, affected, requester, group); 
+                Request request = new Request(date, description, einconsistencie, reqState, affected, requester, group); 
                 request.setRequestState(reqState);
                 requests.add(request);      
                 if(numRes != 0){

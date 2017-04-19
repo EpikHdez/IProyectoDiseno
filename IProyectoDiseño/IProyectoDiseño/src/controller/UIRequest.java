@@ -147,6 +147,7 @@ public class UIRequest {
                 frviewrequest.getSpmotivo().setVisible(true);
                 frviewrequest.getTxtMotivo().setEditable(true);
                 frviewrequest.getBtnNewResolution1().setVisible(true);
+                frviewrequest.getBtnViewResolution().setVisible(false);
              
                 break;
             case 1:
@@ -155,6 +156,7 @@ public class UIRequest {
                 frviewrequest.getTxtMotivo().setVisible(false);
                 frviewrequest.getSpmotivo().setVisible(false);
                 frviewrequest.getBtnNewResolution1().setVisible(false);
+                frviewrequest.getBtnViewResolution().setVisible(true);
                 break;
             case 2:
                 frviewrequest.getLbmotivo().setVisible(true);
@@ -163,6 +165,7 @@ public class UIRequest {
                 frviewrequest.getSpmotivo().setVisible(true);
                 frviewrequest.getTxtMotivo().setEditable(false);
                 frviewrequest.getBtnNewResolution1().setVisible(false);
+                frviewrequest.getBtnViewResolution().setVisible(false);
                 break;
                 
                 

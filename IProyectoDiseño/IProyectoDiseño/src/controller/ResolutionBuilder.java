@@ -22,6 +22,7 @@ public abstract class ResolutionBuilder {
         
         int resNumber = Integer.parseInt(Parameter.getInstance().getParameter("resolution_serial"));
         resolution.setId(resNumber);
+        resolution.setDefinitive(false);
         Parameter.getInstance().setParameter("resolution_serial", String.valueOf(resNumber + 1));
         Parameter.getInstance().saveParameters();
     }

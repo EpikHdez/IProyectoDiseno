@@ -33,13 +33,13 @@ public class Request {
     public Request() {}
 
     public Request(Date date, String description, EInconsistencie inconsistencie, 
-                   Student affected, Person requester, Group group) {
+                   ERequestState state, Student affected, Person requester, Group group) {
         
         this.id = REQUESTS_SERIAL++;
         this.date = date;
         this.description = description;
         this.inconsistencie = inconsistencie;
-        this.requestState = PENDING;
+        this.requestState = state == null ? PENDING : state;
         this.affected = affected;
         this.requester = requester;
         this.group = group;

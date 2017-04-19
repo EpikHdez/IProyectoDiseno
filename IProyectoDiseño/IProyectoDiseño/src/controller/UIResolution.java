@@ -26,7 +26,7 @@ public class UIResolution {
         facade=new FacadeCoordinator();
     }
    
-    public void createResolution(FrResolution frResolution,EDocType format)
+    public void createResolution(FrResolution frResolution)
     {
         
      
@@ -36,14 +36,26 @@ public class UIResolution {
         r.setResult(frResolution.getTxtresult().getText());
         r.setConsider(frResolution.getTxtconsider().getText());
        
-        facade.createResolution(r,format);
+        facade.createResolution(r);
         JOptionPane.showMessageDialog(frResolution, "Se ha creado una Resolución con Éxito.");
     }
     
- 
+    public void createResolutionDoc(EDocType type) {
+        facade.createResolutionDoc(type);
+    }
   
-    public void createTemplateResolution(FrResolution frResolution) {
-      r=facade.createTemplateResolution();
+    public void getResolution(FrResolution frResolution) {
+      r=facade.getResolution();
+        if(r.isDefinitive()) {
+            frResolution.getTxtintro().setEnabled(false);
+            frResolution.getTxtnotify().setEnabled(false);
+            frResolution.getTxtresolve().setEnabled(false);
+            frResolution.getTxtresult().setEnabled(false);
+            frResolution.getTxtconsider().setEnabled(false);
+            frResolution.getBtnSave().setVisible(false);
+            frResolution.getBtnSaveAs().setVisible(true);
+        }
+        
        frResolution.getTxtintro().setText(r.getIntro());
        frResolution.getTxtnotify().setText(r.getNotify());
        frResolution.getTxtresolve().setText(r.getResolve());

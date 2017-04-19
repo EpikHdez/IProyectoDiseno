@@ -144,19 +144,21 @@ public class School  {
     
     
     
-    public Resolution createTemplateResolution(){
-        return requestsManager.createTemplateResolution();
+    public Resolution getResolution(){
+        return requestsManager.getResolution();
     }
     
-    public void setResolution(Resolution res, EDocType type) {
+    public void setResolution(Resolution res) {
         requestsManager.setResolution(res);
-        
+    }
+    
+    public void createResolutionDoc(EDocType type) {
         Package pack = EDocType.class.getPackage();
         String creatorName = String.format("%s.%sGenerator", pack.getName(), type.name());
         
         try {
             docGenerator = (IDocumentGenerator) Class.forName(creatorName).newInstance();
-            docGenerator.GenerateDocument(res);
+            docGenerator.GenerateDocument(requestsManager.getResolution());
         } catch(Exception ex) {}
     }
     
@@ -172,22 +174,6 @@ public class School  {
     
     public HashMap<Employee, Integer> top3ProfessorsResolutions() {
         return requestsManager.top3ProfessorsResolutions();
-    }
-    
-    
-    
-    public boolean createDocument(EDocType docType){
-        //we have to implement this
-        return false; 
-    }
-
-
-    public IDocumentGenerator getDocGenerator() {
-        return docGenerator;
-    }
-
-    public void setDocGenerator(IDocumentGenerator docGenerator) {
-        this.docGenerator = docGenerator;
     }
  
     public void cancelRequest(String message){

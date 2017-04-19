@@ -21,6 +21,7 @@ public class Resolution {
     private String resolve; 
     private String notify;
     private String considerations;
+    private boolean definitive;
     
     public Resolution(){}
 
@@ -33,6 +34,15 @@ public class Resolution {
         this.resolve = resolve;
         this.notify = notify;
         this.considerations = considerations;
+        this.definitive = true;
+    }
+
+    public boolean isDefinitive() {
+        return definitive;
+    }
+
+    public void setDefinitive(boolean definitive) {
+        this.definitive = definitive;
     }
     
     

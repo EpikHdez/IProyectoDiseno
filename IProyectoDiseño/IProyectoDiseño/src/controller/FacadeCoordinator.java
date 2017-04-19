@@ -27,16 +27,11 @@ public class FacadeCoordinator {
     public void createRequest(DTORequest dtoRequest) {
         school.insertRequest(dtoRequest);
     }
-    public void createResolution(Resolution res,EDocType format ){
-        school.setResolution(res,format);
+    public void createResolution(Resolution res){
+        school.setResolution(res);
     }
-    public void viewRequestStadistics(){
-    }
-    public void Top5Resolutions(){
-    }
-    public void Top3Professors(){
-    }
-    public void createDocument(){
+    public void createResolutionDoc(EDocType type) {
+        school.createResolutionDoc(type);
     }
     
     public ArrayList<Object> selectallGroups(){
@@ -69,8 +64,8 @@ public class FacadeCoordinator {
         school.cancelRequest(message);
     }
     
-    public Resolution createTemplateResolution() {
-        return school.createTemplateResolution();
+    public Resolution getResolution() {
+        return school.getResolution();
     }
     public ArrayList<Request> processedRequestsInDateRange(Date start, Date end) {
         return school.processedRequestsInDateRange(start, end);

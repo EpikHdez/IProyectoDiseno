@@ -12,6 +12,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 
@@ -27,12 +28,12 @@ public class FrResolution extends javax.swing.JFrame {
     public FrResolution() {
         uiResolution= new UIResolution();
         initComponents();
-        uiResolution.createTemplateResolution(this);
-       
-
-        
+        getResolution();
     }
-
+    
+    private void getResolution() {
+        uiResolution.getResolution(this);
+    }
 
     public JTextPane getTxtintro() {
         return txtintro;
@@ -74,7 +75,13 @@ public class FrResolution extends javax.swing.JFrame {
         this.txtresult = txtresult;
     }
 
-   
+    public JMenuItem getBtnSave() {
+        return btnSave;
+    }
+
+    public JMenuItem getBtnSaveAs() {
+        return btnSaveAs;
+    }
     
 
     /**
@@ -116,6 +123,7 @@ public class FrResolution extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         btnNewRequest = new javax.swing.JMenuItem();
+        btnSave = new javax.swing.JMenuItem();
         btnSaveAs = new javax.swing.JMenuItem();
         btnExel = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -229,7 +237,16 @@ public class FrResolution extends javax.swing.JFrame {
         });
         jMenu3.add(btnNewRequest);
 
-        btnSaveAs.setText("Guardar...");
+        btnSave.setText("Guardar...");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+        jMenu3.add(btnSave);
+
+        btnSaveAs.setVisible(false);
+        btnSaveAs.setText("Guardar como...");
         btnSaveAs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveAsActionPerformed(evt);
@@ -281,26 +298,18 @@ public class FrResolution extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnNewRequestActionPerformed
 
-    private void btnSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAsActionPerformed
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         
         int i=JOptionPane.showConfirmDialog(this, "¿Seguro de que quiere crear una Resolución?","",JOptionPane.YES_NO_OPTION);
        
         if(i==JOptionPane.YES_OPTION){
-            EDocType format=(EDocType) JOptionPane.showInputDialog(this, 
-            "Guardar como...",
-            "",
-            JOptionPane.QUESTION_MESSAGE, 
-            null, 
-            EDocType.values(), 
-            EDocType.values()[0]);
-            uiResolution.createResolution(this,format);
+            uiResolution.createResolution(this);
             FrViewRequest fvr=new FrViewRequest();
             fvr.setVisible(true);
             this.setVisible(false);
-       
         }
-    }//GEN-LAST:event_btnSaveAsActionPerformed
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnViewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRequestActionPerformed
         // TODO add your handling code here:
@@ -326,6 +335,19 @@ public class FrResolution extends javax.swing.JFrame {
         // TODO add your handling code here:
         uiResolution.loadfile();
     }//GEN-LAST:event_btnExelActionPerformed
+
+    private void btnSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAsActionPerformed
+        // TODO add your handling code here:
+        EDocType format=(EDocType) JOptionPane.showInputDialog(this, 
+            "Guardar como...",
+            "",
+            JOptionPane.QUESTION_MESSAGE, 
+            null, 
+            EDocType.values(), 
+            EDocType.values()[0]);
+        
+        uiResolution.createResolutionDoc(format);
+    }//GEN-LAST:event_btnSaveAsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -365,6 +387,7 @@ public class FrResolution extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnExel;
     private javax.swing.JMenuItem btnNewRequest;
+    private javax.swing.JMenuItem btnSave;
     private javax.swing.JMenuItem btnSaveAs;
     private javax.swing.JMenuItem btnViewRequest;
     private javax.swing.JMenuItem btnviewStadistics;

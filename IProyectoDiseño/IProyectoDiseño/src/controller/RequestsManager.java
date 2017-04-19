@@ -43,7 +43,7 @@ public final class RequestsManager extends Manager {
         Person requester = new Person(dto.getRequesterId(), dto.getRequesterName(), "", "");
         
         currentRequest = new Request(dto.getDate(), dto.getDescription(), 
-                                     dto.getInconsistence(), student, requester,
+                                     dto.getInconsistence(), null, student, requester,
                                      group);
         
         elements.add(currentRequest);
@@ -135,12 +135,16 @@ public final class RequestsManager extends Manager {
         return elements;
     }
     
-    public Resolution createTemplateResolution() {
-        return currentRequest.createTemplateResolution();
+    public Resolution getResolution() {
+        if(currentRequest.getResolution() == null)
+            return currentRequest.createTemplateResolution();
+        
+        return currentRequest.getResolution();
     }
     
     public void setResolution(Resolution res) {
         currentRequest.setRequestState(PROCESSED);
+        res.setDefinitive(true);
         currentRequest.setResolution(res);
         String subject="SOLICITUD "+ currentRequest.getInconsistencie()
              +currentRequest.getId()+": ACEPTADA";

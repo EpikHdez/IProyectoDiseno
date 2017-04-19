@@ -192,6 +192,10 @@ public class FrViewRequest extends javax.swing.JFrame {
         this.lbphone = lbphone;
     }
 
+    public JMenuItem getBtnViewResolution() {
+        return btnViewResolution;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -277,6 +281,7 @@ public class FrViewRequest extends javax.swing.JFrame {
         btnExel = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         btnViewRequest1 = new javax.swing.JMenuItem();
+        btnViewResolution = new javax.swing.JMenuItem();
         btnviewStadistics = new javax.swing.JMenuItem();
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -663,6 +668,14 @@ public class FrViewRequest extends javax.swing.JFrame {
         btnViewRequest1.setText("Ver Solicitudes");
         jMenu6.add(btnViewRequest1);
 
+        btnViewResolution.setText("Ver Resolución");
+        btnViewResolution.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewResolutionActionPerformed(evt);
+            }
+        });
+        jMenu6.add(btnViewResolution);
+
         btnviewStadistics.setText("Ver Estadísticas");
         btnviewStadistics.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -743,6 +756,17 @@ public class FrViewRequest extends javax.swing.JFrame {
       uiRequest.loadfile();
     }//GEN-LAST:event_btnExelActionPerformed
 
+    private void btnViewResolutionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewResolutionActionPerformed
+        // TODO add your handling code here:
+        if(cdRequest.getSelectedItem()!=null){ 
+            FrResolution fr=new FrResolution(); 
+            fr.setVisible(true); 
+            this.setVisible(false); 
+        }else{ 
+            JOptionPane.showMessageDialog(this, "No se puede ver una resolución, sin una solicitud seleccionada."); 
+        } 
+    }//GEN-LAST:event_btnViewResolutionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -788,6 +812,7 @@ public class FrViewRequest extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnNewResolution1;
     private javax.swing.JMenuItem btnViewRequest;
     private javax.swing.JMenuItem btnViewRequest1;
+    private javax.swing.JMenuItem btnViewResolution;
     private javax.swing.JButton btncancel;
     private javax.swing.JMenuItem btnviewStadistics;
     private javax.swing.JComboBox<String> cbtyperequest;
