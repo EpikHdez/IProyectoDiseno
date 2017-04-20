@@ -5,11 +5,15 @@
  */
 package controller;
 
+import com.google.api.services.sheets.v4.Sheets;
+import com.google.api.services.sheets.v4.model.ValueRange;
+import static controller.DAOSpreedSheet.getSheetsService;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import model.Course;
 import model.Employee;
 import model.Group;
@@ -69,6 +73,7 @@ public class School  {
         plansManager = new PlansManager(data);
         groupsManager = new GroupsManager(data);
         requestsManager = new RequestsManager(req);
+        getSpreedSheetInfo();
     }
     
     public void loadRequests(String path) {
@@ -181,10 +186,31 @@ public class School  {
     }
     
     public void saveRequest() {
-       
         requestsManager.saveRequest();
-        
     }
     
-    
+    public void getSpreedSheetInfo() {
+        try {
+            // Build a new authorized API client service.
+            Sheets service = getSheetsService();
+
+            // Prints the names and majors of students in a sample spreadsheet:
+            // https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+            String spreadsheetId = "1dpneK1ZaPyQkKZdyGZ8A3ybpBjhIXOUeERzJNyvNVbM";
+            String range = "Requests Data";
+            ValueRange response = service.spreadsheets().values()
+                    .get(spreadsheetId, range)
+                    .execute();
+            List<List<Object>> values = response.getValues();
+            if (values == null || values.isEmpty()) {
+                System.out.println("No data found.");
+            } else {
+              for (List row : values) {
+                for(int i = 0; i < 12; i++)
+                      System.out.print(row.get(i) + "\t");
+                  System.out.println("\n");
+              }
+            }
+        } catch(Exception ex) {}
+    }
 }
