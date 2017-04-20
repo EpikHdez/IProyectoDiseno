@@ -269,11 +269,17 @@ public final class RequestsManager extends Manager {
         return top3;
     }
 
-        public void saveRequest() {
-           
-            data.saveRequest();
-           
-        }
+    public void saveRequest() {
+
+        data.saveRequest();
+
+    }
     
-    
+    public void readSpreadSheet() {
+        DAOSpreadSheet dao = new DAOSpreadSheet();
+        ArrayList<Object> temp = dao.getSpreedSheetInfo();
+        
+        if(temp != null)
+            elements.addAll(temp);
+    }
 }

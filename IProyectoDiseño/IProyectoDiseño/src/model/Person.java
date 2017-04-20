@@ -13,7 +13,12 @@ public class Person {
     protected String id; 
     protected String name;
     protected String email; 
-    protected String phone; 
+    protected String phone;
+
+    public Person(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public Person(String id, String name, String email, String phone) {
         this.id = id;
