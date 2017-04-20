@@ -63,14 +63,14 @@ public class PDFGenerator implements IDocumentGenerator{
             par.setAlignment(Paragraph.ALIGN_JUSTIFIED);
             pdf.add(par);
             
-            chunk = new Chunk("RESULTANDO ÚNICO:\n", boldFont);
+            chunk = new Chunk((doc.isOneresult() == true ? "RESULTANDO ÚNICO:\n" : "RESULTANDO:\n"), boldFont);
             par = new Paragraph(chunk);
             chunk = new Chunk(doc.getResult() + "\n\n", parFont);
             par.add(chunk);
             par.setAlignment(Paragraph.ALIGN_JUSTIFIED);
             pdf.add(par);
             
-            chunk = new Chunk("CONSIDERANDO ÚNICO:\n", boldFont);
+            chunk = new Chunk((doc.isOneconsideration()== true ? "CONSIDERANDO ÚNICO:\n" : "CONSIDERANDOS:\n"), boldFont);
             par = new Paragraph(chunk);
             chunk = new Chunk(doc.getConsider() + "\n\n", parFont);
             par.add(chunk);

@@ -22,6 +22,24 @@ public class Resolution {
     private String notify;
     private String considerations;
     private boolean definitive;
+    private boolean oneresult;
+    private boolean oneconsideration;
+
+    public boolean isOneresult() {
+        return oneresult;
+    }
+
+    public void setOneresult(boolean oneresult) {
+        this.oneresult = oneresult;
+    }
+
+    public boolean isOneconsideration() {
+        return oneconsideration;
+    }
+
+    public void setOneconsideration(boolean oneconsideration) {
+        this.oneconsideration = oneconsideration;
+    }
     
     public Resolution(){}
 

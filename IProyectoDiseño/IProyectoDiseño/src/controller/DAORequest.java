@@ -107,7 +107,7 @@ public class DAORequest {
                             nameReq = cell.getStringCellValue(); 
                             break;
                         case 12: 
-                            sreqState = cell.getStringCellValue(); 
+                            sreqState = cell.getStringCellValue();
                             break; 
                         case 13: 
                             if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC)
@@ -125,7 +125,11 @@ public class DAORequest {
                 requester = new Person(idReq, nameReq, null, null); 
                 group = School.getInstance().selectGroup(period, numberGroup,course); 
                 einconsistencie = identifyEInconsistencie(inconsistencie); 
+                if(sreqState == null){
+                    sreqState = "PENDIENTE"; 
+                }
                 reqState = identifyEReqState(sreqState); 
+                
                 Request request = new Request(date, description, einconsistencie, reqState, affected, requester, group); 
                 request.setRequestState(reqState);
                 requests.add(request);      

@@ -11,6 +11,7 @@ import controller.UIResolution;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
+import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -104,8 +105,10 @@ public class FrResolution extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtresult = new javax.swing.JTextPane();
+        chkresult = new javax.swing.JCheckBox();
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        chkconsider = new javax.swing.JCheckBox();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtconsider = new javax.swing.JTextPane();
@@ -171,6 +174,9 @@ public class FrResolution extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 710, 300));
 
+        chkresult.setText("Resultado Único");
+        jPanel2.add(chkresult, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 70, -1, -1));
+
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/images/5193848-white-wallpaper.jpg"))); // NOI18N
         jLabel5.setText("jLabel2");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 490));
@@ -178,6 +184,9 @@ public class FrResolution extends javax.swing.JFrame {
         jTabbedPane1.addTab("Resultado Único ", jPanel2);
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        chkconsider.setText("Considerando Único");
+        jPanel3.add(chkconsider, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 70, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         jLabel8.setText("Considerando:");
@@ -298,6 +307,22 @@ public class FrResolution extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnNewRequestActionPerformed
 
+    public JCheckBox getChkconsider() {
+        return chkconsider;
+    }
+
+    public void setChkconsider(JCheckBox chkconsider) {
+        this.chkconsider = chkconsider;
+    }
+
+    public JCheckBox getChkresult() {
+        return chkresult;
+    }
+
+    public void setChkresult(JCheckBox chkresult) {
+        this.chkresult = chkresult;
+    }
+
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         
@@ -391,6 +416,8 @@ public class FrResolution extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnSaveAs;
     private javax.swing.JMenuItem btnViewRequest;
     private javax.swing.JMenuItem btnviewStadistics;
+    private javax.swing.JCheckBox chkconsider;
+    private javax.swing.JCheckBox chkresult;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
