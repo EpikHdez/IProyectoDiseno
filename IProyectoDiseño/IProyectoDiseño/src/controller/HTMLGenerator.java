@@ -50,9 +50,9 @@ public class HTMLGenerator implements IDocumentGenerator{
 "\n" +
 "		<div>\n" +
 "			<p>" + doc.getIntro() + "</p><br>\n" +
-"			<b>Resultando único:</b><br>\n" +
+"			<b>" + (doc.isOneresult() == true ? "Resultando único:" : "Resultando:") + "</b><br>\n" +
 "			<p>" + doc.getResult() + "<p><br>\n" +
-"			<b>Considerando único:</b><br>\n" +
+"			<b>"+(doc.isOneconsideration()== true ? "Considerando único:" : "Considerandos:")+"</b><br>\n" +
 "			<p>" + doc.getConsider() + "</p><br>\n" +
 "			<b>Resuelvo:</b><br>\n" +
 "			<p>" + doc.getResolve() + "</p><br>\n" +

@@ -35,7 +35,8 @@ public class UIResolution {
         r.setResolve(frResolution.getTxtresolve().getText());
         r.setResult(frResolution.getTxtresult().getText());
         r.setConsider(frResolution.getTxtconsider().getText());
-       
+        r.setOneconsideration(frResolution.getChkconsider().isSelected());
+        r.setOneresult(frResolution.getChkresult().isSelected());
         facade.createResolution(r);
         JOptionPane.showMessageDialog(frResolution, "Se ha creado una Resolución con Éxito.");
     }
@@ -54,6 +55,8 @@ public class UIResolution {
             frResolution.getTxtconsider().setEnabled(false);
             frResolution.getBtnSave().setVisible(false);
             frResolution.getBtnSaveAs().setVisible(true);
+            frResolution.getChkconsider().setVisible(false);
+            frResolution.getChkresult().setVisible(false);
         }
         
        frResolution.getTxtintro().setText(r.getIntro());
